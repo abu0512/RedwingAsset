@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1878731871449628}
+  m_IsPrefabParent: 1
+--- !u!1 &1878731871449628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4375185387928310}
+  - component: {fileID: 114508361777778282}
+  m_Layer: 0
+  m_Name: cEffectManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4375185387928310
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878731871449628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114508361777778282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878731871449628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2419c7d2a2dd77c42a8c93e04590599c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _EffectType: 0
+  _effectInfos:
+  - Name: 0
+    Effect: {fileID: 1950328387524238, guid: 8dea6ccc136f7664e8c7d0af76680286, type: 2}
+  - Name: 1
+    Effect: {fileID: 1574183881743122, guid: 4d0fcee9f88d3034cad58b2b897d4482, type: 2}
+  - Name: 2
+    Effect: {fileID: 1310841825897732, guid: e69b1c342a9a3f345ac9e6a313d0a6d8, type: 2}
+  - Name: 3
+    Effect: {fileID: 1950328387524238, guid: 8dea6ccc136f7664e8c7d0af76680286, type: 2}
+  - Name: 4
+    Effect: {fileID: 1304305575852046, guid: 7afe70b66a5ed6a4fba91eee3731a45b, type: 2}
+  - Name: 5
+    Effect: {fileID: 1325251183193596, guid: 046396ffb2b55eb44b5711883da486a4, type: 2}
+  - Name: 6
+    Effect: {fileID: 1787062029346634, guid: 8cf819b22003eda4392fbc7be4b0537a, type: 2}
+  - Name: 8
+    Effect: {fileID: 1354017771274758, guid: d428f0ce4ebb9d04f896a678a79b9042, type: 2}
+  - Name: 9
+    Effect: {fileID: 1771727598113608, guid: 74dcdd35e52a99449857b9b921b46a07, type: 2}
+  - Name: 10
+    Effect: {fileID: 1690921698517724, guid: 7eff7c34757a3e7479b65237d438fbc7, type: 2}
+  - Name: 11
+    Effect: {fileID: 1482321273705912, guid: 4d262c6a1f90c0d488d925034623d472, type: 2}
+  - Name: 12
+    Effect: {fileID: 1947250170264672, guid: d4b9017ea093aee4baabd0dde35ca04a, type: 2}
+  - Name: 13
+    Effect: {fileID: 1908273203765176, guid: d917f0ac74f7bdf42a1c821d44439a12, type: 2}
+  - Name: 14
+    Effect: {fileID: 1888355506111304, guid: ecd8b96acab828144bad0afa82367076, type: 2}
+  - Name: 15
+    Effect: {fileID: 1476896186017340, guid: e5732693008e83e4e9eda621115406ca, type: 2}
+  - Name: 16
+    Effect: {fileID: 1852622814943556, guid: 0d8d257a11648e8439dd52e1dc993305, type: 2}
+  - Name: 17
+    Effect: {fileID: 1697998153291952, guid: 3a8f52fceeac2284a9ae6f45b4420a97, type: 2}
+  - Name: 18
+    Effect: {fileID: 1974632643112420, guid: 5eb0466777d9f74428e475105d3952fa, type: 2}
+  - Name: 19
+    Effect: {fileID: 1505167813342586, guid: 40a6dc2be4bf5464ebfccd79127baebb, type: 2}
