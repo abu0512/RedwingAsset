@@ -18,7 +18,7 @@ public class WitchAnimController : MonoBehaviour
 
     private void BeginAttack()
     {
-        _witch.Collider.Collider.enabled = false;
+        _witch.Collider.Collider.enabled = true;
     }
 
     private void OnTrail()

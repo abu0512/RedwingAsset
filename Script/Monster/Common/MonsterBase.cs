@@ -17,6 +17,13 @@ public class MonsterBase : MonoBehaviour
     protected bool _isDead; // 죽었는가
     protected bool _isHit; // 공격을 받은 상태인가
 
+    [SerializeField]
+    protected Material _oldMat;
+    [SerializeField]
+    protected Material _noiseMat;
+    [SerializeField]
+    protected bool _isSpawn;
+
     // properties
     public CharacterController Controller { get { return _controller; } }
     public Animator Anim { get { return _anim; } }

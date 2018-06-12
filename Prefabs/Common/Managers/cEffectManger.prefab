@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2419c7d2a2dd77c42a8c93e04590599c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EffectType: 0
   _effectInfos:
   - Name: 0
     Effect: {fileID: 1950328387524238, guid: 8dea6ccc136f7664e8c7d0af76680286, type: 2}
@@ -60,9 +59,9 @@ MonoBehaviour:
   - Name: 2
     Effect: {fileID: 1310841825897732, guid: e69b1c342a9a3f345ac9e6a313d0a6d8, type: 2}
   - Name: 3
-    Effect: {fileID: 1950328387524238, guid: 8dea6ccc136f7664e8c7d0af76680286, type: 2}
-  - Name: 4
     Effect: {fileID: 1304305575852046, guid: 7afe70b66a5ed6a4fba91eee3731a45b, type: 2}
+  - Name: 4
+    Effect: {fileID: 1304305575852046, guid: 27cf7966f922fa842a1025696a6f93ec, type: 2}
   - Name: 5
     Effect: {fileID: 1325251183193596, guid: 046396ffb2b55eb44b5711883da486a4, type: 2}
   - Name: 6
@@ -91,3 +90,5 @@ MonoBehaviour:
     Effect: {fileID: 1974632643112420, guid: 5eb0466777d9f74428e475105d3952fa, type: 2}
   - Name: 19
     Effect: {fileID: 1505167813342586, guid: 40a6dc2be4bf5464ebfccd79127baebb, type: 2}
+  - Name: 20
+    Effect: {fileID: 1092103988824772, guid: fdb227e8a1859b148b6d123834383c5a, type: 2}

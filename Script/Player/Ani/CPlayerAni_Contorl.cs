@@ -99,18 +99,18 @@ public class CPlayerAni_Contorl : CPlayerBase
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fSweatStm)
-            {
-                fSweatTime = 0;
-                _PlayerAni_State_Shild = PlayerAni_State_Shild.SweatL;
-                _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fSweatStm;
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fSweatStm)
-            {
-                fSweatTime = 0;
-                _PlayerAni_State_Shild = PlayerAni_State_Shild.SweatR;
-                _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fSweatStm;
-            }
+            //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fSweatStm)
+            //{
+            //    fSweatTime = 0;
+            //    _PlayerAni_State_Shild = PlayerAni_State_Shild.SweatL;
+            //    _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fSweatStm;
+            //}
+            //if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fSweatStm)
+            //{
+            //    fSweatTime = 0;
+            //    _PlayerAni_State_Shild = PlayerAni_State_Shild.SweatR;
+            //    _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fSweatStm;
+            //}
             
         }
         else if (Input.GetMouseButtonDown(0))

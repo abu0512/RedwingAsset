@@ -52,8 +52,8 @@ public class WitchBoss : MonsterBase
     private bool _footHoldOn;
     private WitchMonsterSpawnerObject _spawner;
     private bool _isGravity;
-    private bool _On80;
-    private bool _On60;
+    private bool _on80;
+    private bool _on60;
 
     private WitchWeaponCollider _collider;
 
@@ -85,8 +85,8 @@ public class WitchBoss : MonsterBase
     public bool IsTel { get { return _isTel; } set { _isTel = value; } }
     public bool IsGravity { get { return _isGravity; } set { _isGravity = value; } }
     public int AttackIdx { get { return _attackIdx; } }
-    public bool On60 { get { return _On60; } set { _On60 = value; } }
-    public bool On80 { get { return _On80; } set { _On80 = value; } }
+    public bool On60 { get { return _on60; } set { _on60 = value; } }
+    public bool On80 { get { return _on80; } set { _on80 = value; } }
 
 
     protected override void Awake()
@@ -120,6 +120,7 @@ public class WitchBoss : MonsterBase
         GroggyCheck();
         AnimDelayUpdate();
         FootholdUpdate();
+        MonsterSpawnUpdate();
         _attackIdx = Anim.GetInteger("AttackIdx");
         if (_isTel)
         {
@@ -316,5 +317,26 @@ public class WitchBoss : MonsterBase
     private void PlayHitSound()
     {
         SoundManager.I.PlaySound(transform, PlaySoundId.Hit_StandardMonster);
+    }
+
+    private void MonsterSpawnUpdate()
+    {
+        if (_receiveDamage2 / _stat.MaxHp >= 0.2f)
+        {
+            if (!_on60)
+            {
+                ABUGameManager.I.MonsterPhase.OnNextSpawn();
+                _on60 = true;
+            }
+
+            if (_receiveDamage2 / _stat.MaxHp >= 0.4f)
+            {
+                if (!_on80)
+                {
+                    ABUGameManager.I.MonsterPhase.OnNextSpawn();
+                    _on80 = true;
+                }
+            }
+        }
     }
 }
