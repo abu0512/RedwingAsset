@@ -262,6 +262,7 @@ public class ShildMushroom : MonsterBase
 
     protected override void Update()
     {
+        base.Update();
         FrontBackCheck();
         GroggySet();
         AttackTimer += Time.deltaTime;

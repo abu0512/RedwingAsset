@@ -372,6 +372,7 @@ public class QueenMushroom : MonsterBase
 
     protected override void Update()
     {
+        base.Update();
         _attackTimer += Time.deltaTime;
         _hearTimer += Time.deltaTime;
 
