@@ -469,6 +469,7 @@ public class GuardMushroom : MonsterBase
 
     protected override void Update()
     {
+        base.Update();
         //CharicterGravity(transform.position);
         FrontBackCheck();
         BerserkerTimeStart();
