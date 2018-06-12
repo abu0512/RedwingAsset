@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     protected QueenMushroom _queenMushroom;
     protected Vector3 _direction;
     private Vector3 _target;
+    public GameObject GeneralHitEffect;
 
     [SerializeField]
     protected float _speed;
@@ -30,10 +31,15 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public void HitEffect(Vector3 From)
+    {
+        Instantiate(GeneralHitEffect, From, Quaternion.identity);
+    }
+
     public void InitBullet(QueenMushroom queen, Vector3 from, Vector3 target)
     {
         _queenMushroom = queen;
-        from.y += 0.6f;
+        from.y += 0.9f;
         from.z += 0.3f;
         from.x += Random.Range(-2.4f, 2.4f);
         target.y = from.y;
@@ -49,10 +55,12 @@ public class Bullet : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                HitEffect(transform.position);
                 CPlayerManager._instance.PlayerHp(0.2f, 1, _queenMushroom.AttackDamage);
             }
             if (other.tag == "Shild")
             {
+                HitEffect(transform.position);
                 CPlayerManager._instance.PlayerHp(0.2f, 2, _queenMushroom.AttackDamage);
             }
             gameObject.SetActive(false);

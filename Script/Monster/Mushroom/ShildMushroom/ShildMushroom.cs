@@ -224,7 +224,7 @@ public class ShildMushroom : MonsterBase
         Stat.AttackDistance = 3f;
         Stat.MoveSpeed = 3f;
         _attackDamage = 20f;
-        _attackDelay = 3f;
+        _attackDelay = 2f;
         _attackTimer = 0;
         _angle = 180f;
         _groggy = 0;

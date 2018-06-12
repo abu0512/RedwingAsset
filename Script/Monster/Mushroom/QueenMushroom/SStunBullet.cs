@@ -8,6 +8,7 @@ public class SStunBullet : MonoBehaviour
     protected Vector3 _direction;
     private Vector3 _target;
     private Transform _from;
+    public GameObject StunHitEffect;
 
     [SerializeField]
     protected float _speed;
@@ -33,6 +34,11 @@ public class SStunBullet : MonoBehaviour
         }
     }
 
+    public void HitEffect(Vector3 From)
+    {
+        Instantiate(StunHitEffect, From, Quaternion.identity);
+    }
+
     public void InitSStunBullet(QueenMushroom queen, Vector3 from, float rotate)
     {
         _queenMushroom = queen;
@@ -48,11 +54,13 @@ public class SStunBullet : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                HitEffect(transform.position);
                 CPlayerSturn._instance.isSturn = true;
                 CPlayerManager._instance.PlayerHp(0.2f, 1, _queenMushroom.AttackDamage);
             }
             else if (other.tag == "Shild")
             {
+                HitEffect(transform.position);
                 CPlayerManager._instance.PlayerHp(0.2f, 2, _queenMushroom.AttackDamage);
             }
             gameObject.SetActive(false);
