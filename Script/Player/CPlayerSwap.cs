@@ -89,6 +89,9 @@ public class CPlayerSwap : CPlayerBase
                 if (Input.GetKeyDown(KeyCode.Q))
                 {                     
                     ScytheReset(1);
+                    PlayerParams._instance.nGauge = 0;
+                    PlayerParams._instance.GaugeOff();
+                    CPlayerManager._instance._nPowerGauge = 0;
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
