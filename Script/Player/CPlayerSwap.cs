@@ -10,6 +10,10 @@ public enum PlayerMode
 }
 public class CPlayerSwap : CPlayerBase
 {
+    public Shader afterimageShader;
+    public Color tankerColor;
+    public Color dealerColor;
+
     public PlayerMode _PlayerMode = PlayerMode.Shield; // 처음엔 검방패로 시작
 
     // 플레이어 좌표 담아둠
@@ -98,6 +102,7 @@ public class CPlayerSwap : CPlayerBase
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
+                    AfterImageSet();
                     ScytheReset();
                 }
             }
@@ -115,6 +120,7 @@ public class CPlayerSwap : CPlayerBase
                     }
                     else if (Input.GetKeyDown(KeyCode.E))
                     {
+                        AfterImageSet();
                         ShildReset(1);
                     }
                 }
@@ -153,6 +159,40 @@ public class CPlayerSwap : CPlayerBase
             isEffectTelpo = false;
         }
     }
+
+    private void AfterImageSet()
+    {
+        GameObject obj = null;
+        Renderer[] renderers;
+
+        if (_PlayerMode == PlayerMode.Shield)
+        {
+            obj = Instantiate(transform.Find("NewNew_Berry").gameObject);
+        }
+        else
+        {
+            obj = Instantiate(transform.Find("Devil_Berry").gameObject);
+        }
+
+        obj.transform.position = transform.position;
+        renderers = obj.transform.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer render in renderers)
+        {
+            Material mat = new Material(afterimageShader);
+            mat.CopyPropertiesFromMaterial(render.material);
+            mat.SetFloat("_Rimpower", 3.5f);
+            if (_PlayerMode == PlayerMode.Shield)
+            {
+                mat.SetColor("_Color", tankerColor);
+            }
+            else
+                mat.SetColor("_Color", dealerColor);
+            render.material = mat;
+
+        }
+    }
+
     void SwapAttacker()
     {
         if (!m_bSwapAttack)
