@@ -52,8 +52,8 @@ public class WitchBoss : MonsterBase
     private bool _footHoldOn;
     private WitchMonsterSpawnerObject _spawner;
     private bool _isGravity;
-    private bool _on80;
-    private bool _on60;
+    private bool _on2;
+    private bool _on1;
 
     private WitchWeaponCollider _collider;
 
@@ -85,8 +85,8 @@ public class WitchBoss : MonsterBase
     public bool IsTel { get { return _isTel; } set { _isTel = value; } }
     public bool IsGravity { get { return _isGravity; } set { _isGravity = value; } }
     public int AttackIdx { get { return _attackIdx; } }
-    public bool On60 { get { return _on60; } set { _on60 = value; } }
-    public bool On80 { get { return _on80; } set { _on80 = value; } }
+    public bool On60 { get { return _on1; } set { _on1 = value; } }
+    public bool On80 { get { return _on2; } set { _on2 = value; } }
 
 
     protected override void Awake()
@@ -323,18 +323,18 @@ public class WitchBoss : MonsterBase
     {
         if (_receiveDamage2 / _stat.MaxHp >= 0.2f)
         {
-            if (!_on60)
+            if (!_on1)
             {
                 ABUGameManager.I.MonsterPhase.OnNextSpawn();
-                _on60 = true;
+                _on1 = true;
             }
 
-            if (_receiveDamage2 / _stat.MaxHp >= 0.4f)
+            if (_receiveDamage2 / _stat.MaxHp >= 0.6f)
             {
-                if (!_on80)
+                if (!_on2)
                 {
                     ABUGameManager.I.MonsterPhase.OnNextSpawn();
-                    _on80 = true;
+                    _on2 = true;
                 }
             }
         }

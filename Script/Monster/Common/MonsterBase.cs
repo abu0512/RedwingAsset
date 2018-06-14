@@ -48,8 +48,11 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        //MoveUpdate();
-        //RotateUpdate();
+        if (name == "BossMonster")
+        {
+            MoveUpdate();
+            RotateUpdate();
+        }
         Update_SpawnNoise();
     }
     
@@ -147,7 +150,7 @@ public class MonsterBase : MonoBehaviour
         if (!_isSpawn)
             return;
 
-        _noiseValue += 0.03f;
+        _noiseValue += 0.05f;
         _modelRenderer.material.SetFloat("_Hide", Mathf.Clamp(_noiseValue, -1.0f, 1.0f));
 
         if (_noiseValue >= 1.0f)
@@ -157,6 +160,7 @@ public class MonsterBase : MonoBehaviour
     public void OnSpawn()
     {
         _isSpawn = true;
-        _modelRenderer.material.SetFloat("_Hide", -1.0f);
+        _noiseValue = -1.0f;
+        _modelRenderer.material.SetFloat("_Hide", _noiseValue);
     }
 }

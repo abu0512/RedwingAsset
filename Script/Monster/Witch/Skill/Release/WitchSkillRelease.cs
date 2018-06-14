@@ -32,10 +32,14 @@ public class WitchSkillRelease : MonoBehaviour
 
         _collider.enabled = true;
 
-        if (_time < 3.6f)
+        if (_time < 2.8f)
             return;
 
         _collider.enabled = false;
+
+        if (_time < 3.6f)
+            return;
+        
         _time = 0.0f;
         _on = false;
         gameObject.SetActive(false);

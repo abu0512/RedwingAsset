@@ -31,7 +31,7 @@ public class WitchMonsterPhase : MonoBehaviour
     {
         foreach (MonsterBase m in _monsters)
         {
-            print("AAAAA");
+            m.OnSpawn();
             EffectManager.I.OnEffect(EffectType.Witch_Spawn, m.transform, m.transform.rotation, 1.5f);
         }
     }

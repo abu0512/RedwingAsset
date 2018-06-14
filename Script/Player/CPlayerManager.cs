@@ -139,7 +139,7 @@ public class CPlayerManager : MonoBehaviour
         // 플레이어 스탯 설정
         m_fMoveSpeed = 6;
         m_fGravity = 20;
-        m_fPlayerMaxHp = 10000;
+        //m_fPlayerMaxHp = 10000;
         m_fPlayerHp = m_fPlayerMaxHp;
         m_fscyPlayerMaxHp = m_fPlayerMaxHp / 2;
         m_fscyPlayerHp = m_fscyPlayerMaxHp;

@@ -20,7 +20,7 @@ public class TestSkillCollider : MonoBehaviour
                     {
                         other.GetComponent<MonsterBase>().isHit = true;
                         other.GetComponent<GuardMushroomEffect>().GuardMHitEffect();
-                        other.GetComponent<GuardMushroom>().OnDamage(100000.0f);
+                        other.GetComponent<GuardMushroom>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge);
                         SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
                     }
                 }
@@ -31,7 +31,7 @@ public class TestSkillCollider : MonoBehaviour
                     {
                         other.GetComponent<MonsterBase>().isHit = true;
                         other.GetComponent<QueenMushroomEffect>().QueenMHitEffect();
-                        other.GetComponent<QueenMushroom>().OnDamage(100000.0f);
+                        other.GetComponent<QueenMushroom>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge);
                         SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
                     }
                 }
@@ -40,7 +40,7 @@ public class TestSkillCollider : MonoBehaviour
                 {
                     if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
-                        other.GetComponent<ShildMushroom>().OnDamage(100000.0f, InspectorManager._InspectorManager.nGroggyShild[nCombo]);
+                        other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge, InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
                     }
 
@@ -54,7 +54,7 @@ public class TestSkillCollider : MonoBehaviour
                 {
                     if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
                     {
-                        other.GetComponent<EliteShaman>().OnDamage(100000.0f, InspectorManager._InspectorManager.nGroggyShild[nCombo]);
+                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge, InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
                     }
                 }
@@ -73,7 +73,7 @@ public class TestSkillCollider : MonoBehaviour
                     {
                         other.GetComponent<MonsterBase>().isHit = true;
                         other.GetComponent<GuardMushroomEffect>().GuardMHitEffect();
-                        other.GetComponent<GuardMushroom>().OnDamage(100000.0f);
+                        other.GetComponent<GuardMushroom>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge);
                         CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
                     }
@@ -85,7 +85,7 @@ public class TestSkillCollider : MonoBehaviour
                     {
                         other.GetComponent<MonsterBase>().isHit = true;
                         other.GetComponent<QueenMushroomEffect>().QueenMHitEffect();
-                        other.GetComponent<QueenMushroom>().OnDamage(100000.0f);
+                        other.GetComponent<QueenMushroom>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge);
                         CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
                     }
@@ -97,7 +97,7 @@ public class TestSkillCollider : MonoBehaviour
                     {
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
                         CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
-                        other.GetComponent<ShildMushroom>().OnDamage(100000.0f, InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
+                        other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge, InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
 
                     else if (other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
@@ -112,7 +112,7 @@ public class TestSkillCollider : MonoBehaviour
                     {
                         other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
                         CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
-                        other.GetComponent<EliteShaman>().OnDamage(100000.0f, InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
+                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge, InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
                 }
 
