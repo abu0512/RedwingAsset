@@ -86,6 +86,9 @@ public class CPlayerSwap : CPlayerBase
         {
             if (_PlayerMode == PlayerMode.Shield)
             {
+                if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Dash)
+                    return;
+
                 if (Input.GetKeyDown(KeyCode.Q))
                 {                     
                     ScytheReset(1);
@@ -102,9 +105,17 @@ public class CPlayerSwap : CPlayerBase
             {
                 if(!isBlinkSwapKey)
                 {
-                    if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E))
+                    if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill1 ||
+                        _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
+                        return;
+
+                    if (Input.GetKeyDown(KeyCode.Q))
                     {
-                        ShildReset();
+                        ShildReset(0);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        ShildReset(1);
                     }
                 }
             }
@@ -240,22 +251,21 @@ public class CPlayerSwap : CPlayerBase
 
     void ScytheReset(int type = 0)
     {
-        EffectManager.I.EventOnEffect(9);
         CSwapSystem._instance.ScytheObjs(type);
         StartCoroutine("ScytheHpDown");
         _PlayerMode = PlayerMode.Scythe;
 
         if (type == 1)
         {
+            EffectManager.I.EventOnEffect(9);
             //EffectManager.I.EventOnEffect(8);
             _PlayerManager.isPull = true;
             m_bSwapAttack = true;
         }
         Common();
     }
-    void ShildReset()
+    void ShildReset(int idx)
     {
-        EffectManager.I.EventOnEffect(10);
         //_PlayerManager.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.8f);
 
         CSwapSystem._instance.ShildObjs();
@@ -263,7 +273,11 @@ public class CPlayerSwap : CPlayerBase
         nScytheNum = 0;
         nScytheExponential = 1;
         _PlayerMode = PlayerMode.Shield;
-        _PlayerManager.isPush = true;
+        if (idx == 0)
+        {
+            EffectManager.I.EventOnEffect(10);
+            _PlayerManager.isPush = true;
+        }
         isBlink = false;
         Common();
     }
