@@ -67,7 +67,7 @@ public class QueenMushroomAttack : QueenMushroomStateBase
         if (QueenMushroom.AniSynchro && _stun && _bulletcount < 5)
         {
             //StartCoroutine(StunBulletset());
-            if (_imsitime > 0.15f)
+            if (_imsitime > 0.2f)
             {
                 Stage1.I.BulletPool.SetStunBullet(_QueenMushroom, transform.position, QueenMushroom.Player.position);
                 _bulletcount++;
@@ -78,7 +78,7 @@ public class QueenMushroomAttack : QueenMushroomStateBase
         else if(QueenMushroom.AniSynchro && _notstun && _bulletcount < 5)
         {
             //StartCoroutine(Bulletset());
-            if (_imsitime > 0.15f)
+            if (_imsitime > 0.2f)
             {
                 Stage1.I.BulletPool.SetBullet(_QueenMushroom, transform.position, QueenMushroom.Player.position);
                 _bulletcount++;
@@ -103,7 +103,7 @@ public class QueenMushroomAttack : QueenMushroomStateBase
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         SetAttack();
         QueenMushroom.NowisHit();
