@@ -50,7 +50,7 @@ public class InspectorManager : MonoBehaviour
     public float[] TankerAttackZoom;
     public float[] DealerAttackZoom;
 
-    public float AfterImageDeadTime = 0.4f;
+    public float AfterImageDeadTime;
 
 
     void Awake ()

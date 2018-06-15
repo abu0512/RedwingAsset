@@ -339,7 +339,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.17630057
-        functionName: Effect7
+        functionName: DashAttackEffect
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 36881a4ec6d333047b9ad2f73905cb75,
           type: 3}

@@ -451,5 +451,8 @@ public class CPlayerAni_Contorl : CPlayerBase
         _PlayerAni_State_Shild = PlayerAni_State_Shild.Interaction;
     }
 
-
+    private void DashAttackEffect()
+    {
+        EffectManager.I.OnEffect(EffectType.Tanker_DashAttack, transform, 0.6f);
+    }
 }
