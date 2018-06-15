@@ -16,8 +16,8 @@
 		  
 		void vert (inout appdata_full v)
 		{
-		v.vertex.z += ((v.texcoord.y * sin(v.texcoord.y + _Time.y)) * 0.15) * sin((v.texcoord.x * 2 -1) * 2 + _Time.y * 1) * cos((v.texcoord.x * 2 -1) + _Time.y * 2);
-		v.vertex.x += ((v.texcoord.y * cos(v.texcoord.y + _Time.y)) * 0.1) * cos((v.texcoord.x * 2 -1) + _Time.y * 3) * sin((v.texcoord.x * 2 -1) + _Time.y * 1);
+		v.vertex.z += ((v.texcoord.y * v.texcoord.y* v.texcoord.y * sin(v.texcoord.y + _Time.y)) * 0.15) * sin((v.texcoord.x * 2 -1)  + _Time.y * 1) * cos((v.texcoord.x * 2 -1) + _Time.y * 2);
+		v.vertex.x += ((v.texcoord.y * v.texcoord.y* v.texcoord.y* cos(v.texcoord.y + _Time.y)) * 0.1) * cos((v.texcoord.x * 2 -1) + _Time.y * 3) * sin((v.texcoord.x * 2 -1) + _Time.y * 1);
 		}
 
 
