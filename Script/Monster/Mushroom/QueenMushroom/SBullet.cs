@@ -6,7 +6,7 @@ public class SBullet : MonoBehaviour
 {
     protected QueenMushroom _queenMushroom;
     protected Vector3 _direction;
-    private Vector3 _target;
+    private Transform _target;
     private Transform _from;
     public GameObject GeneralHitEffect;
 
@@ -18,6 +18,7 @@ public class SBullet : MonoBehaviour
     void Awake()
     {
         DeleteTime = 0;
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
