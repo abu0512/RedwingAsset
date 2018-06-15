@@ -32,7 +32,7 @@ public class WitchSkillRelease : MonoBehaviour
 
         _collider.enabled = true;
 
-        if (_time < 2.8f)
+        if (_time < 1.0f)
             return;
 
         _collider.enabled = false;

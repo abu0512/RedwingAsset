@@ -10,6 +10,10 @@ public enum PlayerMode
 }
 public class CPlayerSwap : CPlayerBase
 {
+    public Shader afterimageShader;
+    public Color tankerColor;
+    public Color dealerColor;
+
     public PlayerMode _PlayerMode = PlayerMode.Shield; // 처음엔 검방패로 시작
 
     // 플레이어 좌표 담아둠
@@ -86,6 +90,9 @@ public class CPlayerSwap : CPlayerBase
         {
             if (_PlayerMode == PlayerMode.Shield)
             {
+                if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Dash)
+                    return;
+
                 if (Input.GetKeyDown(KeyCode.Q))
                 {                     
                     ScytheReset(1);
@@ -95,6 +102,7 @@ public class CPlayerSwap : CPlayerBase
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
+                    AfterImageSet();
                     ScytheReset();
                 }
             }
@@ -102,9 +110,18 @@ public class CPlayerSwap : CPlayerBase
             {
                 if(!isBlinkSwapKey)
                 {
-                    if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E))
+                    if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill1 ||
+                        _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
+                        return;
+
+                    if (Input.GetKeyDown(KeyCode.Q))
                     {
-                        ShildReset();
+                        ShildReset(0);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        AfterImageSet();
+                        ShildReset(1);
                     }
                 }
             }
@@ -142,6 +159,40 @@ public class CPlayerSwap : CPlayerBase
             isEffectTelpo = false;
         }
     }
+
+    private void AfterImageSet()
+    {
+        GameObject obj = null;
+        Renderer[] renderers;
+
+        if (_PlayerMode == PlayerMode.Shield)
+        {
+            obj = Instantiate(transform.Find("NewNew_Berry").gameObject);
+        }
+        else
+        {
+            obj = Instantiate(transform.Find("Devil_Berry").gameObject);
+        }
+
+        obj.transform.position = transform.position;
+        renderers = obj.transform.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer render in renderers)
+        {
+            Material mat = new Material(afterimageShader);
+            mat.CopyPropertiesFromMaterial(render.material);
+            mat.SetFloat("_Rimpower", 3.5f);
+            if (_PlayerMode == PlayerMode.Shield)
+            {
+                mat.SetColor("_Color", tankerColor);
+            }
+            else
+                mat.SetColor("_Color", dealerColor);
+            render.material = mat;
+
+        }
+    }
+
     void SwapAttacker()
     {
         if (!m_bSwapAttack)
@@ -240,22 +291,21 @@ public class CPlayerSwap : CPlayerBase
 
     void ScytheReset(int type = 0)
     {
-        EffectManager.I.EventOnEffect(9);
         CSwapSystem._instance.ScytheObjs(type);
         StartCoroutine("ScytheHpDown");
         _PlayerMode = PlayerMode.Scythe;
 
         if (type == 1)
         {
+            EffectManager.I.EventOnEffect(9);
             //EffectManager.I.EventOnEffect(8);
             _PlayerManager.isPull = true;
             m_bSwapAttack = true;
         }
         Common();
     }
-    void ShildReset()
+    void ShildReset(int idx)
     {
-        EffectManager.I.EventOnEffect(10);
         //_PlayerManager.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.8f);
 
         CSwapSystem._instance.ShildObjs();
@@ -263,7 +313,11 @@ public class CPlayerSwap : CPlayerBase
         nScytheNum = 0;
         nScytheExponential = 1;
         _PlayerMode = PlayerMode.Shield;
-        _PlayerManager.isPush = true;
+        if (idx == 0)
+        {
+            EffectManager.I.EventOnEffect(10);
+            _PlayerManager.isPush = true;
+        }
         isBlink = false;
         Common();
     }

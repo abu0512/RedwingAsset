@@ -49,7 +49,7 @@ public class MonsterWaveManager : MonoBehaviour
         //    return;
 
         _waves[_curWave].gameObject.SetActive(true);
-        //_waves[_curWave].InitWave();
+        _waves[_curWave].InitWave();
         Stage1.I.InitMonsters();
 
     }

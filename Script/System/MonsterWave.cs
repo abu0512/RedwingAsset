@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterWave : MonoBehaviour
 {
     private List<Transform> _objects = new List<Transform>();
+    private List<MonsterBase> _monsters = new List<MonsterBase>();
     private bool _isRun;
 
     // properties
@@ -17,6 +18,10 @@ public class MonsterWave : MonoBehaviour
         {
             Transform child = transform.GetChild(i);
             _objects.Add(child);
+        }
+        foreach (MonsterBase m in GetComponentsInChildren<MonsterBase>())
+        {
+            _monsters.Add(m);
         }
     }
 
@@ -64,6 +69,11 @@ public class MonsterWave : MonoBehaviour
 
     public void InitWave()
     {
+        foreach (MonsterBase m in _monsters)
+        {
+            m.OnSpawn();
+            EffectManager.I.OnEffect(EffectType.Witch_Spawn, m.transform, m.transform.rotation, 1.5f);
+        }
         //foreach (Transform trf in _objects)
         //{
         //    QueenMushroom queen = trf.GetComponent<QueenMushroom>();
