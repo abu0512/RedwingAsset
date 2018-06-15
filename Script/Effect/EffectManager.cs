@@ -33,6 +33,10 @@ public enum EffectType
     Witch_Teleport,
     Witch_Attack1,
     Witch_Attack2,
+    Witch_Spawn,
+    Witch_OrbHit,
+    Tanker_AfterImage,
+    Dealer_AfterImage,
 }
 
 
@@ -40,8 +44,6 @@ public enum EffectType
 [Serializable]
 public class EffectManager : MonoBehaviour
 {
-    public EffectType _EffectType;
-
     private static EffectManager _instance;
     public static EffectManager I { get { return _instance; } }
 

@@ -6,8 +6,9 @@ public class SBullet : MonoBehaviour
 {
     protected QueenMushroom _queenMushroom;
     protected Vector3 _direction;
-    private Vector3 _target;
+    private Transform _target;
     private Transform _from;
+    public GameObject GeneralHitEffect;
 
     [SerializeField]
     protected float _speed;
@@ -17,6 +18,7 @@ public class SBullet : MonoBehaviour
     void Awake()
     {
         DeleteTime = 0;
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -31,6 +33,11 @@ public class SBullet : MonoBehaviour
             gameObject.SetActive(false);
             DeleteTime = 0;
         }
+    }
+
+    public void HitEffect(Vector3 From)
+    {
+        Instantiate(GeneralHitEffect, From, Quaternion.identity);
     }
 
     public void InitSBullet(QueenMushroom queen, Vector3 from, float rotate)
@@ -48,10 +55,12 @@ public class SBullet : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                HitEffect(transform.position);
                 CPlayerManager._instance.PlayerHp(0.2f, 1, _queenMushroom.AttackDamage);
             }
             if (other.tag == "Shild")
             {
+                HitEffect(transform.position);
                 CPlayerManager._instance.PlayerHp(0.2f, 2, _queenMushroom.AttackDamage);
             }
             gameObject.SetActive(false);

@@ -39,7 +39,9 @@ public class WitchStateRun : WitchFSMStateBase
             }
         }
         if (!Witch.TelAttack)
+        {
             Witch.MoveToTargetLookAt(Witch.Target.transform.position);
+        }
     }
 
     public override void EndState()

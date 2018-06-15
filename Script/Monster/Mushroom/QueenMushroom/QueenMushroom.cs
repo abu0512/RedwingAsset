@@ -327,7 +327,7 @@ public class QueenMushroom : MonsterBase
         _stat.MoveSpeed = 3.5f;
         _stat.MaxHp = 500f;
         _stat.Hp = _stat.MaxHp;
-        _attackDamage = 10f;
+        _attackDamage = 30f;
         _attackDelay = 4f;
         _attackTimer = 0;
         _attackStack = 0;
@@ -372,6 +372,7 @@ public class QueenMushroom : MonsterBase
 
     protected override void Update()
     {
+        base.Update();
         _attackTimer += Time.deltaTime;
         _hearTimer += Time.deltaTime;
 

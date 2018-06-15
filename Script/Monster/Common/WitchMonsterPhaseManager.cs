@@ -23,6 +23,8 @@ public class WitchMonsterPhaseManager : MonoBehaviour
     public void OnNextSpawn()
     {
         _phase[_index].gameObject.SetActive(true);
+        _phase[_index].OnPhase();
+        Stage1.I.InitMonsters();
         _index++;
     }
 

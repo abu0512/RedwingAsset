@@ -284,6 +284,8 @@ public class Stage1 : MonoBehaviour
     {
         _guards.Clear();
         _queens.Clear();
+        _eliteshaman.Clear();
+
         foreach (GuardMushroom guard in FindObjectsOfType<GuardMushroom>())
         {
             _guards.Add(guard);
@@ -292,6 +294,11 @@ public class Stage1 : MonoBehaviour
         foreach (QueenMushroom queen in FindObjectsOfType<QueenMushroom>())
         {
             _queens.Add(queen);
+        }
+
+        foreach (EliteShaman EliteS in FindObjectsOfType<EliteShaman>())
+        {
+            _eliteshaman.Add(EliteS);
         }
     }
 }

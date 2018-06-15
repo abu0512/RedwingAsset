@@ -6,10 +6,14 @@ public class QueenMushroomIdle : QueenMushroomStateBase
 {
     public override void BeginState()
     {
+        CPlayerManager._instance.isPush = false;
+        CPlayerManager._instance.isPull = false;
     }
 
     public override void EndState()
     {
+        CPlayerManager._instance.isPush = false;
+        CPlayerManager._instance.isPull = false;
     }
 
     void Start()

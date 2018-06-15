@@ -17,12 +17,21 @@ public class MonsterBase : MonoBehaviour
     protected bool _isDead; // 죽었는가
     protected bool _isHit; // 공격을 받은 상태인가
 
+    [SerializeField]
+    protected Renderer _modelRenderer;
+    [SerializeField]
+    protected Renderer _gearRenderer;
+
+    protected bool _isSpawn;
+    protected float _noiseValue;
+
     // properties
     public CharacterController Controller { get { return _controller; } }
     public Animator Anim { get { return _anim; } }
     public MonsterStat Stat { get { return _stat; } }
     public bool IsDead { get { return _isDead; } set { _isDead = value; } }
     public bool isHit { get { return _isHit; } set { _isHit = value; } }
+    public bool IsSpawn { get { return _isSpawn; } set { _isSpawn = value; } }
 
     protected virtual void Awake()
     {
@@ -39,8 +48,12 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        MoveUpdate();
-        RotateUpdate();
+        if (name == "BossMonster")
+        {
+            MoveUpdate();
+            RotateUpdate();
+        }
+        Update_SpawnNoise();
     }
     
     /// <summary>
@@ -130,5 +143,24 @@ public class MonsterBase : MonoBehaviour
     public virtual void InitMonster(Vector3 homePos)
     {
 
+    }
+
+    protected void Update_SpawnNoise()
+    {
+        if (!_isSpawn)
+            return;
+
+        _noiseValue += 0.02f;
+        _modelRenderer.material.SetFloat("_Hide", Mathf.Clamp(_noiseValue, -1.0f, 1.0f));
+
+        if (_noiseValue >= 1.0f)
+            _isSpawn = false;
+    }
+
+    public void OnSpawn()
+    {
+        _isSpawn = true;
+        _noiseValue = -1.0f;
+        _modelRenderer.material.SetFloat("_Hide", _noiseValue);
     }
 }

@@ -7,11 +7,15 @@ public class GuardMushroomIdle : GuardMushroomStateBase
     public override void BeginState()
     {
         base.BeginState();
+        CPlayerManager._instance.isPush = false;
+        CPlayerManager._instance.isPull = false;
     }
 
     public override void EndState()
     {
         base.EndState();
+        CPlayerManager._instance.isPush = false;
+        CPlayerManager._instance.isPull = false;
     }
 
     void Update()

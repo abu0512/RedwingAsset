@@ -91,6 +91,6 @@ Material:
     - _tex3V: 0
     - _tex3pow: 0
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.1573053, g: 0.04584775, b: 0.3897059, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TintColor: {r: 0.1980597, g: 0.029519888, b: 0.28676468, a: 1}
