@@ -151,7 +151,11 @@ public class MonsterBase : MonoBehaviour
             return;
 
         _noiseValue += 0.02f;
-        _modelRenderer.material.SetFloat("_Hide", Mathf.Clamp(_noiseValue, -1.0f, 1.0f));
+
+        foreach (Renderer render in transform.GetComponentsInChildren<Renderer>())
+        {
+            render.material.SetFloat("_Hide", Mathf.Clamp(_noiseValue, -1.0f, 1.0f));
+        }
 
         if (_noiseValue >= 1.0f)
             _isSpawn = false;
@@ -161,6 +165,9 @@ public class MonsterBase : MonoBehaviour
     {
         _isSpawn = true;
         _noiseValue = -1.0f;
-        _modelRenderer.material.SetFloat("_Hide", _noiseValue);
+        foreach (Renderer render in transform.GetComponentsInChildren<Renderer>())
+        {
+            render.material.SetFloat("_Hide", Mathf.Clamp(_noiseValue, -1.0f, 1.0f));
+        }
     }
 }

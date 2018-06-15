@@ -7,18 +7,22 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MSY_monstersword_Noise
-  m_Shader: {fileID: 4800000, guid: 56b994e74cba060478642724ace4cea7, type: 3}
-  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
+  m_Shader: {fileID: 4800000, guid: 887e7ed9003e4694bbe403673ea6d1c7, type: 3}
+  m_ShaderKeywords: _METALLICGLOSSMAP _METALLIC_ON _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 6ab47e5fe24b6cf4cb60f30859210ffc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpTex:
         m_Texture: {fileID: 2800000, guid: 6ab47e5fe24b6cf4cb60f30859210ffc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -38,8 +42,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmitTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 05158e55569aea34d820694920e2da16, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetalTex:
+        m_Texture: {fileID: 2800000, guid: aa57d078ccef3444782bd7d82968d16c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -48,6 +60,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: ae2d6a0bc513c8342a92bf4852f44018, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OC:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -69,13 +85,14 @@ Material:
     - _GlossyReflections: 1
     - _Hide: 1
     - _Lower: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _Mtl: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimbalGGi: 1.5
     - _Rimpow: 1
+    - _Smoothness: 0.8
     - _SmoothnessTextureChannel: 0
     - _SpecPow: 100
     - _SpecularHighlights: 1

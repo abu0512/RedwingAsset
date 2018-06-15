@@ -22,10 +22,10 @@
 
 	}
 	SubShader {
-		Tags { "Queue"="AlphaTest" "IgnoreProjector"="True" "ForceNoShadowCasting" ="true" "RenderType"="TransparentCutout"  }
+		Tags { "Queue"="AlphaTest" "IgnoreProjector"="True"  "RenderType"="TransparentCutout"  }
 		cull off
 		CGPROGRAM
-		#pragma surface surf JKH fullforwardshadows alphatest:_Cutoff keepalpha
+		#pragma surface surf JKH fullforwardshadows alphatest:_Cutoff 
 		#pragma target 3.0
 
 		sampler2D _MainTex;
@@ -129,5 +129,5 @@
 
 		ENDCG
 	}
-	FallBack "Legacy Shaders/Transparent/Cutout/Diffuse"
+	FallBack "Diffuse"
 }

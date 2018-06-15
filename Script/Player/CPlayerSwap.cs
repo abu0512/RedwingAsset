@@ -179,6 +179,7 @@ public class CPlayerSwap : CPlayerBase
             StartCoroutine(Co_AfterImageOn(obj, 1));
         }
 
+        obj.AddComponent<PlayerAfterImage>().InitRenderer();
         renderers = obj.transform.GetComponentsInChildren<Renderer>();
         colliders = obj.transform.GetComponentsInChildren<Collider>();
 
@@ -368,11 +369,14 @@ public class CPlayerSwap : CPlayerBase
     IEnumerator Co_AfterImageOn(GameObject obj, int idx)
     {
         yield return new WaitForSeconds(InspectorManager._InspectorManager.AfterImageDeadTime);
-        Destroy(obj);
+
+        obj.GetComponent<PlayerAfterImage>().EndAfterImage();
+        Vector3 pos = obj.transform.position;
+        pos.y += 1.0f;
         if (idx == 0)
-            EffectManager.I.OnEffect(EffectType.Tanker_AfterImage, obj.transform, obj.transform.rotation, 1.0f, 1);
+            EffectManager.I.OnEffect(EffectType.Tanker_AfterImage, pos, obj.transform.rotation, 1.0f, 1);
         else
-            EffectManager.I.OnEffect(EffectType.Dealer_AfterImage, obj.transform, obj.transform.rotation, 1.0f, 1);
+            EffectManager.I.OnEffect(EffectType.Dealer_AfterImage, pos, obj.transform.rotation, 1.0f, 1);
     }
 }
 
