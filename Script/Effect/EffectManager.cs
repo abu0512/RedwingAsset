@@ -34,6 +34,9 @@ public enum EffectType
     Witch_Attack1,
     Witch_Attack2,
     Witch_Spawn,
+    Witch_OrbHit,
+    Tanker_AfterImage,
+    Dealer_AfterImage,
 }
 
 

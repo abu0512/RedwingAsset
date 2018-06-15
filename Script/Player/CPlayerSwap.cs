@@ -164,32 +164,41 @@ public class CPlayerSwap : CPlayerBase
     {
         GameObject obj = null;
         Renderer[] renderers;
+        Collider[] colliders;
 
         if (_PlayerMode == PlayerMode.Shield)
         {
             obj = Instantiate(transform.Find("NewNew_Berry").gameObject);
+            obj.transform.position = transform.position;
+            StartCoroutine(Co_AfterImageOn(obj, 0));
         }
         else
         {
             obj = Instantiate(transform.Find("Devil_Berry").gameObject);
+            obj.transform.position = transform.position;
+            StartCoroutine(Co_AfterImageOn(obj, 1));
         }
 
-        obj.transform.position = transform.position;
         renderers = obj.transform.GetComponentsInChildren<Renderer>();
+        colliders = obj.transform.GetComponentsInChildren<Collider>();
+
+        foreach (Collider coll in colliders)
+        {
+            coll.enabled = false;
+        }
 
         foreach (Renderer render in renderers)
         {
             Material mat = new Material(afterimageShader);
             mat.CopyPropertiesFromMaterial(render.material);
             mat.SetFloat("_Rimpower", 3.5f);
+
             if (_PlayerMode == PlayerMode.Shield)
-            {
                 mat.SetColor("_Color", tankerColor);
-            }
             else
                 mat.SetColor("_Color", dealerColor);
-            render.material = mat;
 
+            render.material = mat;
         }
     }
 
@@ -354,6 +363,16 @@ public class CPlayerSwap : CPlayerBase
     {
         yield return new WaitForSeconds(InspectorManager._InspectorManager.fSwapCoolTime);        
         isCoolTimeSwap = true;
+    }
+
+    IEnumerator Co_AfterImageOn(GameObject obj, int idx)
+    {
+        yield return new WaitForSeconds(InspectorManager._InspectorManager.AfterImageDeadTime);
+        Destroy(obj);
+        if (idx == 0)
+            EffectManager.I.OnEffect(EffectType.Tanker_AfterImage, obj.transform, obj.transform.rotation, 1.0f, 1);
+        else
+            EffectManager.I.OnEffect(EffectType.Dealer_AfterImage, obj.transform, obj.transform.rotation, 1.0f, 1);
     }
 }
 

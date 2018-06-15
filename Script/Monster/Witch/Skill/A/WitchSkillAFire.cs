@@ -85,14 +85,17 @@ public class WitchSkillAFire : MonoBehaviour
             if (other.tag == "Player")
             {
                 CPlayerManager._instance.PlayerHp(0.2f, 1, WitchValueManager.I.OrbDamage);
-                gameObject.SetActive(false);
+                EffectManager.I.OnEffect(EffectType.Witch_OrbHit, transform.position, transform.rotation, 0.3f, 1);
+                //gameObject.SetActive(false);
             }
             if (other.tag == "Shild")
             {
                 CPlayerManager._instance.PlayerHp(0.2f, 2, WitchValueManager.I.OrbDamage);
-                gameObject.SetActive(false);
+                EffectManager.I.OnEffect(EffectType.Witch_OrbHit, transform.position, transform.rotation, 0.3f, 1);
+                //gameObject.SetActive(false);
             }
-            //gameObject.SetActive(false);
+
+            gameObject.SetActive(false);
         }
     }
 

@@ -150,7 +150,7 @@ public class MonsterBase : MonoBehaviour
         if (!_isSpawn)
             return;
 
-        _noiseValue += 0.05f;
+        _noiseValue += 0.02f;
         _modelRenderer.material.SetFloat("_Hide", Mathf.Clamp(_noiseValue, -1.0f, 1.0f));
 
         if (_noiseValue >= 1.0f)
