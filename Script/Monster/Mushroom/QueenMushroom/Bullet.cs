@@ -33,7 +33,6 @@ public class Bullet : MonoBehaviour
 
     public void HitEffect(Vector3 From)
     {
-        print(GeneralHitEffect.name + " / " + From + " / ");
         Instantiate(GeneralHitEffect, From, Quaternion.identity);
     }
 

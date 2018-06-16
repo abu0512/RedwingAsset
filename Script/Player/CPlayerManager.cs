@@ -403,6 +403,16 @@ public class CPlayerManager : MonoBehaviour
         SoundManager.I.PlaySound(transform, PlaySoundId.Skill_ScytheWideCut);
     }
 
+    private void PlayDashSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Dash);
+    }
+
+    private void PlayQuickCutSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_QuickCut);
+    }
+
     private void DashStm()
     {
         m_PlayerStm -= InspectorManager._InspectorManager.fStmDash;

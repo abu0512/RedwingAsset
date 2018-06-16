@@ -326,6 +326,7 @@ public class WitchBoss : MonsterBase
             if (!_on1)
             {
                 ABUGameManager.I.MonsterPhase.OnNextSpawn();
+                SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
                 _on1 = true;
             }
 
@@ -334,9 +335,30 @@ public class WitchBoss : MonsterBase
                 if (!_on2)
                 {
                     ABUGameManager.I.MonsterPhase.OnNextSpawn();
+                    SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
                     _on2 = true;
                 }
             }
         }
+    }
+
+    private void PlayWalkSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Walk);
+    }
+
+    private void PlayAttack1Sound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Attack1);
+    }
+
+    private void PlayAttack2Sound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Attack2);
+    }
+
+    private void PlayAttack3Sound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Attack3);
     }
 }

@@ -110,6 +110,7 @@ public class WitchSkillArrowObject : MonoBehaviour
         }
 
         _arrowIdx++;
+        SoundManager.I.PlaySound(_witch.transform, PlaySoundId.Boss_Arrow_Spawn);
         _readyTime = 0.0f;
 
         Vector3 pos = _target.position;

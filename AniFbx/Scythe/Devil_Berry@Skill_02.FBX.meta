@@ -340,6 +340,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.12276215
+        functionName: PlayQuickCutSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

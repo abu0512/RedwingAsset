@@ -52,21 +52,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sounds:
-  - 
-  - event:/SFX/PC/Tanker/Walk/Walk_Rock
-  - event:/SFX/PC/Tanker/Walk/Walk_grass
-  - event:/SFX/PC/Tanker/Attack/Tanker_normalAttack
-  - event:/SFX/PC/Dealer/Attack/Dealer_Attack
-  - event:/SFX/PC/Tanker/Attack/Tanker_ShieldCounter
-  - event:/SFX/PC/Tanker/Attack/Tanker_ShieldGuard
-  - event:/SFX/PC/Dealer/Attack/Dealer_skill_WideCut
-  - event:/SFX/Monster/Hited/Mon_HitSound
-  - event:/SFX/PC/Tanker/Attack/Tanker_finishAttack
-  - "event:/SFX/Monster/Boss - witch/\uADFC\uC811\uBC29\uCD9C/magicboom"
-  - "event:/SFX/Monster/Boss - witch/\uBC1C\uD310/FirePillarSkill01"
-  - "event:/SFX/Monster/Boss - witch/\uD22C\uC0AC\uCCB4/ArrowSkill01"
-  - "event:/SFX/Monster/Boss - witch/\uD22C\uC0AC\uCCB4/ArrowSkill02"
-  - event:/SFX/PC/Hited/PC/hited_PC_Meleeattack
-  - event:/SFX/PC/Dealer/Walk/Walk_Rock
-  - event:/SFX/PC/Dealer/Walk/Walk_grass
+  - Id: 1
+    Path: event:/SFX/PC/Tanker/Walk/Walk_Rock
+  - Id: 2
+    Path: event:/SFX/PC/Tanker/Walk/Walk_grass
+  - Id: 15
+    Path: event:/SFX/PC/Dealer/Walk/Walk_Rock
+  - Id: 16
+    Path: event:/SFX/PC/Dealer/Walk/Walk_grass
+  - Id: 3
+    Path: event:/SFX/PC/Tanker/Attack/Tanker_normalAttack
+  - Id: 4
+    Path: event:/SFX/PC/Dealer/Attack/Dealer_Attack
+  - Id: 5
+    Path: event:/SFX/PC/Tanker/Attack/Tanker_ShieldCounter
+  - Id: 6
+    Path: event:/SFX/PC/Tanker/Attack/Tanker_ShieldGuard
+  - Id: 7
+    Path: event:/SFX/PC/Dealer/Attack/Dealer_skill_WideCut
+  - Id: 8
+    Path: event:/SFX/Monster/Hited/Mon_HitSound
+  - Id: 9
+    Path: event:/SFX/PC/Tanker/Attack/Tanker_finishAttack
+  - Id: 10
+    Path: "event:/SFX/Monster/Boss - witch/\uADFC\uC811\uBC29\uCD9C/magicboom"
+  - Id: 11
+    Path: "event:/SFX/Monster/Boss - witch/\uBC1C\uD310/FirePillarSkill01"
+  - Id: 12
+    Path: "event:/SFX/Monster/Boss - witch/\uD22C\uC0AC\uCCB4/ArrowSkill01"
+  - Id: 13
+    Path: "event:/SFX/Monster/Boss - witch/\uD22C\uC0AC\uCCB4/ArrowSkill01_spawn"
+  - Id: 14
+    Path: "event:/SFX/Monster/Boss - witch/\uD22C\uC0AC\uCCB4/ArrowSkill02"
+  - Id: 18
+    Path: "event:/SFX/PC/Tanker/\uAD6C\uB974\uAE30/Tanker_roll"
+  - Id: 19
+    Path: "event:/SFX/PC/Dealer/\uBE14\uB9C1\uD06C/Dealer_blink"
+  - Id: 23
+    Path: "event:/SFX/Monster/Boss - witch/\uBCF4\uC2A4\uC774\uB3D9\uC2DC/Boss_walk"
+  - Id: 24
+    Path: "event:/SFX/Monster/Boss - witch/\uBCF4\uC2A4\uC21C\uAC04\uC774\uB3D9\uC2DC/Boss_Teleport"
+  - Id: 25
+    Path: "event:/SFX/Monster/Boss - witch/\uADFC\uC811\uACF5\uACA9/\uADFC\uC811\uACF5\uACA901/Boss_WitchMeele01"
+  - Id: 26
+    Path: "event:/SFX/Monster/Boss - witch/\uADFC\uC811\uACF5\uACA9/\uADFC\uC811\uACF5\uACA902/Boss_WitchMeele02"
+  - Id: 27
+    Path: "event:/SFX/Monster/Boss - witch/\uADFC\uC811\uACF5\uACA9/\uADFC\uC811\uACF5\uACA903/Boss_WitchMeele03"
+  - Id: 28
+    Path: "event:/SFX/Monster/\uBAAC\uC2A4\uD130 \uC18C\uD658\uB420 \uB54C/Monster_Spawn"
   _Volume: 0

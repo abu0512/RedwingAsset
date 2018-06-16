@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,10 +18,31 @@ public enum PlaySoundId
     Boss_Release,
     Boss_FootHold,
     Boss_Arrow,
+    Boss_Arrow_Spawn,
     Boss_Orb,
     Hit_Pc,
     Walk_DealerStone,
     Walk_DealerGrass,
+    Tanker_Dash,
+    Dealer_Blink,
+    Dealer_QuickCut,
+    Tanker_Knockback,
+    Dealer_Holding,
+    Boss_Walk,
+    Boss_Teleport,
+    Boss_Attack1,
+    Boss_Attack2,
+    Boss_Attack3,
+    Boss_MonSpawn,
+
+}
+
+[Serializable]
+public struct PlaySoundType
+{
+    public PlaySoundId Id;
+    [FMODUnity.EventRef]
+    public string Path;
 }
 
 public class SoundManager : MonoBehaviour
@@ -28,9 +50,7 @@ public class SoundManager : MonoBehaviour
     private static SoundManager _instance;
     public static SoundManager I { get { return _instance; } }
 
-    [FMODUnity.EventRef]
-    public string[] Sounds;
-
+    public PlaySoundType[] Sounds;
     FMOD.Studio.EventInstance bgmSound;
     FMOD.Studio.ParameterInstance bgmVolume;
 
@@ -50,7 +70,7 @@ public class SoundManager : MonoBehaviour
 
     public void SoundPlay(Transform Target)
     {
-        bgmSound = FMODUnity.RuntimeManager.CreateInstance(Sounds[(int)PlaySoundId.Bgm1]);
+        bgmSound = FMODUnity.RuntimeManager.CreateInstance(GetSound(PlaySoundId.Bgm1));
         bgmSound.getParameter("Parameter 1", out bgmVolume);
         //FMODUnity.RuntimeManager.PlayOneShot(MyEvent1[SoundType], Target.position);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(bgmSound, Target, GetComponent<Rigidbody>());
@@ -64,6 +84,17 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(Vector3 target, PlaySoundId id)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(Sounds[(int)id], target);
+        FMODUnity.RuntimeManager.PlayOneShot(GetSound(id), target);
+    }
+
+    private string GetSound(PlaySoundId id)
+    {
+        foreach (PlaySoundType t in Sounds)
+        {
+            if (t.Id == id)
+                return t.Path;
+        }
+
+        return "";
     }
 }

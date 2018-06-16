@@ -98,3 +98,5 @@ MonoBehaviour:
     Effect: {fileID: 1127667122288738, guid: c98c188cec5f6314d8add04ab6b37a52, type: 2}
   - Name: 23
     Effect: {fileID: 1818930752861296, guid: 44f4a666ee496b84ca19d15e7887a43a, type: 2}
+  - Name: 24
+    Effect: {fileID: 1723246864385398, guid: 0207154d5658c524c895a3b715b35134, type: 2}

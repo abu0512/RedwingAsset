@@ -80,6 +80,7 @@ public class CPlayerSwap : CPlayerBase
             RayCastChack();
             BlinkStart();
             _PlayerManager.m_PlayerStm -= 30f;
+            SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_Blink);
         }
     }
 
@@ -310,6 +311,7 @@ public class CPlayerSwap : CPlayerBase
             EffectManager.I.EventOnEffect(9);
             //EffectManager.I.EventOnEffect(8);
             _PlayerManager.isPull = true;
+            SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_Holding);
             m_bSwapAttack = true;
         }
         Common();
@@ -327,6 +329,7 @@ public class CPlayerSwap : CPlayerBase
         {
             EffectManager.I.EventOnEffect(10);
             _PlayerManager.isPush = true;
+            SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Knockback);
         }
         isBlink = false;
         Common();

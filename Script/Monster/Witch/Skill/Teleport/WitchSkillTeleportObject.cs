@@ -99,7 +99,7 @@ public class WitchSkillTeleportObject : MonoBehaviour
         Vector3 effectPos = new Vector3(_witch.transform.position.x, _witchY - 2.5f, _witch.transform.position.z);
 
         EffectManager.I.OnEffect(EffectType.Witch_Teleport, effectPos, _witch.transform.rotation, 3.0f, 1);
-
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Teleport);
         if (_type == 0)
             _destination = ((_witch.transform.forward * -1) * 10.0f) + _witch.transform.position;
         else if (_type == 2)
@@ -151,6 +151,7 @@ public class WitchSkillTeleportObject : MonoBehaviour
             Vector3 effectPos = _destination;
             effectPos.y -= 2.5f;
             EffectManager.I.OnEffect(EffectType.Witch_Teleport, effectPos, _witch.transform.rotation, 3.0f, 1);
+            SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Teleport);
             _outActive = true;
         }
 
