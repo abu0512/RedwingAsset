@@ -150,7 +150,7 @@ public class MonsterBase : MonoBehaviour
         if (!_isSpawn)
             return;
 
-        _noiseValue += 0.02f;
+        _noiseValue += 0.04f;
 
         foreach (Renderer render in transform.GetComponentsInChildren<Renderer>())
         {

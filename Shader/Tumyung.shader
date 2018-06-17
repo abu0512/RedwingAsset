@@ -1,6 +1,7 @@
 ﻿Shader "JKH/Tumyung" {
 	Properties {
 		[HDR]_Color ("Color", Color) = (1,1,1,1)
+		[HDR]_RimCol ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_MainTex3 ("굴절", 2D) = "white" {}
 		_MainTex2 ("큐브굴절", 2D) = "white" {}
@@ -37,6 +38,7 @@
 		float _Speed3;
 		float _Speed4;
 		float4 _CoreCol;
+		float4 _RimCol;
 
 		struct Input {
 			float2 uv_MainTex;
@@ -58,7 +60,7 @@
 			float3 rim = 1 - saturate(dot(IN.viewDir, o.Normal));
 			float3 rimpow = pow(rim, 2);
 			float4 cube = texCUBE(_Cube,IN.worldRefl + d.r);
-			o.Emission = cube * _Cubal * rim;
+			o.Emission = cube * _Cubal * rim * _RimCol;
 			o.Albedo = (c.rgb +  g.rgb) / 2;
 			o.Alpha = pow(1 - rimpow, 500) + c.r + rimpow;
 		}
