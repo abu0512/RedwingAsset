@@ -97,8 +97,8 @@ public class CPlayerSwap : CPlayerBase
                 if (Input.GetKeyDown(KeyCode.Q))
                 {                     
                     ScytheReset(1);
-                    PlayerParams._instance.nGauge = 0;
-                    PlayerParams._instance.GaugeOff();
+                    //PlayerParams._instance.nGauge = 0;
+                    //PlayerParams._instance.GaugeOff(); // 수정하기
                     CPlayerManager._instance._nPowerGauge = 0;
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
@@ -206,11 +206,11 @@ public class CPlayerSwap : CPlayerBase
 
     void SwapAttacker()
     {
-        if (!m_bSwapAttack)
-        {
-            m_fSwapAttackTime = 0;
-            return;
-        }
+        //if (!m_bSwapAttack)
+        //{
+        //    m_fSwapAttackTime = 0;
+        //    return;
+        //}
 
         if (m_bSwapAttack)
         {
@@ -222,6 +222,7 @@ public class CPlayerSwap : CPlayerBase
             //}
             if (m_fSwapAttackTime >= 0.4f)
             {
+                m_fSwapAttackTime = 0.0f;
                 m_bSwapAttack = false;
             }
         }

@@ -57,7 +57,7 @@ public class CPlayerMove : CPlayerBase
             {
                 if (_PlayerManager._PlayerSwap._PlayerMode == PlayerMode.Shield)
                     _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild = PlayerAni_State_Shild.IdleRun;
-                else
+                else if (!CPlayerManager._instance._PlayerSwap.m_bSwapAttack)
                     _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.IdleRun;
 
                 _PlayerManager._PlayerController.Move((m_destination - transform.position).normalized * Time.deltaTime * _PlayerManager.EDITOR_MOVESPEED);
@@ -76,7 +76,7 @@ public class CPlayerMove : CPlayerBase
 
                 if (_PlayerManager._PlayerSwap._PlayerMode == PlayerMode.Shield)
                     _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild = PlayerAni_State_Shild.IdleRun;
-                else
+                else if (!CPlayerManager._instance._PlayerSwap.m_bSwapAttack)
                     _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.IdleRun;
             }
         }

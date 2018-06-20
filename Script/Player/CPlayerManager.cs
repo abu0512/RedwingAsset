@@ -433,5 +433,11 @@ public class CPlayerManager : MonoBehaviour
     private void OffSkillCollider()
     {
         SkillSphereCollider.enabled = false;
+        _CPlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.IdleRun;
+    }
+
+    private void OnIdleRun()
+    {
+        _CPlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.IdleRun;
     }
 }
