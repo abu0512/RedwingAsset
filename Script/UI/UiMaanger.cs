@@ -22,6 +22,6 @@ public class UiMaanger : MonoBehaviour
 	
 	void Update ()
     {
-        BossParamsSet();
+        //BossParamsSet();
     }
 }
