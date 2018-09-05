@@ -38,16 +38,29 @@ public class CPlayerSwordCollder : MonoBehaviour
 
                 else if (other.tag == "ShildMushroom")
                 {
-                    if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    if(other.GetComponent<ShildMushroom>().GroggyEnd == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)              
                     {
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
                     }
 
-                    else if(other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    else if (other.GetComponent<ShildMushroom>().GroggyEnd == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
+                        other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<ShildMushroomEffect>().DefenEffect();
                     }
+
+                    // 2학기 방패엘리트 몬스터 변경사항 : 전방에서도 데미지가 들어가야 함. (임시 수정 1차)
+                    //if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    //{
+                    //    other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
+                    //    other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
+                    //}
+
+                    //else if(other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    //{
+                    //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
+                    //}
                 }
 
                 else if (other.tag == "EliteShaman")
@@ -93,19 +106,33 @@ public class CPlayerSwordCollder : MonoBehaviour
 
                 else if (other.tag == "ShildMushroom")
                 {
-                    if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    if (other.GetComponent<ShildMushroom>().GroggyEnd == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
                         CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
 
-                    else if (other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    else if (other.GetComponent<ShildMushroom>().GroggyEnd == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroomEffect>().DefenEffect();
+                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                        other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
-                }
 
+                    // 2학기 방패엘리트 몬스터 변경사항 : 전방에서도 데미지가 들어가야 함. (임시 수정 1차)
+                    //if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    //{
+                    //    other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
+                    //    CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                    //    other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
+                    //}
+
+                    //else if (other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+                    //{
+                    //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
+                    //}
+                }
                 else if (other.tag == "EliteShaman")
                 {
                     if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)

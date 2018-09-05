@@ -70,9 +70,9 @@ public class ShildMushroom : MonsterBase
     public bool PlayerisFront { set { _playerisfront = value; } get { return _playerisfront; } }
 
     // 캐릭터 사망
-    private bool _CharacterisDead;
-    public bool CharacterisDead { set { _CharacterisDead = value; } get { return _CharacterisDead; } }
-
+    private bool _characterisDead;
+    public bool CharacterisDead { set { _characterisDead = value; } get { return _characterisDead; } }
+    
     public float rotAnglePerSecond = 200f;// 몬스터 초당 회전 속도
     public float GroggyPoint; // 그로기 수치 설정
     public bool isDead; // 죽었는지 체크
@@ -144,7 +144,7 @@ public class ShildMushroom : MonsterBase
 
     public override void OnDamage(float damage)
     {
-        if (_CharacterisDead)
+        if (_characterisDead)
             return;
 
         base.OnDamage(damage);

@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ShildMushroomDead : ShildMushroomStateBase
 {
+    ShildMushroomEffect _groggy;
     private float DeadTime;
 
     public override void BeginState()
     {
+        _groggy = GetComponent<ShildMushroomEffect>();
+
+        ShildMushroom.CharacterisDead = true;
         DeadTime = 0;
+       // _groggy.GroggyEffect.SetActive(false);
     }
 
     public override void EndState()
@@ -24,7 +29,6 @@ public class ShildMushroomDead : ShildMushroomStateBase
             ShildMushroom.AttackRotAngle = 0;
             ShildMushroom.Stat.MoveSpeed = 0;
             DeadTime += Time.deltaTime;
-            ShildMushroom.CharacterisDead = true;
 
             if (DeadTime >= 1.6f)
             {

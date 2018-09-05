@@ -24,8 +24,11 @@ public class ShildMushroomEffect : MonoBehaviour {
 
     public void Groggy()
     {
-        if(!_shildmushroom.isDead)
-        GroggyEffect.SetActive(true);
+        if (!_shildmushroom.isDead)
+            GroggyEffect.SetActive(true);
+
+        else if (_shildmushroom.isDead)
+            GroggyEffect.SetActive(false);
     }
 
     public void DefenEffect()

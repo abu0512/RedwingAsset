@@ -9,7 +9,6 @@ public class ShildMushroomGroggy : ShildMushroomStateBase
 
     public override void BeginState()
     {
-        base.BeginState();
         _groggy = GetComponent<ShildMushroomEffect>();
         Dltime = 0f;
         SavePosition = transform.position;
@@ -18,7 +17,6 @@ public class ShildMushroomGroggy : ShildMushroomStateBase
 
     public override void EndState()
     {
-        base.EndState();
         _groggy.GroggyEffect.SetActive(false);
         ShildMushroom.GroggyEnd = true;
         ShildMushroom.Groggy = 0;
