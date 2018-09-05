@@ -9,7 +9,7 @@ public class GuardMushroomAttack : GuardMushroomStateBase
     public override void BeginState()
     {
         Dltime = 0f;
-        GuardMushroom.RADelay = Random.Range(3f, 6f);
+        GuardMushroom.RADelay = Random.Range(1.2f, 1.3f);
     }
 
     public override void EndState()
@@ -46,7 +46,7 @@ public class GuardMushroomAttack : GuardMushroomStateBase
 
         Dltime += Time.deltaTime;
 
-        if (Dltime > 1.7f)
+        if (Dltime > 1.2f)
         {
             if (GuardMushroom.GetDistanceFromPlayer() > GuardMushroom.MStat.AttackDistance)
             {

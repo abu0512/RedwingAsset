@@ -32,7 +32,7 @@ public class GuardMushroomChase : GuardMushroomStateBase
                 return;
         }
 
-        else if (GuardMushroom.GetDistanceFromPlayer() <= GuardMushroom.MStat.AttackDistance && GuardMushroom.AttackTimer < GuardMushroom.AttackDelay)
+        else if (GuardMushroom.GetDistanceFromPlayer() < GuardMushroom.MStat.AttackDistance && GuardMushroom.AttackTimer < GuardMushroom.AttackDelay)
         {
             GuardMushroom.SetState(GuardMushroomState.Return);
             return;

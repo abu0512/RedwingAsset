@@ -420,7 +420,7 @@ public class GuardMushroom : MonsterBase
         Stat.AttackDistance = 2.5f;
         Stat.MoveSpeed = 2f;
         _attackDamage = 10f;
-        _attackDelay = 3.5f;
+        _attackDelay = 2f;
         _raDelay = 0;
         _attackTimer = 0;
         _sbombdamage = 50f;

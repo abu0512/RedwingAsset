@@ -39,7 +39,7 @@ public class ShildMushroomAttack : ShildMushroomStateBase
         ShildMushroom.PlayerisDead();
         Dltime += Time.deltaTime;
 
-        if (Dltime > 1.5f)
+        if (Dltime > 1.4f)
         {
             if (ShildMushroom.GetDistanceFromPlayer() > ShildMushroom.Stat.AttackDistance)
             {

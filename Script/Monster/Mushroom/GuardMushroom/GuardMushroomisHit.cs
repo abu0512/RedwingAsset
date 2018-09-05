@@ -13,7 +13,7 @@ public class GuardMushroomisHit : GuardMushroomStateBase
     public override void EndState()
     {
         base.EndState();
-        GuardMushroom.AttackTimer = 1.3f;
+        GuardMushroom.AttackTimer = 0.7f;
     }
 
     void Update()
