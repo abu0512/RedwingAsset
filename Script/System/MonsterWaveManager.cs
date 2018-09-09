@@ -4,53 +4,70 @@ using UnityEngine;
 
 public class MonsterWaveManager : MonoBehaviour
 {
-    private List<MonsterWave> _waves = new List<MonsterWave>();
-    private int _curWave;
+    private static MonsterWaveManager _instance;
+    public static MonsterWaveManager I { get { return _instance; } }
+
+    private List<StageArea> _stages = new List<StageArea>();
+    private int _curStage;
+    private bool _isRun;
+    private bool _isStart;
+
+    public bool IsRun { get { return _isRun; } }
+    public int CurrentStage { get { return _curStage; } }
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     private void Start()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            MonsterWave wave = transform.GetChild(i).GetComponent<MonsterWave>();
-            wave.gameObject.SetActive(false);
-            _waves.Add(wave);
+            StageArea area = transform.GetChild(i).GetComponent<StageArea>();
+            area.gameObject.SetActive(true);
+            _stages.Add(area);
         }
 
-        _curWave = 0;
-        StartWave();
+        _curStage = 0;
     }
 
     void Update()
     {
-        StartNextWave();
+        if (!_isStart)
+            return;
+
+        if (_curStage >= _stages.Count)
+            return;
+
+        if (_stages[_curStage].StartNextWave() == AreaState.End)
+        {
+            _isRun = false;
+            FindObjectOfType<StageGateHandler>().SetGateState(false);
+        }
+        else
+            _isRun = true;
     }
 
-    private void StartNextWave()
+    public void AddStage()
     {
-        if (!_waves[_curWave].gameObject.activeInHierarchy)
+        if (!_isStart)
             return;
 
-        if (_waves[_curWave].RunCheck())
+        _curStage++;
+
+        if (_curStage >= _stages.Count)
             return;
 
-        _waves[_curWave].gameObject.SetActive(false);
-
-        if (_curWave >= _waves.Count - 1)
-            return;
-
-        _curWave++;
-
-        StartWave();
+        _stages[_curStage].StartWave();
     }
 
     public void StartWave()
     {
-        //if (_curWave != 0)
-        //    return;
+        if (_isStart)
+            return;
 
-        _waves[_curWave].gameObject.SetActive(true);
-        _waves[_curWave].InitWave();
-        Stage1.I.InitMonsters();
-
+        _isStart = true;
+        _stages[_curStage].StartWave();
     }
 }
