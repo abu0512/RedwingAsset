@@ -14,8 +14,8 @@ public class GameMainSound : MonoBehaviour {
 
     void Awake()
     {
-        _Volume = 1;
-        SoundPlay(GetComponent<Transform>(), 0);
+        //_Volume = 1;
+        //SoundPlay(GetComponent<Transform>(), 0);
     }
     private void Update()
     {
