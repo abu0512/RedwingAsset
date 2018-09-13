@@ -361,4 +361,12 @@ public class WitchBoss : MonsterBase
     {
         SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Attack3);
     }
+
+    private void LookAtTargetAnimEvent()
+    {
+        //Vector3 target = _player.transform.position;
+        //target.y = transform.position.y;
+
+        RotateToTarget(_player.transform.position);
+    }
 }
