@@ -21,7 +21,7 @@ public class GuardMushroomAttack : GuardMushroomStateBase
 
     public void AttackCheck()
     {
-        if (GuardMushroom.GetDistanceFromPlayer() < GuardMushroom.MStat.AttackDistance + 4.5f 
+        if (GuardMushroom.GetDistanceFromPlayer() < GuardMushroom.MStat.AttackDistance + 2f 
             && GuardMushroom.PlayerisFront)
         {
             if (CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)

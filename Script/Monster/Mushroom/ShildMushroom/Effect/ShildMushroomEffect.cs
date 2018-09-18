@@ -166,18 +166,9 @@ public class ShildMushroomEffect : MonoBehaviour {
     {
         RandomeX = 0;
         RandomeY = 0;
-
-        for (int i = 0; i < 3; i++)
-            ScytheHitTime[i] = 0;
-
-        for (int i = 0; i < 5; i++)
-        {
-            ShildHitTime[i] = 0;
-            DfEstart[i] = 0;
-        }
     }
 
-    void Awake()
+    void Start()
     {
         _shildmushroom = GetComponent<ShildMushroom>();
         TimeNvalueSet();

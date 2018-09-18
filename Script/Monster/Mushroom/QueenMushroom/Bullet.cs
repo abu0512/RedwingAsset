@@ -17,7 +17,6 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         DeleteTime = 0;
-        GeneralHitEffect.SetActive(false);
     }
 
     void Update()
