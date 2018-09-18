@@ -34,7 +34,37 @@ public class WitchAnimController : MonoBehaviour
 
     private void OnAttack()
     {
-        _witch.Collider.Collider.enabled = true;
+        float DotValue = Vector3.Dot(_witch.transform.forward, (_witch.Target.transform.position - transform.position).normalized);
+        if (_witch.DistanceCheck(3.0f))
+        {
+            if (DotValue > 1.0f || DotValue <= 0.0f)
+                return;
+
+            _witch.Target.PlayerHp(0.2f, 2, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+            if (_witch.Target._PlayerShild._isShildCounter)
+            {
+                _witch.SetState(WitchState.GuardAttack);
+                return;
+            }
+        }
+        else
+        {
+            if (!_witch.DistanceCheck(WitchValueManager.I.AttackDistance[_witch.AttackIdx]))
+                return;
+
+            if (DotValue > WitchValueManager.I.AttackMaxAngle[_witch.AttackIdx] ||
+                DotValue < WitchValueManager.I.AttackMinAngle[_witch.AttackIdx])
+                return;
+
+            _witch.Target.PlayerHp(0.2f, 2, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+            if (_witch.Target._PlayerShild._isShildCounter)
+            {
+                _witch.SetState(WitchState.GuardAttack);
+                return;
+            }
+        }
+
+        //_witch.Collider.Collider.enabled = true;
         //if (_witch.AttackIdx == 1)
         //    _closeAttackEffect.SetActive(true);
         //if (_witch.DistanceCheck(_witch.Stat.AttackDistance))

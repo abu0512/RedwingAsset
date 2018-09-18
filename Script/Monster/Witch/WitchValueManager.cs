@@ -44,6 +44,11 @@ public class WitchValueManager : MonoBehaviour
 
     public float ReleaseDamage = 30.0f;
 
+    public float[] AttackDamge = new float[] { 20.0f, 20.0f, 20.0f };
+    public float[] AttackMinAngle = new float[] { 0.7f, 0.0f, 0.7f };
+    public float[] AttackMaxAngle = new float[] { 1.0f, 1.0f, 1.0f };
+    public float[] AttackDistance = new float[] { 5.0f, 5.0f, 5.0f };
+
     private void Awake()
     {
         _instance = this;

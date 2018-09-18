@@ -21,13 +21,13 @@ public class CPlayerShildRun : MonoBehaviour
             }
             else if (other.tag == "EliteShaman")
             {
-                if(other.GetComponent<EliteShaman>().PlayerisFront == false)
-                other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fShildRunDamge);
+                if (other.GetComponent<EliteShaman>().PlayerisFront == false)
+                    other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fShildRunDamge);
             }
             else if (other.tag == "ShildMushroom")
             {
-                if(other.GetComponent<ShildMushroom>().PlayerisFront == false)
-                other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.fShildRunDamge);
+                if (other.GetComponent<ShildMushroom>().PlayerisFront == false)
+                    other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.fShildRunDamge);
             }
             else
             {
@@ -36,6 +36,11 @@ public class CPlayerShildRun : MonoBehaviour
 
             //CPlayerAttackEffect._instance.Effect8(); 이펙트
             CPlayerManager._instance._PlayerAni_Contorl.AniStiff();
+            GameObject hitEffect = EffectManager.I.OnEffect(EffectType.Tanker_DashAttackHit, other.transform, 2.0f);
+            Vector3 hitPos = hitEffect.transform.position;
+            hitPos.y = hitEffect.transform.position.y;
+            hitEffect.transform.LookAt(hitPos);
+
         }
     }
 }

@@ -38,6 +38,7 @@ public enum EffectType
     Tanker_AfterImage,
     Dealer_AfterImage,
     Tanker_DashAttack,
+    Tanker_DashAttackHit
 }
 
 
