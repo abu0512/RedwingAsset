@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         DeleteTime = 0;
+        GeneralHitEffect.SetActive(false);
     }
 
     void Update()
@@ -33,6 +34,7 @@ public class Bullet : MonoBehaviour
 
     public void HitEffect(Vector3 From)
     {
+        GeneralHitEffect.SetActive(true);
         Instantiate(GeneralHitEffect, From, Quaternion.identity);
     }
 

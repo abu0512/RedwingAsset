@@ -11,7 +11,6 @@ public class GuardMushroomEffect : MonoBehaviour
     public GameObject PCSwapEffect;
     public GameObject SbombingEffect;
 
-
     public float[] ShildHitTime;
     public float[] ScytheHitTime;
     public float SwapTime;
@@ -63,8 +62,6 @@ public class GuardMushroomEffect : MonoBehaviour
 
         if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
         {
-            //_home.y -= 1.3f;
-
             for (int i = 0; i < 5; i++)
             {
                 ShildHitEffects[i].transform.position = ShildHitEffects[i].transform.position;

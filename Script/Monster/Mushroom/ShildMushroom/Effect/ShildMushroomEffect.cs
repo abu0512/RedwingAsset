@@ -10,13 +10,14 @@ public class ShildMushroomEffect : MonoBehaviour {
     public GameObject[] ShildHitEffects;
     public GameObject[] ScytheHitEffects;
     public GameObject EffectPosition;
-    public GameObject DefenseEffect;
+    public GameObject[] DefenseEffects;
 
     private Vector3 EffectPo;
     private float RandomeX;
     private float RandomeY;
 
-
+    public float[] DfEstart;
+    public bool[] isDfEstart;
     public float[] ShildHitTime;
     public float[] ScytheHitTime;
 
@@ -31,14 +32,40 @@ public class ShildMushroomEffect : MonoBehaviour {
             GroggyEffect.SetActive(false);
     }
 
+    public IEnumerator DefenseObjectPool()
+    {
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 5; i++)
+        {
+            if(DefenseEffects[i].activeInHierarchy == true && DfEstart[i] > 1f)
+            {
+                DefenseEffects[i].SetActive(false);
+                isDfEstart[i] = false;
+                DfEstart[i] = 0;
+            }
+        }
+    }
+
     public void DefenEffect()
     {
-        EffectPo = EffectPosition.transform.position;
-        RandomeX = Random.Range(-0.51f, 0.5f);
-        RandomeY = Random.Range(-0.31f, 0.4f);
-        EffectPo.x += RandomeX;
-        EffectPo.y += RandomeY;
-        Instantiate(DefenseEffect, EffectPo, Quaternion.identity);
+        for(int i = 0; i < 5; i++)
+        {
+            StartCoroutine(DefenseObjectPool());
+
+            if (DefenseEffects[i].activeInHierarchy == false)
+            {
+                EffectPo = EffectPosition.transform.position;
+                RandomeX = Random.Range(-0.51f, 0.5f);
+                RandomeY = Random.Range(-0.31f, 0.4f);
+                EffectPo.x += RandomeX;
+                EffectPo.y += RandomeY;
+
+                DefenseEffects[i].transform.position = EffectPo;
+                DefenseEffects[i].SetActive(true);
+                isDfEstart[i] = true;
+                return;
+            }
+        }
     }
 
     public void ShildMHitEffect()
@@ -112,7 +139,7 @@ public class ShildMushroomEffect : MonoBehaviour {
                     ShildHitEffects[i].SetActive(false);
                     ShildHitTime[i] = 0;
                 }
-            }          
+            }
         }
 
         for (int i = 0; i < 3; i++)
@@ -127,22 +154,33 @@ public class ShildMushroomEffect : MonoBehaviour {
                 }
             }
         }
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (isDfEstart[i])
+                DfEstart[i] += Time.deltaTime;
+        }
+    }
+
+    private void TimeNvalueSet()
+    {
+        RandomeX = 0;
+        RandomeY = 0;
+
+        for (int i = 0; i < 3; i++)
+            ScytheHitTime[i] = 0;
+
+        for (int i = 0; i < 5; i++)
+        {
+            ShildHitTime[i] = 0;
+            DfEstart[i] = 0;
+        }
     }
 
     void Awake()
     {
         _shildmushroom = GetComponent<ShildMushroom>();
-        RandomeX = 0;
-        RandomeY = 0;
-
-        for (int i = 0; i < 3; i++)
-        {
-            ScytheHitTime[i] = 0;
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            ShildHitTime[i] = 0;
-        }
+        TimeNvalueSet();
     }
 
     void Update()
