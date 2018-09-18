@@ -52,6 +52,8 @@ public class InspectorManager : MonoBehaviour
 
     public float AfterImageDeadTime;
 
+    public float ScytheSwapSkillDis = 4.0f;
+    public float ScytheSwapSkillDamage = 50.0f;
 
     void Awake ()
     {

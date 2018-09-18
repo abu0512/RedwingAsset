@@ -427,7 +427,14 @@ public class CPlayerManager : MonoBehaviour
 
     private void OnSkillCollider()
     {
-        SkillSphereCollider.enabled = true;
+        //SkillSphereCollider.enabled = true;
+        foreach (MonsterBase mon in 
+                MonsterManager.I.FindNearMonster(
+                    transform.position, 
+                    InspectorManager._InspectorManager.ScytheSwapSkillDis))
+        {
+            mon.OnDamage(InspectorManager._InspectorManager.ScytheSwapSkillDamage);
+        }
     }
 
     private void OffSkillCollider()
