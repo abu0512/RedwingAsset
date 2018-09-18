@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
 
     public void HitEffect(Vector3 From)
     {
+        GeneralHitEffect.SetActive(true);
         Instantiate(GeneralHitEffect, From, Quaternion.identity);
     }
 
