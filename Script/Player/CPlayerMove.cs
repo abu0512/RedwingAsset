@@ -23,8 +23,6 @@ public class CPlayerMove : CPlayerBase
 
     private void Movement()
     {
-        //if (_PlayerManager._PlayerAni_Contorl._isSweat)
-        //    return;
 
         fHorizontal = Input.GetAxisRaw("Horizontal");
         fVertical = Input.GetAxisRaw("Vertical");

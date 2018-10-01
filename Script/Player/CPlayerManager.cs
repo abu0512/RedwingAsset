@@ -210,6 +210,11 @@ public class CPlayerManager : MonoBehaviour
     // 플레이어 로테이션을 부드럽게 이동
     public void PlayerRotation()
     {
+        if (_PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_Mode ||
+            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeBack ||
+            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
+            return;
+
         if (!m_isRotationAttack)
             return;
 
