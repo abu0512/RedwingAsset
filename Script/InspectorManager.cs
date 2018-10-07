@@ -55,12 +55,6 @@ public class InspectorManager : MonoBehaviour
     public float ScytheSwapSkillDis = 4.0f;
     public float ScytheSwapSkillDamage = 50.0f;
 
-    public float SwapMaxCoolTime = 20.0f;
-    public float ScytheDurationTime = 10.0f;
-
-    public float ScytheSkillCoolTime = 6.0f;
-    public float ShieldSkillCoolTime = 6.0f;
-
     void Awake ()
     {
         _InspectorManager = this;

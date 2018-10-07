@@ -62,24 +62,6 @@ public class CPlayerAni_Contorl : CPlayerBase
     private bool isSweatCountTime;
     private bool isSweatChackSet;
 
-    private float _scytheSkillCool;
-    public bool ScytheSkillOn
-    {
-        get
-        {
-            return _scytheSkillCool <= 0.0f;
-        }
-    }
-
-    private float _shieldSkillCool;
-    public bool ShieldSkillOn
-    {
-        get
-        {
-            return _shieldSkillCool <= 0.0f;
-        }
-    }
-
     void Start ()
     {
         _CPlayerSwap = GetComponent<CPlayerSwap>();
@@ -112,9 +94,6 @@ public class CPlayerAni_Contorl : CPlayerBase
                 }
             }
         }
-
-        ScytheSkillCoolTime();
-        ShieldSkillCoolTime();
     }
     void ShieldAniGetKey()
     {
@@ -216,12 +195,8 @@ public class CPlayerAni_Contorl : CPlayerBase
 
         if(Input.GetKeyDown(KeyCode.Alpha1) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fShildRunStm)
         {
-            if (!ShieldSkillOn)
-                return;
-
             _PlayerAni_State_Shild = PlayerAni_State_Shild.ShildRun;
             _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fShildRunStm;
-            _shieldSkillCool = InspectorManager._InspectorManager.ShieldSkillCoolTime;
         }
     }
     void ShieldAni()
@@ -316,12 +291,8 @@ public class CPlayerAni_Contorl : CPlayerBase
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (!ScytheSkillOn)
-                return;
-
             fScytheCameraTime = 0;
             _PlayerAni_State_Scythe = PlayerAni_State_Scythe.Skill2;
-            _scytheSkillCool = InspectorManager._InspectorManager.ScytheSkillCoolTime;
         }
         else
         {
@@ -483,21 +454,5 @@ public class CPlayerAni_Contorl : CPlayerBase
     private void DashAttackEffect()
     {
         EffectManager.I.OnEffect(EffectType.Tanker_DashAttack, transform, 0.6f);
-    }
-
-    private void ScytheSkillCoolTime()
-    {
-        if (ScytheSkillOn)
-            return;
-
-        _scytheSkillCool -= Time.deltaTime;
-    }
-
-    private void ShieldSkillCoolTime()
-    {
-        if (ShieldSkillOn)
-            return;
-
-        _shieldSkillCool -= Time.deltaTime;
     }
 }
