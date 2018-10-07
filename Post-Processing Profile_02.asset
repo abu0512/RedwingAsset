@@ -16,7 +16,7 @@ MonoBehaviour:
     m_Settings:
       mode: 0
       depth:
-        scale: 1
+        scale: 0.199
       motionVectors:
         sourceOpacity: 1
         motionImageOpacity: 0
@@ -42,10 +42,10 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 0.87
-      radius: 3.24
+      intensity: 0.65
+      radius: 7.98
       sampleCount: 16
-      downsampling: 1
+      downsampling: 0
       forceForwardCompatibility: 1
       ambientOnly: 1
       highPrecision: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
         tint: 0
         hueShift: 0
         saturation: 1.011
-        contrast: 0.755
+        contrast: 0.8
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
         mode: 1
         log:
           slope: {r: 1, g: 1, b: 1, a: 0}
-          power: {r: 1, g: 1, b: 1, a: 0.061105043}
+          power: {r: 1, g: 1, b: 1, a: 0.0051609864}
           offset: {r: 1, g: 1, b: 1, a: -0.0108695645}
         linear:
           lift: {r: 1, g: 1, b: 1, a: 0}
