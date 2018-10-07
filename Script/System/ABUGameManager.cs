@@ -32,6 +32,5 @@ public class ABUGameManager : MonoBehaviour
 	
 	void Update ()
     {
-
     }
 }

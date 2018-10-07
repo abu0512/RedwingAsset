@@ -44,15 +44,15 @@ public class CPlayerManager : MonoBehaviour
     private float m_fPlayerMaxHp;
     public float m_PlayerMaxHp { get { return m_fPlayerMaxHp; } set { m_fPlayerMaxHp = value; } }
 
-    // 플레이어 딜러형 HP
-    [SerializeField]
-    private float m_fscyPlayerHp;
-    public float m_ScyPlayerHp { get { return m_fscyPlayerHp; } set { m_fscyPlayerHp = value; } }
+    //// 플레이어 딜러형 HP
+    //[SerializeField]
+    //private float m_fscyPlayerHp;
+    //public float m_ScyPlayerHp { get { return m_fscyPlayerHp; } set { m_fscyPlayerHp = value; } }
 
-    // 플레이어 딜러형 MaxHP
-    [SerializeField]
-    private float m_fscyPlayerMaxHp;
-    public float m_ScyPlayerMaxHp { get { return m_fscyPlayerMaxHp; } set { m_fscyPlayerMaxHp = value; } }
+    //// 플레이어 딜러형 MaxHP
+    //[SerializeField]
+    //private float m_fscyPlayerMaxHp;
+    //public float m_ScyPlayerMaxHp { get { return m_fscyPlayerMaxHp; } set { m_fscyPlayerMaxHp = value; } }
     
     // 플레이어 스테미나
     [SerializeField]
@@ -141,8 +141,8 @@ public class CPlayerManager : MonoBehaviour
         m_fGravity = 20;
         //m_fPlayerMaxHp = 10000;
         m_fPlayerHp = m_fPlayerMaxHp;
-        m_fscyPlayerMaxHp = m_fPlayerMaxHp / 2;
-        m_fscyPlayerHp = m_fscyPlayerMaxHp;
+        //m_fscyPlayerMaxHp = m_fPlayerMaxHp / 2;
+        //m_fscyPlayerHp = m_fscyPlayerMaxHp;
         m_fPlayerMaxStm = 100;
         m_fPlayerStm = m_fPlayerMaxStm;
         m_fPlayerGauge = 100;
@@ -248,16 +248,16 @@ public class CPlayerManager : MonoBehaviour
             if (!isPlayerHorn) // 플레이어가 무적상태가 아닐때
             {
                 // 플레이어가 검방패 모드일때
-                if (_PlayerSwap._PlayerMode == PlayerMode.Shield)
-                {
+                //if (_PlayerSwap._PlayerMode == PlayerMode.Shield)
+                //{
                     // hp내림
                     m_fPlayerHp -= sizeHp;
-                }
-                else // 낫 모드일때
-                {
-                    // hp 내림
-                    m_fscyPlayerHp -= sizeHp;
-                }
+                //}
+                //else // 낫 모드일때
+                //{
+                //    // hp 내림
+                //    m_fscyPlayerHp -= sizeHp;
+                //}
             }
 
             // 플레이어가 흘리기 중일경우
@@ -282,10 +282,10 @@ public class CPlayerManager : MonoBehaviour
             m_fPlayerStm -= sizeHp * InspectorManager._InspectorManager.fShildDamge;
         }
 
-        else
-            m_fscyPlayerHp -= sizeHp;
+        //else
+        //    m_fscyPlayerHp -= sizeHp;
 
-        if (m_fPlayerHp <= 0 || m_fscyPlayerHp <= 0)
+        if (m_fPlayerHp <= 0)
             isDead = true;
 
         return m_fPlayerHp;
@@ -317,19 +317,19 @@ public class CPlayerManager : MonoBehaviour
     }
 
     // 스왑 했을때 hp변경
-    public void SwapHpType(int type)
-    {
-        // 2 흑화 -> 실드
+    //public void SwapHpType(int type)
+    //{
+    //    // 2 흑화 -> 실드
 
-        if (type == 1)
-        {
-            m_fPlayerHp = m_fscyPlayerHp * 2;
-        }// 1 실드 -> 흑화
-        else
-        {
-            m_fscyPlayerHp = m_fPlayerHp / 2;
-        }
-    }
+    //    if (type == 1)
+    //    {
+    //        m_fPlayerHp = m_fscyPlayerHp * 2;
+    //    }// 1 실드 -> 흑화
+    //    else
+    //    {
+    //        m_fscyPlayerHp = m_fPlayerHp / 2;
+    //    }
+    //}
 
     // 쉴드 상태에서 n초간 카운터 어택 유지
     public void PlayerSound(int type)

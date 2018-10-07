@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CPlayerSwordCollder : MonoBehaviour
 {
@@ -87,7 +88,7 @@ public class CPlayerSwordCollder : MonoBehaviour
                         other.GetComponent<MonsterBase>().isHit = true;
                         other.GetComponent<GuardMushroomEffect>().GuardMHitEffect();
                         other.GetComponent<GuardMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo]);
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                        CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
                     }
                 }
@@ -99,7 +100,7 @@ public class CPlayerSwordCollder : MonoBehaviour
                         other.GetComponent<MonsterBase>().isHit = true;
                         other.GetComponent<QueenMushroomEffect>().QueenMHitEffect();
                         other.GetComponent<QueenMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo]);
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                        CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
                     }
                 }
@@ -109,14 +110,14 @@ public class CPlayerSwordCollder : MonoBehaviour
                     if (other.GetComponent<ShildMushroom>().GroggyEnd == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                        CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
 
                     else if (other.GetComponent<ShildMushroom>().GroggyEnd == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroomEffect>().DefenEffect();
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                        CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
 
@@ -138,7 +139,7 @@ public class CPlayerSwordCollder : MonoBehaviour
                     if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
                     {
                         other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                        CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                     }
                 }
@@ -146,7 +147,7 @@ public class CPlayerSwordCollder : MonoBehaviour
                 else
                 {
                     other.GetComponent<WitchBossEffect>().OnScytheEffect(nCombo);
-                    CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+                    CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                     other.GetComponent<WitchBoss>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                 }
             }
