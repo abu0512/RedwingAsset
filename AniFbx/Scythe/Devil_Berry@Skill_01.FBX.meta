@@ -316,38 +316,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 8
         messageOptions: 0
-      - time: 0.44303796
-        functionName: ScytheTrue
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.47679323
+      - time: 0.5133563
         functionName: OnSkillCollider
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.6751055
-        functionName: AttackEnd
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.71707314
-        functionName: OffSkillCollider
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: OffSkillCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

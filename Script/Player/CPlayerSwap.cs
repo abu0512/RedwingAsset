@@ -337,7 +337,7 @@ public class CPlayerSwap : CPlayerBase
     }
     void Common()
     {
-        _PlayerManager.SwapHpType((int)_PlayerMode + 1);
+        //_PlayerManager.SwapHpType((int)_PlayerMode + 1);
         _PlayerManager._CPlayerAniEvent.MoveOn();
         isEffect = true;
         isCoolTimeSwap = false;

@@ -60,5 +60,6 @@ public class StageArea : MonoBehaviour
         _waves[_curWave].gameObject.SetActive(true);
         _waves[_curWave].InitWave();
         Stage1.I.InitMonsters();
+        MonsterManager.I.FindAllMonsters();
     }
 }
