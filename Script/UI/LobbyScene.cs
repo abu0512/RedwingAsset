@@ -60,11 +60,12 @@ public class LobbyScene : MonoBehaviour {
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadSceneAsync("LoaddingScene");
+           // SceneManager.LoadSceneAsync("LoaddingScene");
         }
     }
 	
-	void Update () {
+	void Update ()
+    {
         FadeSet();
         AnyKeyDown();
     }

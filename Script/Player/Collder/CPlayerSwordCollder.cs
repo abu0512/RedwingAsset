@@ -6,7 +6,7 @@ public class CPlayerSwordCollder : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom" || other.tag == "EliteShaman")
+        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom")
         {
             int nCombo = CPlayerManager._instance.m_nAttackCombo - 1;
             if (nCombo == -1) nCombo = 1;
@@ -61,15 +61,6 @@ public class CPlayerSwordCollder : MonoBehaviour
                     //{
                     //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
                     //}
-                }
-
-                else if (other.tag == "EliteShaman")
-                {
-                    if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
-                    {
-                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
-                        other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
-                    }
                 }
 
                 else
@@ -132,15 +123,6 @@ public class CPlayerSwordCollder : MonoBehaviour
                     //{
                     //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
                     //}
-                }
-                else if (other.tag == "EliteShaman")
-                {
-                    if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
-                    {
-                        other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
-                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
-                    }
                 }
 
                 else

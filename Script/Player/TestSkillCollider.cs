@@ -6,7 +6,7 @@ public class TestSkillCollider : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom" || other.tag == "EliteShaman")
+        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom")
         {
             int nCombo = CPlayerManager._instance.m_nAttackCombo - 1;
             if (nCombo == -1) nCombo = 1;
@@ -47,15 +47,6 @@ public class TestSkillCollider : MonoBehaviour
                     else if (other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroomEffect>().DefenEffect();
-                    }
-                }
-
-                else if (other.tag == "EliteShaman")
-                {
-                    if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
-                    {
-                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge, InspectorManager._InspectorManager.nGroggyShild[nCombo]);
-                        other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
                     }
                 }
 
@@ -106,16 +97,6 @@ public class TestSkillCollider : MonoBehaviour
                     }
                 }
 
-                else if (other.tag == "EliteShaman")
-                {
-                    if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
-                    {
-                        other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
-                        CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
-                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fScytheSkill2Damge, InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
-                    }
-                }
-
                 //else
                 //{
                 //    other.GetComponent<WitchBossEffect>().OnScytheEffect(nCombo);
@@ -127,6 +108,7 @@ public class TestSkillCollider : MonoBehaviour
             if (nCombo == 0) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
             if (nCombo == 1) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
             if (nCombo == 2) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
+            //조재원 바보 전성윤 바보 주강한 바보 이윤지 마스코트 나유리 라이팅 화이팅!
         }
     }
 }

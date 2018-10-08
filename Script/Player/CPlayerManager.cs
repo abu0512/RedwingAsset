@@ -28,8 +28,8 @@ public class CPlayerManager : MonoBehaviour
     [SerializeField]
     private float m_fMoveSpeed;
     public float m_MoveSpeed { get { return m_fMoveSpeed; } set { m_fMoveSpeed = value; } }
-    // 플레이어 중력
 
+    // 플레이어 중력
     [SerializeField]
     private float m_fGravity;
     public float m_Gravity { get { return m_fGravity; } set { m_fGravity = value; } }

@@ -11,7 +11,6 @@ public class Stage1 : MonoBehaviour
 
     private List<GuardMushroom> _guards = new List<GuardMushroom>();
     private List<QueenMushroom> _queens = new List<QueenMushroom>();
-    private List<EliteShaman> _eliteshaman = new List<EliteShaman>();
     private bool _changeMode;
 
     public bool ChangeMode { get { return _changeMode; } set { _changeMode = value; } }
@@ -40,22 +39,6 @@ public class Stage1 : MonoBehaviour
             foreach (QueenMushroom queen in _queens)
             {
                 if (queen.gameObject.activeInHierarchy)
-                    cnt++;
-            }
-
-            return cnt;
-        }
-    }
-
-    public int EliteShamanCount
-    {
-        get
-        {
-            int cnt = 0;
-
-            foreach (EliteShaman elites in _eliteshaman)
-            {
-                if (elites.gameObject.activeInHierarchy)
                     cnt++;
             }
 
@@ -94,10 +77,6 @@ public class Stage1 : MonoBehaviour
             _queens.Add(queen);
         }
 
-        foreach (EliteShaman EliteS in FindObjectsOfType<EliteShaman>())
-        {
-            _eliteshaman.Add(EliteS);
-        }
     }
 
     /*void GuardMushroomisAllDead()
@@ -154,63 +133,6 @@ public class Stage1 : MonoBehaviour
                     queens.HealTime = true;
                 }
             }
-        }
-    }
-
-    void EliteHealTimeCheck()
-    {
-        if (GuardCount == 0 && QueenCount == 0)
-        {
-            foreach (EliteShaman eliteS in _eliteshaman)
-            {
-                eliteS.HealStart = false;
-                eliteS.HealTime = false;
-            }
-            return;
-        }
-
-        foreach (GuardMushroom guard in _guards)
-        {
-            if (guard.Stat.Hp <= 250.0f)
-            {
-                foreach (EliteShaman eliteS in _eliteshaman)
-                {
-                    eliteS.HealTime = true;
-                }
-            }
-        }
-
-        foreach (QueenMushroom queen in _queens)
-        {
-            if (queen.Stat.Hp <= 250.0f)
-            {
-                foreach (EliteShaman eliteS in _eliteshaman)
-                {
-                    eliteS.HealTime = true;
-                }
-            }
-        }
-    }
-
-    void EliteHealStart()
-    {
-        foreach (EliteShaman eliteS in _eliteshaman)
-        {
-            if (!eliteS.HealStart)
-                continue;
-
-            foreach (QueenMushroom queen in _queens)
-            {
-                queen.SetMonsterHeal(eliteS.HealPoint);
-            }
-
-            foreach (GuardMushroom guard in _guards)
-            {
-                guard.SetMonsterHeal(eliteS.HealPoint);
-            }
-
-            eliteS.HealStart = false;
-            eliteS.HealTime = false;
         }
     }
 
@@ -284,7 +206,6 @@ public class Stage1 : MonoBehaviour
     {
         _guards.Clear();
         _queens.Clear();
-        _eliteshaman.Clear();
 
         foreach (GuardMushroom guard in FindObjectsOfType<GuardMushroom>())
         {
@@ -296,9 +217,5 @@ public class Stage1 : MonoBehaviour
             _queens.Add(queen);
         }
 
-        foreach (EliteShaman EliteS in FindObjectsOfType<EliteShaman>())
-        {
-            _eliteshaman.Add(EliteS);
-        }
     }
 }

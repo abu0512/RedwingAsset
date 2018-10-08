@@ -6,7 +6,7 @@ public class CPlayerCounterAttack : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom" || other.tag == "EliteShaman")
+        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom")
         {
             CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             if (other.tag == "Guard")
@@ -24,12 +24,6 @@ public class CPlayerCounterAttack : MonoBehaviour
             {
                 other.GetComponent<ShildMushroom>().AddGroggyValue(105f);
                 other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.fCountAttackDamge);
-            }
-
-            else if (other.tag == "EliteShaman")
-            {
-                other.GetComponent<EliteShaman>().AddGroggyValue(100f);
-                other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.fCountAttackDamge);
             }
 
             else
