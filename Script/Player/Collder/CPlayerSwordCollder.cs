@@ -125,18 +125,6 @@ public class CPlayerSwordCollder : MonoBehaviour
                     //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
                     //}
                 }
-<<<<<<< HEAD
-=======
-                else if (other.tag == "EliteShaman")
-                {
-                    if (other.GetComponent<EliteShaman>().PlayerisFront == false && other.GetComponent<EliteShaman>().Stat.Hp > 0)
-                    {
-                        other.GetComponent<EliteShamanEffect>().EliteShamanHitEffect();
-                        CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
-                        other.GetComponent<EliteShaman>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
-                    }
-                }
->>>>>>> 835448dd472eefdf7789f9b0e923c6848bdb2e03
 
                 else
                 {
