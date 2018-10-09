@@ -55,7 +55,7 @@ public class EndingScene : MonoBehaviour {
 
             else if (fades >= 0.93f && stack == 0)
             {
-                SceneManager.LoadSceneAsync("JJTitle");
+                SceneManager.LoadSceneAsync("Title");
             }
         }
     }
@@ -95,7 +95,7 @@ public class EndingScene : MonoBehaviour {
             yield return null;
         }
         Debug.Log("영상이 끝났습니다.");
-        SceneManager.LoadSceneAsync("JJTitle");
+        SceneManager.LoadSceneAsync("Title");
     }
 	
 	void Update () {

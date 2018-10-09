@@ -56,7 +56,7 @@ public class LogoScene: MonoBehaviour
             StartCoroutine(StartLogo(RedWingLogo, _logonum));
 
         else if (_num == 2)
-            SceneManager.LoadSceneAsync("JJTitle");
+            SceneManager.LoadSceneAsync("Title");
 
         yield return _logonum;
     }
