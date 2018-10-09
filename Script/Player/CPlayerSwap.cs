@@ -17,12 +17,12 @@ public class CPlayerSwap : CPlayerBase
     public PlayerMode _PlayerMode = PlayerMode.Shield; // 처음엔 검방패로 시작
 
     // 플레이어 좌표 담아둠
-    public Transform _Follow; 
+    public Transform _Follow;
     // _Shield 배열에 낫,검방패 오브젝트 넣어둠
     public GameObject[] _EffectModle;
     // 플레이어 텔포 이펙트
     public GameObject[] _EffectTelpo;
-    
+
 
     public bool m_bSwapAttack;
     private float m_fSwapAttackTime;
@@ -39,14 +39,27 @@ public class CPlayerSwap : CPlayerBase
     private int nScytheExponential;
 
     // 직업변경 쿨타임 
-    private bool isCoolTimeSwap;
-    public bool _isCoolTimeSwap { get { return isCoolTimeSwap; } set { value = isCoolTimeSwap; } }
+    //private bool isCoolTimeSwap;
+    //public bool _isCoolTimeSwap { get { return isCoolTimeSwap; } set { value = isCoolTimeSwap; } }
 
     public bool isBlink;
     private float fBlinkTime;
 
     private bool isBlinkSwapKey;
     private bool isBlinkOut;
+
+    private float _swapCoolTime;
+    public bool SwapOn
+    {
+        get
+        {
+            return _swapCoolTime >= InspectorManager._InspectorManager.SwapMaxCoolTime;
+        }
+    }
+
+    private float _scytheDuration;
+
+
     void Start()
     {
         m_fDisMin = 1.5f;
@@ -59,19 +72,20 @@ public class CPlayerSwap : CPlayerBase
         nScytheNum = 0;
         nScytheExponential = 1;
 
-        isCoolTimeSwap = true;
         isBlink = false;
         isBlinkSwapKey = false;
         isBlinkOut = true;
-
+        _swapCoolTime = InspectorManager._InspectorManager.SwapMaxCoolTime;
+        _scytheDuration = 0.0f;
     }
-    void Update ()
+    void Update()
     {
         SwapKey();
         //EffectTimer();
         SwapAttacker();
         TelPoEffect();
         BlinkPlayer();
+        CoolTimeRun();
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && _PlayerMode == PlayerMode.Scythe && _PlayerManager.m_PlayerStm > 30f)
         {
@@ -86,45 +100,47 @@ public class CPlayerSwap : CPlayerBase
 
     void SwapKey()
     {
-        // Q,E버튼을 누르면 직업이 바뀜
-        if(isCoolTimeSwap)
+        // Q버튼을 누르면 직업이 바뀜
+        if (_PlayerMode == PlayerMode.Shield)
         {
-            if (_PlayerMode == PlayerMode.Shield)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
+                if (!SwapOn)
+                    return;
+
                 if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Dash)
                     return;
 
-                if (Input.GetKeyDown(KeyCode.Q))
-                {                     
-                    ScytheReset(1);
-                    //PlayerParams._instance.nGauge = 0;
-                    //PlayerParams._instance.GaugeOff(); // 수정하기
-                    CPlayerManager._instance._nPowerGauge = 0;
-                }
-                else if (Input.GetKeyDown(KeyCode.E))
-                {
-                    AfterImageSet();
-                    ScytheReset();
-                }
+                ScytheReset(1);
+                //PlayerParams._instance.nGauge = 0;
+                //PlayerParams._instance.GaugeOff(); // 수정하기
             }
-            else
+            //else if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    AfterImageSet();
+            //    ScytheReset();
+            //}
+        }
+        else
+        {
+            _scytheDuration -= Time.deltaTime;
+            if (!isBlinkSwapKey)
             {
-                if(!isBlinkSwapKey)
-                {
-                    if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill1 ||
-                        _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
-                        return;
+                if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill1 ||
+                    _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
+                    return;
 
-                    if (Input.GetKeyDown(KeyCode.Q))
-                    {
-                        ShildReset(0);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        AfterImageSet();
-                        ShildReset(1);
-                    }
+                if (Input.GetKeyDown(KeyCode.Q) ||
+                    _scytheDuration <= 0.0f)
+                {
+                    ShildReset(0);
                 }
+
+                //else if (Input.GetKeyDown(KeyCode.E))
+                //{
+                //    AfterImageSet();
+                //    ShildReset(1);
+                //}
             }
         }
     }
@@ -153,7 +169,7 @@ public class CPlayerSwap : CPlayerBase
             return;
         }
 
-        if(isEffectTelpo)
+        if (isEffectTelpo)
         {
             // 이펙트
             EffectManager.I.EventOnEffect(15);
@@ -227,7 +243,7 @@ public class CPlayerSwap : CPlayerBase
             }
         }
     }
-   
+
     public void RayCastChack()
     {
         isEffectTelpo = true;
@@ -258,10 +274,10 @@ public class CPlayerSwap : CPlayerBase
         //}
         //else
         //{
-            transform.position += transform.forward * m_fMoveDir;
+        transform.position += transform.forward * m_fMoveDir;
         //}
     }
-    
+
     void BlinkStart()
     {
         isBlinkOut = true;
@@ -274,15 +290,15 @@ public class CPlayerSwap : CPlayerBase
     {
         if (!isBlink)
             return;
-            
+
 
         fBlinkTime += Time.deltaTime;
-        
+
         if (fBlinkTime > 0.4f)
         {
             isBlinkSwapKey = false;
             CSwapSystem._instance.ObjSwap(false, true);
-            if(isBlinkOut)
+            if (isBlinkOut)
             {
                 EffectManager.I.EventOnEffect(16);
                 isBlinkOut = false;
@@ -299,12 +315,12 @@ public class CPlayerSwap : CPlayerBase
         }
     }
 
-        
+
 
     void ScytheReset(int type = 0)
     {
         CSwapSystem._instance.ScytheObjs(type);
-        StartCoroutine("ScytheHpDown");
+        //StartCoroutine("ScytheHpDown");
         _PlayerMode = PlayerMode.Scythe;
 
         if (type == 1)
@@ -316,13 +332,15 @@ public class CPlayerSwap : CPlayerBase
             m_bSwapAttack = true;
         }
         Common();
+        _swapCoolTime = 0.0f;
+        _scytheDuration = InspectorManager._InspectorManager.ScytheDurationTime;
     }
     void ShildReset(int idx)
     {
         //_PlayerManager.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.8f);
 
         CSwapSystem._instance.ShildObjs();
-        StopCoroutine("ScytheHpDown");
+        //StopCoroutine("ScytheHpDown");
         nScytheNum = 0;
         nScytheExponential = 1;
         _PlayerMode = PlayerMode.Shield;
@@ -334,41 +352,40 @@ public class CPlayerSwap : CPlayerBase
         }
         isBlink = false;
         Common();
+        _scytheDuration = 0.0f;
     }
     void Common()
     {
         //_PlayerManager.SwapHpType((int)_PlayerMode + 1);
         _PlayerManager._CPlayerAniEvent.MoveOn();
         isEffect = true;
-        isCoolTimeSwap = false;
-        StartCoroutine("CoolTimeSwap");
     }
 
 
-    IEnumerator ScytheHpDown()
-    {
-        while(true)
-        {
-            float hp = InspectorManager._InspectorManager.fScytheTimeHpDown;
-            yield return new WaitForSeconds(InspectorManager._InspectorManager.fScytheTime);
+    //IEnumerator ScytheHpDown()
+    //{
+    //    while(true)
+    //    {
+    //        float hp = InspectorManager._InspectorManager.fScytheTimeHpDown;
+    //        yield return new WaitForSeconds(InspectorManager._InspectorManager.fScytheTime);
 
-            nScytheNum++;
-            if(nScytheNum >= InspectorManager._InspectorManager.fScytheTimeHpExponential)
-            {
-                nScytheExponential = nScytheExponential * 2;
-                nScytheNum = 0;
-            }
-            else
-            {
-                _PlayerManager.PlayerHp(0, 3, hp * nScytheExponential);
-            }
-        }
-    }
-    IEnumerator CoolTimeSwap()
-    {
-        yield return new WaitForSeconds(InspectorManager._InspectorManager.fSwapCoolTime);        
-        isCoolTimeSwap = true;
-    }
+    //        nScytheNum++;
+    //        if(nScytheNum >= InspectorManager._InspectorManager.fScytheTimeHpExponential)
+    //        {
+    //            nScytheExponential = nScytheExponential * 2;
+    //            nScytheNum = 0;
+    //        }
+    //        else
+    //        {
+    //            _PlayerManager.PlayerHp(0, 3, hp * nScytheExponential);
+    //        }
+    //    }
+    //}
+    //IEnumerator CoolTimeSwap()
+    //{
+    //    yield return new WaitForSeconds(InspectorManager._InspectorManager.fSwapCoolTime);        
+    //    isCoolTimeSwap = true;
+    //}
 
     IEnumerator Co_AfterImageOn(GameObject obj, int idx)
     {
@@ -381,6 +398,14 @@ public class CPlayerSwap : CPlayerBase
             EffectManager.I.OnEffect(EffectType.Tanker_AfterImage, pos, obj.transform.rotation, 1.0f, 1);
         else
             EffectManager.I.OnEffect(EffectType.Dealer_AfterImage, pos, obj.transform.rotation, 1.0f, 1);
+    }
+
+    private void CoolTimeRun()
+    {
+        if (SwapOn)
+            return;
+
+        _swapCoolTime += Time.deltaTime;
     }
 }
 

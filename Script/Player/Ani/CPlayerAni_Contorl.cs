@@ -62,14 +62,32 @@ public class CPlayerAni_Contorl : CPlayerBase
     private bool isSweatCountTime;
     private bool isSweatChackSet;
 
-    void Start ()
+    private float _scytheSkillCool;
+    public bool ScytheSkillOn
+    {
+        get
+        {
+            return _scytheSkillCool <= 0.0f;
+        }
+    }
+
+    private float _shieldSkillCool;
+    public bool ShieldSkillOn
+    {
+        get
+        {
+            return _shieldSkillCool <= 0.0f;
+        }
+    }
+
+    void Start()
     {
         _CPlayerSwap = GetComponent<CPlayerSwap>();
         _CPlayerAniEvent = GetComponent<CPlayerAniEvent>();
         _CPlayerAttackEffect = GetComponent<CPlayerAttackEffect>();
 
         // 방패로 가는 모션 체크
-        m_bDefenseIdle = false; 
+        m_bDefenseIdle = false;
         // 현재 애니메이터 값 가져오기
         _PlayerAniFile = GetComponent<Animator>();
     }
@@ -94,6 +112,9 @@ public class CPlayerAni_Contorl : CPlayerBase
                 }
             }
         }
+
+        ScytheSkillCoolTime();
+        ShieldSkillCoolTime();
     }
     void ShieldAniGetKey()
     {
@@ -111,7 +132,7 @@ public class CPlayerAni_Contorl : CPlayerBase
             //    _PlayerAni_State_Shild = PlayerAni_State_Shild.SweatR;
             //    _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fSweatStm;
             //}
-            
+
         }
         else if (Input.GetMouseButtonDown(0))
         {
@@ -179,9 +200,9 @@ public class CPlayerAni_Contorl : CPlayerBase
         else
         {
             m_bDefenseIdle = false;
-        }        
+        }
 
-        if(m_bDefenseBack)
+        if (m_bDefenseBack)
         {
             _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_ModeBack;
         }
@@ -193,10 +214,14 @@ public class CPlayerAni_Contorl : CPlayerBase
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fShildRunStm)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fShildRunStm)
         {
+            if (!ShieldSkillOn)
+                return;
+
             _PlayerAni_State_Shild = PlayerAni_State_Shild.ShildRun;
             _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fShildRunStm;
+            _shieldSkillCool = InspectorManager._InspectorManager.ShieldSkillCoolTime;
         }
     }
     void ShieldAni()
@@ -206,7 +231,8 @@ public class CPlayerAni_Contorl : CPlayerBase
             case PlayerAni_State_Shild.None:
                 {
 
-                }break;
+                }
+                break;
             case PlayerAni_State_Shild.IdleRun:
                 {
                     Animation_Change(0);
@@ -216,15 +242,18 @@ public class CPlayerAni_Contorl : CPlayerBase
             case PlayerAni_State_Shild.Defense_Mode:
                 {
                     Animation_Change(1);
-                }break;
+                }
+                break;
             case PlayerAni_State_Shild.Defense_ModeIdle:
                 {
                     Animation_Change(2);
-                }break;
+                }
+                break;
             case PlayerAni_State_Shild.CountAttack:
                 {
                     Animation_Change(3);
-                }break;
+                }
+                break;
             case PlayerAni_State_Shild.Attack1:
                 {
                     Animation_Change(4);
@@ -289,10 +318,14 @@ public class CPlayerAni_Contorl : CPlayerBase
         if (_PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill1)
             return;
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            if (!ScytheSkillOn)
+                return;
+
             fScytheCameraTime = 0;
             _PlayerAni_State_Scythe = PlayerAni_State_Scythe.Skill2;
+            _scytheSkillCool = InspectorManager._InspectorManager.ScytheSkillCoolTime;
         }
         else
         {
@@ -402,7 +435,7 @@ public class CPlayerAni_Contorl : CPlayerBase
 
         if (_PlayerManager._isPlayerHorn)
         {
-            if(!isSweatChackSet)
+            if (!isSweatChackSet)
             {
                 //CPlayerAttackEffect._instance.Effect9(); 이펙트
                 StartCoroutine("TimeSweatCountTime");
@@ -416,7 +449,7 @@ public class CPlayerAni_Contorl : CPlayerBase
         if (!isSweatCountTime)
             return;
 
-        if(Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1))
         {
             _PlayerAni_State_Shild = PlayerAni_State_Shild.SweatCount;
         }
@@ -454,5 +487,21 @@ public class CPlayerAni_Contorl : CPlayerBase
     private void DashAttackEffect()
     {
         EffectManager.I.OnEffect(EffectType.Tanker_DashAttack, transform, 0.6f);
+    }
+
+    private void ScytheSkillCoolTime()
+    {
+        if (ScytheSkillOn)
+            return;
+
+        _scytheSkillCool -= Time.deltaTime;
+    }
+
+    private void ShieldSkillCoolTime()
+    {
+        if (ShieldSkillOn)
+            return;
+
+        _shieldSkillCool -= Time.deltaTime;
     }
 }

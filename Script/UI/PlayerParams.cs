@@ -33,7 +33,6 @@ public class PlayerParams : CharacterUI
         //ScycurHP = ScymaxHP;
         maxSP = CPlayerManager._instance.m_PlayerMaxStm;
         curSP = maxSP;
-        PowerGauge = CPlayerManager._instance._nPowerGauge;
     }
 
     private void Awake()
@@ -58,7 +57,7 @@ public class PlayerParams : CharacterUI
     {
         //if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
         //{
-            HPBar.fillAmount = curHP / maxHP;
+        HPBar.fillAmount = curHP / maxHP;
         //}
         //else
         //{
@@ -175,7 +174,6 @@ public class PlayerParams : CharacterUI
 
     public void GaugeOff()
     {
-        CPlayerManager._instance._nPowerGauge = 0;
     }
 
     void Update()

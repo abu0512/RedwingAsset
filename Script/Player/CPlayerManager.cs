@@ -28,8 +28,8 @@ public class CPlayerManager : MonoBehaviour
     [SerializeField]
     private float m_fMoveSpeed;
     public float m_MoveSpeed { get { return m_fMoveSpeed; } set { m_fMoveSpeed = value; } }
-
     // 플레이어 중력
+
     [SerializeField]
     private float m_fGravity;
     public float m_Gravity { get { return m_fGravity; } set { m_fGravity = value; } }
@@ -53,7 +53,7 @@ public class CPlayerManager : MonoBehaviour
     //[SerializeField]
     //private float m_fscyPlayerMaxHp;
     //public float m_ScyPlayerMaxHp { get { return m_fscyPlayerMaxHp; } set { m_fscyPlayerMaxHp = value; } }
-    
+
     // 플레이어 스테미나
     [SerializeField]
     private float m_fPlayerStm;
@@ -78,7 +78,7 @@ public class CPlayerManager : MonoBehaviour
     [SerializeField]
     private int[] m_nPlayerShildHitDmg = new int[5];
     public int[] m_PlayerShildHitDmg { get { return m_nPlayerShildHitDmg; } set { m_nPlayerShildHitDmg = value; } }
-    
+
     // 플레이어 낫모드 공격력
     [SerializeField]
     private int[] m_nPlayerScytheHitDmg = new int[3];
@@ -91,10 +91,6 @@ public class CPlayerManager : MonoBehaviour
     // 스왑 모션이 일어났는지를 체크하기 위한 bool
     private bool _isPush;
     public bool isPush { get { return _isPush; } set { _isPush = value; } }
-
-    // 플레이어 파워 응축 
-    private int nPowerGauge;
-    public int _nPowerGauge { get { return nPowerGauge; } set { nPowerGauge = value; } }
 
     public Quaternion vPlayerQuaternion = Quaternion.identity; // 플레이어 로테이션
     public CharacterController _PlayerController; // 현재 캐릭터가 가지고있는 캐릭터 컨트롤러 콜라이더.
@@ -135,7 +131,7 @@ public class CPlayerManager : MonoBehaviour
         _CPlayerShild = GetComponent<CPlayerShild>();
         _CPlayerAniEvent = GetComponent<CPlayerAniEvent>();
         _CPlayerCountAttack = GetComponent<CPlayerCountAttack>();
-        
+
         // 플레이어 스탯 설정
         m_fMoveSpeed = 6;
         m_fGravity = 20;
@@ -147,7 +143,6 @@ public class CPlayerManager : MonoBehaviour
         m_fPlayerStm = m_fPlayerMaxStm;
         m_fPlayerGauge = 100;
         m_nAttackCombo = 0;
-        nPowerGauge = 0;
         isDead = false;
 
         m_bMove = true;
@@ -195,7 +190,6 @@ public class CPlayerManager : MonoBehaviour
         PlayerRotation();
         PlayerHornOn();
         m_fPlayerHp = Mathf.Clamp(m_fPlayerHp, 0, m_fPlayerMaxHp);
-        nPowerGauge = Mathf.Clamp(nPowerGauge, 0, 300);
     }
 
     // 플레이어 사망시
@@ -210,6 +204,11 @@ public class CPlayerManager : MonoBehaviour
     // 플레이어 로테이션을 부드럽게 이동
     public void PlayerRotation()
     {
+        if (_PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_Mode ||
+            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeBack ||
+            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
+            return;
+
         if (!m_isRotationAttack)
             return;
 
@@ -250,8 +249,8 @@ public class CPlayerManager : MonoBehaviour
                 // 플레이어가 검방패 모드일때
                 //if (_PlayerSwap._PlayerMode == PlayerMode.Shield)
                 //{
-                    // hp내림
-                    m_fPlayerHp -= sizeHp;
+                // hp내림
+                m_fPlayerHp -= sizeHp;
                 //}
                 //else // 낫 모드일때
                 //{
@@ -428,9 +427,9 @@ public class CPlayerManager : MonoBehaviour
     private void OnSkillCollider()
     {
         //SkillSphereCollider.enabled = true;
-        foreach (MonsterBase mon in 
+        foreach (MonsterBase mon in
                 MonsterManager.I.FindNearMonster(
-                    transform.position, 
+                    transform.position,
                     InspectorManager._InspectorManager.ScytheSwapSkillDis))
         {
             mon.OnDamage(InspectorManager._InspectorManager.ScytheSwapSkillDamage);
