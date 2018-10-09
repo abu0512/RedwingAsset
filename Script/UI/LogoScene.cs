@@ -25,6 +25,7 @@ public class LogoScene: MonoBehaviour
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
         }
     }
+
     IEnumerator StartLogo(Image _image, int _num)
     {
         do

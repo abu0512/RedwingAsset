@@ -38,7 +38,7 @@ public class PlayerParams : CharacterUI
     private void Awake()
     {
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
-        SPBar = GameObject.FindGameObjectWithTag("Stm").GetComponentInChildren<Image>();
+        //SPBar = GameObject.FindGameObjectWithTag("Stm").GetComponentInChildren<Image>();
     }
 
     public void SetHp()
@@ -181,16 +181,16 @@ public class PlayerParams : CharacterUI
         // Player 캐릭터의 체력과 스테미너의 값을 받아온다.
         SetHp();
         //SetScyHP();
-        SetSp();
+        //SetSp();
 
         // player 캐릭터 HP bar 실시간 UI 상태 변화
         HPlocalScale();
 
         // player 캐릭터 스테미너 bar 실시간 UI 상태 변화
-        SPlocalScale();
+        //SPlocalScale();
 
         // Player 캐릭터 타입 + 무기 타입 실시간 상태 변화
-        SetPlayerType();
+        //SetPlayerType();
 
         // Player 캐릭터 파워 게이지 Bar 실시간 UI 상태 변화
         //GaugelocalScale();
