@@ -13,7 +13,7 @@ public struct EffectInfo
 
 public enum EffectType
 {
-    Hero_Tanker_Attack1,
+    Hero_Tanker_Attack1 = 0,
     Hero_Tanker_Attack2,
     Hero_Tanker_Attack3,
     Hero_Tanker_Attack4,
@@ -59,7 +59,10 @@ public class EffectManager : MonoBehaviour
         EffectType[] types = Enum.GetValues(typeof(EffectType)) as EffectType[];
 
         foreach (EffectType type in types)
+        {
             _effectPool[type] = new List<GameObject>();
+            _effectPool[type].Add(CreateEffect(type));
+        }
     }
     
     public int EventOnEffect(int types)

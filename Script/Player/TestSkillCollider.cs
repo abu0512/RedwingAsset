@@ -97,7 +97,6 @@ public class TestSkillCollider : MonoBehaviour
                     }
                 }
             }
-            CPlayerManager._instance._nPowerGauge += InspectorManager._InspectorManager.nPlayerHitAddPower;
             if (nCombo == 0) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
             if (nCombo == 1) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
             if (nCombo == 2) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);

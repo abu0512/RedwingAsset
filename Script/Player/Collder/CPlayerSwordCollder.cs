@@ -7,7 +7,7 @@ public class CPlayerSwordCollder : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom")
+        if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom" || other.tag == "EliteShaman")
         {
             int nCombo = CPlayerManager._instance.m_nAttackCombo - 1;
             if (nCombo == -1) nCombo = 1;
@@ -39,7 +39,7 @@ public class CPlayerSwordCollder : MonoBehaviour
 
                 else if (other.tag == "ShildMushroom")
                 {
-                    if(other.GetComponent<ShildMushroom>().GroggyEnd == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)              
+                    if (other.GetComponent<ShildMushroom>().GroggyEnd == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
@@ -125,7 +125,6 @@ public class CPlayerSwordCollder : MonoBehaviour
                     //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
                     //}
                 }
-
                 else
                 {
                     other.GetComponent<WitchBossEffect>().OnScytheEffect(nCombo);
@@ -133,7 +132,6 @@ public class CPlayerSwordCollder : MonoBehaviour
                     other.GetComponent<WitchBoss>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
                 }
             }
-            CPlayerManager._instance._nPowerGauge += InspectorManager._InspectorManager.nPlayerHitAddPower;
             if (nCombo == 0) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
             if (nCombo == 1) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);
             if (nCombo == 2) CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.1f);

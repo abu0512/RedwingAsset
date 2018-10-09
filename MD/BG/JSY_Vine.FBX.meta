@@ -23,7 +23,7 @@ ModelImporter:
     4300002: Thin
     4300004: Middle
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

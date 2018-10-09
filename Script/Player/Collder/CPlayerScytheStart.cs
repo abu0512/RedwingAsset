@@ -51,7 +51,6 @@ public class CPlayerScytheStart : MonoBehaviour
             CPlayerManager._instance._PlayerAni_Contorl.AniStiff();
             PlayerParams._instance.nGauge = 0;
             PlayerParams._instance.GaugeOff();
-            CPlayerManager._instance._nPowerGauge = 0;
         }
     }
 }

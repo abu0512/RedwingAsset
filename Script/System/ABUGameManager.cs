@@ -25,12 +25,12 @@ public class ABUGameManager : MonoBehaviour
         _monsterPhase = FindObjectOfType<WitchMonsterPhaseManager>();
     }
 
-    void Start ()
+    void Start()
     {
-		
-	}
-	
-	void Update ()
+
+    }
+
+    void Update()
     {
     }
 }
