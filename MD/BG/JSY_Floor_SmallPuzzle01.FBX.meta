@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Floor_SmallPuzzle01
+    4300002: Pillar_SmallPuzzle01
   materials:
     importMaterials: 0
     materialName: 0
