@@ -42,10 +42,11 @@ public class StageVine : MonoBehaviour
             return;
 
         _growth -= _speed * Time.deltaTime;
-        _mat.SetFloat("_growth", _growth);
 
         if (_growth <= MinGrowth)
             _growth = MinGrowth;
+
+        _mat.SetFloat("_growth", _growth);
     }
 
     private void GrowthOnUpdate()
@@ -54,10 +55,11 @@ public class StageVine : MonoBehaviour
             return;
 
         _growth += _speed * Time.deltaTime;
-        _mat.SetFloat("_growth", _growth);
 
         if (_growth >= MaxGrowth)
             _growth = MaxGrowth;
+
+        _mat.SetFloat("_growth", _growth);
     }
 
     public void SetVineState(bool flag)
