@@ -432,6 +432,7 @@ public class CPlayerManager : MonoBehaviour
                     transform.position,
                     InspectorManager._InspectorManager.ScytheSwapSkillDis))
         {
+            CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             mon.OnDamage(InspectorManager._InspectorManager.ScytheSwapSkillDamage);
         }
     }

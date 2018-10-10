@@ -12,10 +12,6 @@ public class CPlayerScytheStart : MonoBehaviour
             CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             float SkillDamge1 = InspectorManager._InspectorManager.fScytheStartSkillDamge;
             float SkillDamge2 = InspectorManager._InspectorManager.fScytheSkill2Damge;
-            int PowerGauge = PlayerParams._instance.nGauge;
-
-            float Damge1 = SkillDamge1 + (SkillDamge1 * PowerGauge / 6);
-            float Damge2 = SkillDamge2 + (SkillDamge2 * PowerGauge / 6);
 
 
             if (other.tag == "Guard")
@@ -24,9 +20,9 @@ public class CPlayerScytheStart : MonoBehaviour
                 other.GetComponent<GuardMushroomEffect>().GuardSwapEffect();
 
                 if (CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
-                    other.GetComponent<GuardMushroom>().OnDamage(Damge2);
+                    other.GetComponent<GuardMushroom>().OnDamage(SkillDamge2);
                 else
-                    other.GetComponent<GuardMushroom>().OnDamage(Damge1);
+                    other.GetComponent<GuardMushroom>().OnDamage(SkillDamge1);
             }
 
             else if (other.tag == "Queen")
@@ -35,22 +31,20 @@ public class CPlayerScytheStart : MonoBehaviour
                 other.GetComponent<QueenMushroomEffect>().QueenSwapEffect();
 
                 if (CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
-                    other.GetComponent<QueenMushroom>().OnDamage(Damge2);
+                    other.GetComponent<QueenMushroom>().OnDamage(SkillDamge2);
                 else
-                    other.GetComponent<QueenMushroom>().OnDamage(Damge1);
+                    other.GetComponent<QueenMushroom>().OnDamage(SkillDamge1);
             }
 
             else
             {
                 if (CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill2)
-                    other.GetComponent<WitchBoss>().OnDamage(Damge2);
+                    other.GetComponent<WitchBoss>().OnDamage(SkillDamge2);
                 else
-                    other.GetComponent<WitchBoss>().OnDamage(Damge1);
+                    other.GetComponent<WitchBoss>().OnDamage(SkillDamge1);
             }
 
             CPlayerManager._instance._PlayerAni_Contorl.AniStiff();
-            PlayerParams._instance.nGauge = 0;
-            PlayerParams._instance.GaugeOff();
         }
     }
 }

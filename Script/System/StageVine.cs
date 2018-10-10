@@ -10,7 +10,8 @@ public class StageVine : MonoBehaviour
     private Material _mat;
 
     private float _growth;
-    private float _speed;
+    public float _upSpeed;
+    public float _downSpeed;
     private bool _isOn;
 
     // properties
@@ -21,7 +22,6 @@ public class StageVine : MonoBehaviour
         _mat = GetComponent<MeshRenderer>().material;
         _growth = MaxGrowth;
         _isOn = false;
-        _speed = 2.0f;
     }
 
 	void Start ()
@@ -41,11 +41,12 @@ public class StageVine : MonoBehaviour
         if (_isOn)
             return;
 
-        _growth -= _speed * Time.deltaTime;
-        _mat.SetFloat("_growth", _growth);
+        _growth -= _downSpeed * Time.deltaTime;
 
         if (_growth <= MinGrowth)
             _growth = MinGrowth;
+
+        _mat.SetFloat("_growth", _growth);
     }
 
     private void GrowthOnUpdate()
@@ -53,11 +54,12 @@ public class StageVine : MonoBehaviour
         if (!_isOn)
             return;
 
-        _growth += _speed * Time.deltaTime;
-        _mat.SetFloat("_growth", _growth);
+        _growth += _upSpeed * Time.deltaTime;
 
         if (_growth >= MaxGrowth)
             _growth = MaxGrowth;
+
+        _mat.SetFloat("_growth", _growth);
     }
 
     public void SetVineState(bool flag)

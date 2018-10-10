@@ -56,7 +56,7 @@ public class IntroScene : MonoBehaviour {
             else if (fades >= 0.93f && stack == 0)
             {
                 stack++;
-                SceneManager.LoadSceneAsync("JJTest");
+                SceneManager.LoadSceneAsync("ABU_3");
             }
         }
     }
@@ -96,7 +96,7 @@ public class IntroScene : MonoBehaviour {
             yield return null;
         }
         Debug.Log("영상이 끝났습니다.");
-        SceneManager.LoadSceneAsync("JJTest");
+        SceneManager.LoadSceneAsync("ABU_3");
     }
 
     void Update()

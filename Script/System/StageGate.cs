@@ -60,7 +60,7 @@ public class StageGate : MonoBehaviour
                 continue;
             }
 
-            if (_vines[i - 1].Growth > (_vines[i - 1].MaxGrowth / 2))
+            if (_vines[i - 1].Growth < (_vines[i - 1].MaxGrowth / 2))
                 continue;
 
             _vines[i].SetVineState(true);
