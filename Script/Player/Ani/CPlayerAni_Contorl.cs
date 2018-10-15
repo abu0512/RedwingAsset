@@ -62,6 +62,8 @@ public class CPlayerAni_Contorl : CPlayerBase
     private bool isSweatCountTime;
     private bool isSweatChackSet;
 
+    private float _downwardskillcool;
+    public float DownWardSkillCool { get { return _downwardskillcool; } set { value = _downwardskillcool; } }
     private float _scytheSkillCool;
     public bool ScytheSkillOn
     {
@@ -71,6 +73,8 @@ public class CPlayerAni_Contorl : CPlayerBase
         }
     }
 
+    private float _rushskillcool;
+    public float RushSkillcool { get { return _rushskillcool; } set { value = _rushskillcool; } }
     private float _shieldSkillCool;
     public bool ShieldSkillOn
     {
@@ -115,6 +119,7 @@ public class CPlayerAni_Contorl : CPlayerBase
 
         ScytheSkillCoolTime();
         ShieldSkillCoolTime();
+        SkillcoolChange();
     }
     void ShieldAniGetKey()
     {
@@ -503,5 +508,11 @@ public class CPlayerAni_Contorl : CPlayerBase
             return;
 
         _shieldSkillCool -= Time.deltaTime;
+    }
+
+    private void SkillcoolChange()
+    {
+        _downwardskillcool = _scytheSkillCool;
+        _rushskillcool = _shieldSkillCool;
     }
 }

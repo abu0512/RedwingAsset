@@ -48,6 +48,8 @@ public class CPlayerSwap : CPlayerBase
     private bool isBlinkSwapKey;
     private bool isBlinkOut;
 
+    private float _swapcool;
+    public float SwapCool { get { return _swapcool; } set { value = _swapcool; } }
     private float _swapCoolTime;
     public bool SwapOn
     {
@@ -57,6 +59,8 @@ public class CPlayerSwap : CPlayerBase
         }
     }
 
+    private float _isscythetime;
+    public float isScytheTime { get { return _isscythetime; } set { value = _isscythetime; } }
     private float _scytheDuration;
 
 
@@ -80,6 +84,7 @@ public class CPlayerSwap : CPlayerBase
     }
     void Update()
     {
+        CoolTimeChange();
         SwapKey();
         //EffectTimer();
         SwapAttacker();
@@ -406,6 +411,12 @@ public class CPlayerSwap : CPlayerBase
             return;
 
         _swapCoolTime += Time.deltaTime;
+    }
+
+    private void CoolTimeChange()
+    {
+        _swapcool = _swapCoolTime;
+        _isscythetime = _scytheDuration;
     }
 }
 

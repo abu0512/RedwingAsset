@@ -46,14 +46,14 @@ public class EndingScene : MonoBehaviour {
         if (Skip)
         {
             time += Time.deltaTime;
-            if (fades < 0.94f && time >= 0.1f)
+            if (fades < 0.99f && time >= 0.1f)
             {
-                fades += 0.08f;
+                fades += 0.06f;
                 fade.color = new Color(0, 0, 0, fades);
                 time = 0;
             }
 
-            else if (fades >= 0.93f && stack == 0)
+            else if (fades >= 0.98f && stack == 0)
             {
                 SceneManager.LoadSceneAsync("Title");
             }
@@ -101,7 +101,7 @@ public class EndingScene : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
         {
-            ifSkip.SetActive(false);
+            EndingMovie.Pause();
             Skip = true;
         }
 

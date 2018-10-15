@@ -13,6 +13,14 @@ public class CharacterUI : MonoBehaviour
     public float curHP { get; set; }
     public float maxSP { get; set; }
     public float curSP { get; set; }
+    public float maxRush { get; set; }
+    public float curRush { get; set; }
+    public float maxDownward { get; set; }
+    public float curDownward { get; set; }
+    public float maxSwap { get; set; }
+    public float curSwap { get; set; }
+    public float maxScytheTime { get; set; }
+    public float curScytheTime { get; set; }
 
 
     void Start()
