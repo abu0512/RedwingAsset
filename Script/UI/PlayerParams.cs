@@ -63,10 +63,8 @@ public class PlayerParams : CharacterUI
         curRush = maxRush;
         maxDownward = InspectorManager._InspectorManager.ShieldSkillCoolTime;
         curDownward = maxDownward;
-        maxSwap = InspectorManager._InspectorManager.SwapMaxCoolTime;
-        curSwap = CPlayerManager._instance._PlayerSwap.SwapCool;
-        maxScytheTime = InspectorManager._InspectorManager.ScytheDurationTime;
-        curScytheTime = CPlayerManager._instance._PlayerSwap.isScytheTime;
+        maxSwap = InspectorManager._InspectorManager.SwapMaxGauge;
+        curSwap = CPlayerManager._instance.ScytheGauge;
 
     }
 
@@ -95,17 +93,19 @@ public class PlayerParams : CharacterUI
 
     public void Skill_SwapSet()
     {
-        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
-        {
-            curSwap = Mathf.Clamp(CPlayerManager._instance._PlayerSwap.SwapCool, 0, maxSwap);
-            SwapBar.fillAmount = curSwap / maxSwap;
-        }
+        curSwap = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxSwap);
+        SwapBar.fillAmount = curSwap / maxSwap;
+        //if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+        //{
+        //    curSwap = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxSwap);
+        //    SwapBar.fillAmount = curSwap / maxSwap;
+        //}
 
-        else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
-        {
-            curScytheTime = Mathf.Clamp(CPlayerManager._instance._PlayerSwap.isScytheTime, 0, maxScytheTime);
-            SwapBar.fillAmount = curScytheTime / maxScytheTime;
-        }
+        //else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        //{
+        //    curScytheTime = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxScytheTime);
+        //    SwapBar.fillAmount = curScytheTime / maxScytheTime;
+        //}
     }
 
     public void Skill_SwapImageSet()
@@ -357,6 +357,7 @@ public class PlayerParams : CharacterUI
 
     void Update()
     {
+        print(curSwap);
         // Player 캐릭터의 체력 값을 받아온다.
         HpSet();
 
