@@ -35,7 +35,7 @@ public class ShildMushroomEffect : MonoBehaviour {
     public IEnumerator DefenseObjectPool()
     {
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < DefenseEffects.Length; i++)
         {
             if(DefenseEffects[i].activeInHierarchy == true && DfEstart[i] > 1f)
             {
@@ -48,7 +48,7 @@ public class ShildMushroomEffect : MonoBehaviour {
 
     public void DefenEffect()
     {
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < DefenseEffects.Length; i++)
         {
             StartCoroutine(DefenseObjectPool());
 
@@ -74,7 +74,7 @@ public class ShildMushroomEffect : MonoBehaviour {
         {
             _home.y += 2f;
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < ScytheHitEffects.Length; i++)
             {
                 ScytheHitEffects[i].transform.position = ScytheHitEffects[i].transform.position;
             }
@@ -99,7 +99,7 @@ public class ShildMushroomEffect : MonoBehaviour {
             _home.y -= 0.5f;
             _home.z += 1.2f;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < ShildHitEffects.Length; i++)
             {
                 ShildHitEffects[i].transform.position = ShildHitEffects[i].transform.position;
             }
@@ -129,7 +129,7 @@ public class ShildMushroomEffect : MonoBehaviour {
 
     public void SetHitEffect()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < ShildHitEffects.Length; i++)
         {
             if (ShildHitEffects[i].activeInHierarchy)
             {
@@ -142,7 +142,7 @@ public class ShildMushroomEffect : MonoBehaviour {
             }
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < ScytheHitEffects.Length; i++)
         {
             if (ScytheHitEffects[i].activeInHierarchy)
             {
