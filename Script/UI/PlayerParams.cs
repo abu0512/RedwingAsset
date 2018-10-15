@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -7,11 +8,49 @@ public class PlayerParams : CharacterUI
 {
     public static PlayerParams _instance = null;
 
+    protected UiManager uiManager;
     protected CPlayerManager _CPlayerManager;
     protected CPlayerManager CPlayerManager { get { return _CPlayerManager; } set { _CPlayerManager = value; } }
 
-    public string names { get; set; }
+    [Header("HP")]
     public Image HPBar;
+    public string names { get; set; }
+
+    [Header("Swap")]
+    public Image SwapBar;
+    public Image[] SwapOn;
+    public Image[] SwapOff;
+    public Image[] SwapGaugeFull;
+
+    [Header("Skill")]
+    public GameObject NowisTanker;
+    public GameObject NowisDealer;
+    public Image Defense;
+    public Image[] DefenseOn;
+    public Image[] DefenseOff;
+    public Image Roll;
+    public Image[] RollOn;
+    public Image[] RollOff;
+    public Image Rush;
+    public Image[] RushOn;
+    public Image[] RushOff;
+    public Image Heal;
+    public Image[] HealOn;
+    public Image[] HealOff;
+    public Image Blink;
+    public Image[] BlinkOn;
+    public Image[] BlinkOff;
+    public Image Downward;
+    public Image[] DownwardOn;
+    public Image[] DownwardOff;
+
+    [Header("Tab")]
+    public GameObject Skill_Explanation;
+    public Image Return_Explanation;
+    public Image TankerControl;
+    public Image DealerControl;
+    [NonSerialized]
+    public bool Explanation_On = false;
 
     public override void InitParams()
     {
@@ -20,135 +59,318 @@ public class PlayerParams : CharacterUI
         names = "Player";
         maxHP = CPlayerManager._instance.m_PlayerMaxHp;
         curHP = maxHP;
+        maxRush = InspectorManager._InspectorManager.ShieldSkillCoolTime;
+        curRush = maxRush;
+        maxDownward = InspectorManager._InspectorManager.ShieldSkillCoolTime;
+        curDownward = maxDownward;
+        maxSwap = InspectorManager._InspectorManager.SwapMaxGauge;
+        curSwap = CPlayerManager._instance.ScytheGauge;
+
     }
 
     private void Awake()
     {
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
+        InitParams();
     }
 
-    public void SetHp()
+    public void ImageSet()
     {
-        curHP = CPlayerManager._instance.m_PlayerHp;
-        curHP = Mathf.Clamp(curHP, 0, maxHP);
+        HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
+        //Defense = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
+        //Roll = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
+        //Rush = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
+        //Heal = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
+        //Blink = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
+        //Downward = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
     }
 
-    public void HPlocalScale()
+    public void HpSet()
     {
+        curHP = Mathf.Clamp(CPlayerManager._instance.m_PlayerHp, 0, maxHP);
         HPBar.fillAmount = curHP / maxHP;
     }
 
-    //public void GaugelocalScale()
-    //{
-    //    PowerGauge = CPlayerManager._instance._nPowerGauge;
-    //    PowerGauge = Mathf.Clamp(PowerGauge, 0, 300);
+    public void Skill_SwapSet()
+    {
+        curSwap = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxSwap);
+        SwapBar.fillAmount = curSwap / maxSwap;
+        //if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+        //{
+        //    curSwap = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxSwap);
+        //    SwapBar.fillAmount = curSwap / maxSwap;
+        //}
 
-    //    if (PowerGauge <= 50)
-    //    {
-    //        GaugeBar[0].fillAmount = PowerGauge / 50;
-    //        for(int j = 1; j < GaugeBar.Length; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 0;
-    //        }
-    //    }
-    //    else if (50 < PowerGauge && PowerGauge <= 100)
-    //    {
-    //        float i = PowerGauge - 50;
-    //        GaugeBar[0].fillAmount = 1 / 1;
-    //        GaugeBar[1].fillAmount = i / 50;
-    //        for (int j = 2; j < GaugeBar.Length; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 0;
-    //        }
-    //    }
-    //    else if (100 < PowerGauge && PowerGauge <= 150)
-    //    {
-    //        float i = PowerGauge - 100;
+        //else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        //{
+        //    curScytheTime = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxScytheTime);
+        //    SwapBar.fillAmount = curScytheTime / maxScytheTime;
+        //}
+    }
 
-    //        for (int j = 0; j < 2; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 1 / 1;
-    //        }
-    //        GaugeBar[2].fillAmount = i / 50;
-    //        for (int j = 3; j < GaugeBar.Length; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 0;
-    //        }
-    //    }
-    //    else if (150 < PowerGauge && PowerGauge <= 200)
-    //    {
-    //        float i = PowerGauge - 150;
+    public void Skill_SwapImageSet()
+    {
+        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+        {
+            if (SwapBar.fillAmount == 1)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    SwapOff[i].enabled = false;
+                }
 
-    //        for (int j = 0; j < 3; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 1 / 1;
-    //        }
-    //        GaugeBar[3].fillAmount = i / 50;
-    //        for (int j = 4; j < GaugeBar.Length; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 0;
-    //        }
-    //    }
-    //    else if (200 < PowerGauge && PowerGauge <= 250)
-    //    {
-    //        float i = PowerGauge - 200;
+                SwapGaugeFull[0].enabled = true;
+                SwapGaugeFull[1].enabled = false;
+                SwapOn[0].enabled = true;
+                SwapOn[1].enabled = true;
+            }
 
-    //        for (int j = 0; j < 4; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 1 / 1;
-    //        }
-    //        GaugeBar[4].fillAmount = i / 50;
-    //        for (int j = 5; j < GaugeBar.Length; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 0;
-    //        }
-    //    }
-    //    else if (250 < PowerGauge && PowerGauge <= 300)
-    //    {
-    //        float i = PowerGauge - 250;
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    SwapOff[i].enabled = true;
+                }
 
-    //        for(int j = 0; j < 5; j++)
-    //        {
-    //            GaugeBar[j].fillAmount = 1 / 1;
-    //        }
-    //        GaugeBar[5].fillAmount = i / 50;
-    //    }
-    //}
+                SwapGaugeFull[0].enabled = false;
+                SwapGaugeFull[1].enabled = true;
+                SwapOn[0].enabled = false;
+                SwapOn[1].enabled = false;
+            }
+        }
 
-    //public void SetSp()
-    //{
-    //    curSP = CPlayerManager._instance.m_PlayerStm;
-    //    curSP = Mathf.Clamp(curSP, 0, maxSP);
-    //}
+        else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        {
+            for (int i = 0; i < 3; i++)
+            {             
+                SwapOff[i].enabled = false;
+            }
 
-    //public void SPlocalScale()
-    //{
-    //    SPBar.fillAmount = curSP / maxSP;
-    //}
+            SwapOn[0].enabled = true;
+            SwapOn[1].enabled = true;
+            SwapGaugeFull[0].enabled = false;
+            SwapGaugeFull[1].enabled = true;
+        }
 
-    //public void SetPlayerType()
-    //{
-    //    if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
-    //    {
-    //        PlayerType[1].SetActive(false);
-    //        PlayerWType[1].SetActive(false);
-    //        PlayerType[0].SetActive(true);
-    //        PlayerWType[0].SetActive(true);
-    //    }
+    }
+    public void Skill_ExplanationSet()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+            Explanation_On = !Explanation_On;
+        Skill_Explanation.SetActive(true);
+    }
 
-    //    else
-    //    {
-    //        PlayerType[1].SetActive(true);
-    //        PlayerWType[1].SetActive(true);
-    //        PlayerType[0].SetActive(false);
-    //        PlayerWType[0].SetActive(false);
-    //    }
-    //}
+    public void Skill_ExplanationImageSet()
+    {
+        if (!Explanation_On)
+        {
+            Skill_Explanation.SetActive(false);
+            Return_Explanation.enabled = false;
+            Time.timeScale = 1f;
+        }
+
+        if (Explanation_On)
+        {
+            Time.timeScale = 0;
+            Return_Explanation.enabled = true;
+
+            if(CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+            {
+                TankerControl.enabled = true;
+                DealerControl.enabled = false;
+            }
+
+            else
+            {
+                DealerControl.enabled = true;
+                TankerControl.enabled = false;
+            }
+        }
+    }
+
+    public void Skill_GaugeSet()
+    {
+        if(CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+        {
+            NowisTanker.SetActive(true);
+            NowisDealer.SetActive(false);
+        }
+
+        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        {
+            NowisDealer.SetActive(true);
+            NowisTanker.SetActive(false);
+        }
+    }
+
+    public void Skill_GaugeImageSet()
+    {
+        // Tanker
+        Defense.fillAmount = 1 / 1;
+        Roll.fillAmount = 1 / 1;
+        curRush = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.RushSkillcool, 0, maxRush);
+        Rush.fillAmount = 1 - (curRush / maxRush);
+
+        if(Defense.fillAmount == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                DefenseOn[i].enabled = true;
+            }
+
+            DefenseOff[0].enabled = false;
+            DefenseOff[1].enabled = false;
+        }
+
+        if(Defense.fillAmount < 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                DefenseOn[i].enabled = false;
+            }
+
+            DefenseOff[0].enabled = true;
+            DefenseOff[1].enabled = true;
+        }
+
+        if (Roll.fillAmount == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                RollOn[i].enabled = true;
+            }
+
+            RollOff[0].enabled = false;
+            RollOff[1].enabled = false;
+        }
+
+        if (Roll.fillAmount < 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                RollOn[i].enabled = false;
+            }
+
+            RollOff[0].enabled = true;
+            RollOff[1].enabled = true;
+        }
+
+        if (Rush.fillAmount == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                RushOn[i].enabled = true;
+            }
+
+            RushOff[0].enabled = false;
+            RushOff[1].enabled = false;
+        }
+
+        if (Rush.fillAmount < 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                RushOn[i].enabled = false;
+            }
+
+            RushOff[0].enabled = true;
+            RushOff[1].enabled = true;
+        }
+
+        // Dealer
+        Heal.fillAmount = 1 / 1;
+        Blink.fillAmount = 1 / 1;
+        curDownward = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.DownWardSkillCool, 0, maxDownward);
+        Downward.fillAmount = 1 - (curDownward / maxDownward);
+
+        if (Heal.fillAmount == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                HealOn[i].enabled = true;
+            }
+
+            HealOff[0].enabled = false;
+            HealOff[1].enabled = false;
+        }
+
+        if (Heal.fillAmount < 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                HealOn[i].enabled = false;
+            }
+
+            HealOff[0].enabled = true;
+            HealOff[1].enabled = true;
+        }
+
+        if (Blink.fillAmount == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                BlinkOn[i].enabled = true;
+            }
+
+            BlinkOff[0].enabled = false;
+            BlinkOff[1].enabled = false;
+        }
+
+        if (Blink.fillAmount < 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                BlinkOn[i].enabled = false;
+            }
+
+            BlinkOff[0].enabled = true;
+            BlinkOff[1].enabled = true;
+        }
+
+        if (Downward.fillAmount == 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                DownwardOn[i].enabled = true;
+            }
+
+            DownwardOff[0].enabled = false;
+            DownwardOff[1].enabled = false;
+        }
+
+        if (Downward.fillAmount < 1)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                DownwardOn[i].enabled = false;
+            }
+
+            DownwardOff[0].enabled = true;
+            DownwardOff[1].enabled = true;
+        }
+    }
+
+    void Start()
+    {
+        Skill_Explanation.SetActive(false);
+    }
 
     void Update()
     {
+        print(curSwap);
         // Player 캐릭터의 체력 값을 받아온다.
-        SetHp();
-        HPlocalScale();
+        HpSet();
+
+        // Skill_Explanation
+        Skill_ExplanationSet();
+        Skill_ExplanationImageSet();
+
+        // Skill_Gauge
+        Skill_GaugeSet();
+        Skill_GaugeImageSet();
+
+        // Skill_Swap
+        Skill_SwapSet();
+        Skill_SwapImageSet();
     }
 }

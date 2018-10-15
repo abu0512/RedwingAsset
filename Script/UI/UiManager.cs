@@ -57,9 +57,9 @@ public class UiManager : MonoBehaviour
 
     void GamePauseSet()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !PlayerParams._instance.Explanation_On)
             isGamePause = !isGamePause;
-            GamePasueUI.SetActive(true);
+        GamePasueUI.SetActive(true);
     }
 
     void GameOverSet()
@@ -75,7 +75,14 @@ public class UiManager : MonoBehaviour
         if (!isGamePause)
         {
             GamePasueUI.SetActive(false);
-            Time.timeScale = 1f;
+
+            if (PlayerParams._instance.Explanation_On)
+                Time.timeScale = 0f;
+
+            else
+            {
+                Time.timeScale = 1f;
+            }
         }
 
         if (isGamePause)
@@ -114,7 +121,7 @@ public class UiManager : MonoBehaviour
             switch (PauseState)
             {
                 case 0:
-                    SceneManager.LoadSceneAsync("JJTitle");
+                    SceneManager.LoadSceneAsync("Title");
                     break;
                 case 1:
                     isGamePause = false;
@@ -159,7 +166,7 @@ public class UiManager : MonoBehaviour
                     SceneManager.LoadSceneAsync("JJTest");
                     break;
                 case 1:
-                    SceneManager.LoadSceneAsync("JJTitle");
+                    SceneManager.LoadSceneAsync("Title");
                     break;
             }
         }
@@ -173,7 +180,7 @@ public class UiManager : MonoBehaviour
     }
 
     void Update()
-    {  //BossParamsSet();
+    {  
         GamePauseSet();
         GamePause();
         GameOverSet();

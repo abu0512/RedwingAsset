@@ -31,6 +31,7 @@ public class BossParams : CharacterUI
     {
         curHP = _Boss.Hp;
         curHP = Mathf.Clamp(curHP, 0, maxHP);
+
     }
 
     public void SetSHp()

@@ -80,6 +80,7 @@ ModelImporter:
     100144: Tongue_001
     100146: Tongue_002
     100148: Tongue_003
+    100150: Dummy001
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -155,6 +156,7 @@ ModelImporter:
     400144: Tongue_001
     400146: Tongue_002
     400148: Tongue_003
+    400150: Dummy001
     7400000: Die
     9500000: //RootNode
   materials:
@@ -175,44 +177,26 @@ ModelImporter:
       that will be discarded.\n\t'Bip001 L UpperArm' has translation animation that
       will be discarded.\n\t'Bip001 L Forearm' has translation animation that will
       be discarded.\n\t'Bip001 L Hand' has translation animation that will be discarded.\n\t'Bip001
-      L Finger0' has translation animation that will be discarded.\n\t'Bip001 L Finger01'
-      has translation animation that will be discarded.\n\t'Bip001 L Finger02' has
-      translation animation that will be discarded.\n\t'Bip001 L Finger1' has translation
-      animation that will be discarded.\n\t'Bip001 L Finger11' has translation animation
-      that will be discarded.\n\t'Bip001 L Finger12' has translation animation that
-      will be discarded.\n\t'Bip001 L Finger2' has translation animation that will
-      be discarded.\n\t'Bip001 L Finger21' has translation animation that will be
-      discarded.\n\t'Bip001 L Finger22' has translation animation that will be discarded.\n\t'Bip001
-      L Finger3' has translation animation that will be discarded.\n\t'Bip001 L Finger31'
-      has translation animation that will be discarded.\n\t'Bip001 L Finger32' has
-      translation animation that will be discarded.\n\t'Bip001 L Finger4' has translation
-      animation that will be discarded.\n\t'Bip001 L Finger41' has translation animation
-      that will be discarded.\n\t'Bip001 L Finger42' has translation animation that
-      will be discarded.\n\t'Bip001 R UpperArm' has translation animation that will
-      be discarded.\n\t'Bip001 R Hand' has translation animation that will be discarded.\n\t'Bip001
-      R Finger01' has translation animation that will be discarded.\n\t'Bip001 R Finger02'
-      has translation animation that will be discarded.\n\t'Bip001 R Finger1' has
-      translation animation that will be discarded.\n\t'Bip001 R Finger11' has translation
-      animation that will be discarded.\n\t'Bip001 R Finger12' has translation animation
-      that will be discarded.\n\t'Bip001 R Finger2' has translation animation that
-      will be discarded.\n\t'Bip001 R Finger21' has translation animation that will
-      be discarded.\n\t'Bip001 R Finger22' has translation animation that will be
-      discarded.\n\t'Bip001 R Finger31' has translation animation that will be discarded.\n\t'Bip001
-      R Finger32' has translation animation that will be discarded.\n\t'Bip001 R Finger4'
-      has translation animation that will be discarded.\n\t'Bip001 R Finger41' has
+      L Finger12' has translation animation that will be discarded.\n\t'Bip001 L Finger31'
+      has translation animation that will be discarded.\n\t'Bip001 R Forearm' has
+      translation animation that will be discarded.\n\t'Bip001 R Hand' has translation
+      animation that will be discarded.\n\t'Bip001 R Finger0' has translation animation
+      that will be discarded.\n\t'Bip001 R Finger11' has translation animation that
+      will be discarded.\n\t'Bip001 R Finger12' has translation animation that will
+      be discarded.\n\t'Bip001 R Finger21' has translation animation that will be
+      discarded.\n\t'Bip001 R Finger22' has translation animation that will be discarded.\n\t'Bip001
+      R Finger3' has translation animation that will be discarded.\n\t'Bip001 R Finger31'
+      has translation animation that will be discarded.\n\t'Bip001 R Finger32' has
       translation animation that will be discarded.\n\t'Bip001 R Finger42' has translation
-      animation that will be discarded.\n\t'Bip001 L Calf' has translation animation
-      that will be discarded.\n\t'Bip001 L Foot' has translation animation that will
-      be discarded.\n\t'Bip001 L Toe0' has translation animation that will be discarded.\n\t'Bip001
-      R Calf' has translation animation that will be discarded.\n\t'Bip001 R Foot'
-      has translation animation that will be discarded.\n\t'Bip001 R Toe0' has translation
-      animation that will be discarded.\n"
+      animation that will be discarded.\n\t'Bip001 L Toe0' has translation animation
+      that will be discarded.\n\t'Bip001 R Calf' has translation animation that will
+      be discarded.\n\t'Bip001 R Foot' has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
-    animationRotationError: 0.5
-    animationPositionError: 0.5
-    animationScaleError: 0.5
+    animationRotationError: 0
+    animationPositionError: 0
+    animationScaleError: 0
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
@@ -224,7 +208,7 @@ ModelImporter:
       lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.3
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
