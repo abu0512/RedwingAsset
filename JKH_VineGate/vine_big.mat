@@ -102,7 +102,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Tess: 4
-    - _Thinkness: -0.32
+    - _Thinkness: -0.28
     - _UVSec: 0
     - _ZWrite: 1
     - _growth: 0.67
