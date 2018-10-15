@@ -48,18 +48,6 @@ public class CPlayerSwap : CPlayerBase
     private bool isBlinkSwapKey;
     private bool isBlinkOut;
 
-    private float _swapCoolTime;
-    public bool SwapOn
-    {
-        get
-        {
-            return _swapCoolTime >= InspectorManager._InspectorManager.SwapMaxCoolTime;
-        }
-    }
-
-    private float _scytheDuration;
-
-
     void Start()
     {
         m_fDisMin = 1.5f;
@@ -75,8 +63,6 @@ public class CPlayerSwap : CPlayerBase
         isBlink = false;
         isBlinkSwapKey = false;
         isBlinkOut = true;
-        _swapCoolTime = InspectorManager._InspectorManager.SwapMaxCoolTime;
-        _scytheDuration = 0.0f;
     }
     void Update()
     {
@@ -85,7 +71,6 @@ public class CPlayerSwap : CPlayerBase
         SwapAttacker();
         TelPoEffect();
         BlinkPlayer();
-        CoolTimeRun();
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && _PlayerMode == PlayerMode.Scythe && _PlayerManager.m_PlayerStm > 30f)
         {
@@ -105,7 +90,7 @@ public class CPlayerSwap : CPlayerBase
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                if (!SwapOn)
+                if (!_PlayerManager.CanSwap)
                     return;
 
                 if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Dash)
@@ -123,7 +108,7 @@ public class CPlayerSwap : CPlayerBase
         }
         else
         {
-            _scytheDuration -= Time.deltaTime;
+            _PlayerManager.ScytheGauge -= Time.deltaTime * 5.0f;
             if (!isBlinkSwapKey)
             {
                 if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Skill1 ||
@@ -131,7 +116,7 @@ public class CPlayerSwap : CPlayerBase
                     return;
 
                 if (Input.GetKeyDown(KeyCode.Q) ||
-                    _scytheDuration <= 0.0f)
+                    _PlayerManager.ScytheGauge <= 0.0f)
                 {
                     ShildReset(0);
                 }
@@ -332,8 +317,6 @@ public class CPlayerSwap : CPlayerBase
             m_bSwapAttack = true;
         }
         Common();
-        _swapCoolTime = 0.0f;
-        _scytheDuration = InspectorManager._InspectorManager.ScytheDurationTime;
     }
     void ShildReset(int idx)
     {
@@ -352,7 +335,7 @@ public class CPlayerSwap : CPlayerBase
         }
         isBlink = false;
         Common();
-        _scytheDuration = 0.0f;
+        _PlayerManager.ScytheGauge = 0.0f;
     }
     void Common()
     {
@@ -398,14 +381,6 @@ public class CPlayerSwap : CPlayerBase
             EffectManager.I.OnEffect(EffectType.Tanker_AfterImage, pos, obj.transform.rotation, 1.0f, 1);
         else
             EffectManager.I.OnEffect(EffectType.Dealer_AfterImage, pos, obj.transform.rotation, 1.0f, 1);
-    }
-
-    private void CoolTimeRun()
-    {
-        if (SwapOn)
-            return;
-
-        _swapCoolTime += Time.deltaTime;
     }
 }
 

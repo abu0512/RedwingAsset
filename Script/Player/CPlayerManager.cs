@@ -115,6 +115,16 @@ public class CPlayerManager : MonoBehaviour
     private bool isPlayerHorn; // 플레이어 무적
     public bool _isPlayerHorn { get { return isPlayerHorn; } set { isPlayerHorn = value; } }
 
+    private float _scytheGauge; // 변신 게이지
+    public float ScytheGauge { get { return _scytheGauge; } set { _scytheGauge = value; } }
+    public bool CanSwap
+    {
+        get
+        {
+            return _scytheGauge >= InspectorManager._InspectorManager.SwapMaxGauge;
+        }
+    }
+
     void Awake()
     {
         CPlayerManager._instance = this;
@@ -144,6 +154,7 @@ public class CPlayerManager : MonoBehaviour
         m_fPlayerGauge = 100;
         m_nAttackCombo = 0;
         isDead = false;
+        _scytheGauge = 0.0f;
 
         m_bMove = true;
         m_bAnimator = true;
