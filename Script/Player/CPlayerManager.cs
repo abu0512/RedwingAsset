@@ -115,6 +115,7 @@ public class CPlayerManager : MonoBehaviour
     private bool isPlayerHorn; // 플레이어 무적
     public bool _isPlayerHorn { get { return isPlayerHorn; } set { isPlayerHorn = value; } }
 
+    [SerializeField]
     private float _scytheGauge; // 변신 게이지
     public float ScytheGauge { get { return _scytheGauge; } set { _scytheGauge = value; } }
     public bool CanSwap

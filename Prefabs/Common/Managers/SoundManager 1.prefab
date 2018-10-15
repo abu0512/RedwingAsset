@@ -57,7 +57,7 @@ MonoBehaviour:
   - Id: 2
     Path: event:/SFX/PC/Tanker/Walk/Walk_grass
   - Id: 15
-    Path: event:/SFX/PC/Dealer/Walk/Walk_Rock
+    Path: event:/SFX/PC/Hited/PC_dealer/hited_dealer_Meleeattack
   - Id: 16
     Path: event:/SFX/PC/Dealer/Walk/Walk_grass
   - Id: 3

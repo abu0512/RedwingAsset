@@ -28,7 +28,8 @@ public enum PlayerAni_State_Scythe
     Attack2,
     Attack3,
     Skill2,
-    Skill1
+    Skill1,
+    Damage,
 }
 
 
