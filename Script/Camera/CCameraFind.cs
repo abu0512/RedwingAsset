@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class CCameraFind : MonoBehaviour
 {
     public Transform _obj = null;
-
     public static CCameraFind _instance = null;
     public float CameraMoveSpeed = 120.0f;
     public GameObject CameraFollowObj;

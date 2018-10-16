@@ -5561,6 +5561,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4064155347129600}
+  - component: {fileID: 114796875243230772}
   m_Layer: 0
   m_Name: Bip001 Ponytail1
   m_TagString: Untagged
@@ -7478,6 +7479,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4932756761819824}
+  - component: {fileID: 114697210082395650}
   m_Layer: 0
   m_Name: Bip001 Ponytail2
   m_TagString: Untagged
@@ -16690,7 +16692,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931447256115088}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f226f449a0bcd347a6e86b8f629bc98, type: 3}
   m_Name: 
@@ -16945,6 +16947,71 @@ MonoBehaviour:
   m_bSwapAttack: 0
   m_fMoveDir: 0
   isBlink: 0
+--- !u!114 &114697210082395650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988290815133404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Root: {fileID: 4932756761819824}
+  m_UpdateRate: 60
+  m_UpdateMode: 0
+  m_Damping: 0.17
+  m_DampingDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Elasticity: 0.05
+  m_ElasticityDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Stiffness: 0.06
+  m_StiffnessDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Inert: 1
+  m_InertDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Radius: 0
+  m_RadiusDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_EndLength: 0
+  m_EndOffset: {x: 0, y: 0, z: 0}
+  m_Gravity: {x: 0, y: 0, z: 0}
+  m_Force: {x: 0, y: 0, z: 0}
+  m_Colliders:
+  - {fileID: 114010440896401630}
+  - {fileID: 114785744316959974}
+  - {fileID: 114727677589299716}
+  - {fileID: 114846858988251088}
+  - {fileID: 114702357200016986}
+  - {fileID: 114869835322645464}
+  m_Exclusions: []
+  m_FreezeAxis: 0
+  m_DistantDisable: 0
+  m_ReferenceObject: {fileID: 0}
+  m_DistanceToObject: 20
 --- !u!114 &114702357200016986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17032,6 +17099,71 @@ MonoBehaviour:
   m_Bound: 0
   m_Radius: 10
   m_Height: 0
+--- !u!114 &114796875243230772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756408856050406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Root: {fileID: 4064155347129600}
+  m_UpdateRate: 60
+  m_UpdateMode: 0
+  m_Damping: 0.17
+  m_DampingDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Elasticity: 0.05
+  m_ElasticityDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Stiffness: 0.06
+  m_StiffnessDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Inert: 1
+  m_InertDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Radius: 0
+  m_RadiusDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_EndLength: 0
+  m_EndOffset: {x: 0, y: 0, z: 0}
+  m_Gravity: {x: 0, y: 0, z: 0}
+  m_Force: {x: 0, y: 0, z: 0}
+  m_Colliders:
+  - {fileID: 114010440896401630}
+  - {fileID: 114785744316959974}
+  - {fileID: 114727677589299716}
+  - {fileID: 114846858988251088}
+  - {fileID: 114702357200016986}
+  - {fileID: 114869835322645464}
+  m_Exclusions: []
+  m_FreezeAxis: 0
+  m_DistantDisable: 0
+  m_ReferenceObject: {fileID: 0}
+  m_DistanceToObject: 20
 --- !u!114 &114820109734375852
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -129,6 +129,9 @@ public class WitchSkillArrowObject : MonoBehaviour
                     return;
             }
 
+            if (_centerArrow.gameObject.activeInHierarchy)
+                return;
+
             gameObject.SetActive(false);
             return;
         }

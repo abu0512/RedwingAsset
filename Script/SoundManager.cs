@@ -34,7 +34,10 @@ public enum PlaySoundId
     Boss_Attack2,
     Boss_Attack3,
     Boss_MonSpawn,
-    ABC,
+    Tanker_Swap,
+    Dealer_Swap,
+    Tanker_Rush,
+    Tanker_Defense,
 }
 
 [Serializable]

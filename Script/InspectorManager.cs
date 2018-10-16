@@ -55,6 +55,9 @@ public class InspectorManager : MonoBehaviour
     public float ScytheSwapSkillDis = 4.0f;
     public float ScytheSwapSkillDamage = 50.0f;
 
+    public float ScytheChopSkillDis = 4.0f;
+    public float ScytheChopSkillDamage = 100.0f;
+
     public float SwapMaxGauge = 100.0f;
 
     public float ScytheSkillCoolTime = 6.0f;
