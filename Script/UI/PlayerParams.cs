@@ -17,6 +17,8 @@ public class PlayerParams : CharacterUI
     public string names { get; set; }
 
     [Header("Swap")]
+    public GameObject EffectFull;
+    public GameObject EffectDealer;
     public Image SwapBar;
     public Image[] SwapOn;
     public Image[] SwapOff;
@@ -68,7 +70,7 @@ public class PlayerParams : CharacterUI
 
     }
 
-    private void Awake()
+    void Awake()
     {
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
         InitParams();
@@ -77,12 +79,6 @@ public class PlayerParams : CharacterUI
     public void ImageSet()
     {
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
-        //Defense = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
-        //Roll = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
-        //Rush = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
-        //Heal = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
-        //Blink = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
-        //Downward = GameObject.FindGameObjectWithTag("").GetComponentInChildren<Image>();
     }
 
     public void HpSet()
@@ -95,17 +91,6 @@ public class PlayerParams : CharacterUI
     {
         curSwap = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxSwap);
         SwapBar.fillAmount = curSwap / maxSwap;
-        //if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
-        //{
-        //    curSwap = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxSwap);
-        //    SwapBar.fillAmount = curSwap / maxSwap;
-        //}
-
-        //else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
-        //{
-        //    curScytheTime = Mathf.Clamp(CPlayerManager._instance.ScytheGauge, 0, maxScytheTime);
-        //    SwapBar.fillAmount = curScytheTime / maxScytheTime;
-        //}
     }
 
     public void Skill_SwapImageSet()
@@ -123,6 +108,7 @@ public class PlayerParams : CharacterUI
                 SwapGaugeFull[1].enabled = false;
                 SwapOn[0].enabled = true;
                 SwapOn[1].enabled = true;
+                EffectFull.SetActive(true);
             }
 
             else
@@ -136,6 +122,8 @@ public class PlayerParams : CharacterUI
                 SwapGaugeFull[1].enabled = true;
                 SwapOn[0].enabled = false;
                 SwapOn[1].enabled = false;
+                EffectFull.SetActive(false);
+                EffectDealer.SetActive(false);
             }
         }
 
@@ -150,6 +138,8 @@ public class PlayerParams : CharacterUI
             SwapOn[1].enabled = true;
             SwapGaugeFull[0].enabled = false;
             SwapGaugeFull[1].enabled = true;
+            EffectFull.SetActive(false);
+            EffectDealer.SetActive(true);
         }
 
     }

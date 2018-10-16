@@ -8,7 +8,6 @@ public class SStunBullet : MonoBehaviour
     protected Vector3 _direction;
     private Vector3 _target;
     private Transform _from;
-    public GameObject StunHitEffect;
 
     [SerializeField]
     protected float _speed;
@@ -31,12 +30,21 @@ public class SStunBullet : MonoBehaviour
         {
             gameObject.SetActive(false);
             DeleteTime = 0;
+            return;
         }
     }
 
     public void HitEffect(Vector3 From)
     {
-        Instantiate(StunHitEffect, From, Quaternion.identity);
+        for (int i = 0; i < BulletObjectPool._instance.StunBulletHitEffects.Length; i++)
+        {
+            if (!BulletObjectPool._instance.StunBulletHitEffects[i].activeInHierarchy)
+            {
+                BulletObjectPool._instance.StunBulletHitEffects[i].transform.position = From;
+                BulletObjectPool._instance.StunBulletHitEffects[i].SetActive(true);
+                return;
+            }
+        }
     }
 
     public void InitSStunBullet(QueenMushroom queen, Vector3 from, float rotate)

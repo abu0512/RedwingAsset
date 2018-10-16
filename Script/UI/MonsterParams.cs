@@ -40,9 +40,8 @@ public class MonsterParams : CharacterUI
 
     public void CameraSet()
     {
-        transform.LookAt(Camera.main.transform);
-        transform.rotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
-        //transform.rotation = Quaternion.LookRotation(Camera.main.transform.rotation - transform.rotation);
+        transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,
+            Camera.main.transform.rotation * Vector3.up);
     }
 
 	void Update () {

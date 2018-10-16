@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class BulletObjectPool : MonoBehaviour
 {
+    public static BulletObjectPool _instance = null;
+
     private List<Bullet> _bullets = new List<Bullet>();
     private List<StunBullet> _stunBullets = new List<StunBullet>();
     private List<SBullet> _sbullets = new List<SBullet>();
     private List<SStunBullet> _sstunBullets = new List<SStunBullet>();
 
+    [Header("BulletHitEffect")]
+    public GameObject[] BulletHitEffects;
+    public GameObject[] StunBulletHitEffects;
+    public float[] BHETime;
+    public float[] SBHETime;
+    private Vector3 Reset;
+
     void Awake()
     {
+        BulletObjectPool._instance = this;
+
         foreach (Bullet b in GetComponentsInChildren<Bullet>())
         {
             b.gameObject.SetActive(false);
@@ -36,7 +47,6 @@ public class BulletObjectPool : MonoBehaviour
 
             _sstunBullets.Add(ss);
         }
-
     }
 
     public Bullet SetBullet(QueenMushroom queen, Vector3 from, Vector3 target)
@@ -197,5 +207,45 @@ public class BulletObjectPool : MonoBehaviour
         _sbullets.Add(sbullet);
 
         return sbullet;
+    }
+
+    public void SetBHEffect()
+    {
+        Reset = transform.position;
+        Reset.y += -20f;
+
+        for (int i = 0; i < BulletHitEffects.Length; i++)
+        {
+            if (BulletHitEffects[i].activeInHierarchy)
+            {
+                BHETime[i] += Time.deltaTime;
+                if (BHETime[i] > 0.7f)
+                {
+                    BulletHitEffects[i].transform.position = Reset;
+                    BulletHitEffects[i].SetActive(false);
+                    BHETime[i] = 0;
+                }
+            }
+        }
+
+        for (int i = 0; i < StunBulletHitEffects.Length; i++)
+        {
+            if (StunBulletHitEffects[i].activeInHierarchy)
+            {
+                SBHETime[i] += Time.deltaTime;
+                if (SBHETime[i] > 0.7f)
+                {
+                    StunBulletHitEffects[i].transform.position = Reset;
+                    StunBulletHitEffects[i].SetActive(false);
+                    SBHETime[i] = 0;
+                }
+            }
+        }
+    }
+
+    void Update()
+    {
+        // Bullet Hit 이펙트 세팅
+        SetBHEffect();
     }
 }
