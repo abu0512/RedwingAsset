@@ -8,7 +8,6 @@ public class SBullet : MonoBehaviour
     protected Vector3 _direction;
     private Transform _target;
     private Transform _from;
-    public GameObject GeneralHitEffect;
 
     [SerializeField]
     protected float _speed;
@@ -37,7 +36,15 @@ public class SBullet : MonoBehaviour
 
     public void HitEffect(Vector3 From)
     {
-        Instantiate(GeneralHitEffect, From, Quaternion.identity);
+        for (int i = 0; i < BulletObjectPool._instance.BulletHitEffects.Length; i++)
+        {
+            if (!BulletObjectPool._instance.BulletHitEffects[i].activeInHierarchy)
+            {
+                BulletObjectPool._instance.BulletHitEffects[i].transform.position = From;
+                BulletObjectPool._instance.BulletHitEffects[i].SetActive(true);
+                return;
+            }
+        }
     }
 
     public void InitSBullet(QueenMushroom queen, Vector3 from, float rotate)

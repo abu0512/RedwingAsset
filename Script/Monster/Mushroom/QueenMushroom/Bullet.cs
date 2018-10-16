@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
     protected QueenMushroom _queenMushroom;
     protected Vector3 _direction;
     private Vector3 _target;
-    public GameObject GeneralHitEffect;
 
     [SerializeField]
     protected float _speed;
@@ -31,10 +30,23 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    //public void HitEffect(Vector3 From)
+    //{
+    //    GeneralHitEffect.SetActive(true);
+    //    Instantiate(GeneralHitEffect, From, Quaternion.identity);
+    //}
+
     public void HitEffect(Vector3 From)
     {
-        GeneralHitEffect.SetActive(true);
-        Instantiate(GeneralHitEffect, From, Quaternion.identity);
+        for (int i = 0; i < BulletObjectPool._instance.BulletHitEffects.Length; i++)
+        {
+            if (!BulletObjectPool._instance.BulletHitEffects[i].activeInHierarchy)
+            {
+                BulletObjectPool._instance.BulletHitEffects[i].transform.position = From;
+                BulletObjectPool._instance.BulletHitEffects[i].SetActive(true);
+                return;
+            }
+        }
     }
 
     public void InitBullet(QueenMushroom queen, Vector3 from, Vector3 target)
