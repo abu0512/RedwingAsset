@@ -40,6 +40,7 @@ public enum PlaySoundId
     Tanker_Defense,
     Vine,
     Vine_Fast,
+    Monster_Death
 }
 
 [Serializable]

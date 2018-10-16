@@ -29,6 +29,7 @@ public class GuardMushroomDead : GuardMushroomStateBase
     {
         if (GuardMushroom.isDead)
         {
+            //SoundManager.I.PlaySound(transform.position, PlaySoundId.Monster_Death);
             GuardMushroom.rotAnglePerSecond = 0;
             GuardMushroom.AttackRotAngle = 0;
             GuardMushroom.Stat.MoveSpeed = 0;

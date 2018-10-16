@@ -20,6 +20,7 @@ public class QueenMushroomDead : QueenMushroomStateBase
     {
         if (QueenMushroom.isDead)
         {
+            //SoundManager.I.PlaySound(transform.position, PlaySoundId.Monster_Death);
             QueenMushroom.rotAnglePerSecond = 0;
             QueenMushroom.Stat.MoveSpeed = 0;
             DeadTime += Time.deltaTime;
