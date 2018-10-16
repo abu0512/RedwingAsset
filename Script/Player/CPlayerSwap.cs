@@ -307,7 +307,7 @@ public class CPlayerSwap : CPlayerBase
         CSwapSystem._instance.ScytheObjs(type);
         //StartCoroutine("ScytheHpDown");
         _PlayerMode = PlayerMode.Scythe;
-
+        SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_Swap);
         if (type == 1)
         {
             EffectManager.I.EventOnEffect(9);
@@ -327,6 +327,7 @@ public class CPlayerSwap : CPlayerBase
         nScytheNum = 0;
         nScytheExponential = 1;
         _PlayerMode = PlayerMode.Shield;
+        SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Swap);
         if (idx == 0)
         {
             EffectManager.I.EventOnEffect(10);

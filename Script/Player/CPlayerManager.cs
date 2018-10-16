@@ -155,7 +155,7 @@ public class CPlayerManager : MonoBehaviour
         m_fPlayerGauge = 100;
         m_nAttackCombo = 0;
         isDead = false;
-        _scytheGauge = 0.0f;
+        //_scytheGauge = 0.0f;
 
         m_bMove = true;
         m_bAnimator = true;
@@ -444,8 +444,20 @@ public class CPlayerManager : MonoBehaviour
                     transform.position,
                     InspectorManager._InspectorManager.ScytheSwapSkillDis))
         {
-            CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
+            PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             mon.OnDamage(InspectorManager._InspectorManager.ScytheSwapSkillDamage);
+        }
+    }
+
+    private void OnChopSkillDamage()
+    {
+        foreach (MonsterBase mon in
+                MonsterManager.I.FindNearMonster(
+                    transform.position,
+                    InspectorManager._InspectorManager.ScytheChopSkillDis))
+        {
+            PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
+            mon.OnDamage(InspectorManager._InspectorManager.ScytheChopSkillDamage);
         }
     }
 

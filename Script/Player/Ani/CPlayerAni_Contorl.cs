@@ -516,4 +516,14 @@ public class CPlayerAni_Contorl : CPlayerBase
         _downwardskillcool = _scytheSkillCool;
         _rushskillcool = _shieldSkillCool;
     }
+
+    private void PlayRushSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Rush);
+    }
+
+    private void PlayDefenseSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Defense);
+    }
 }

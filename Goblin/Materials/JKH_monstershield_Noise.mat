@@ -46,6 +46,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Eye:
+        m_Texture: {fileID: 2800000, guid: aecbdd7bedf4fa9479766807639cac4d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: dba3aa5dc2959244ca7f73db1d260938, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -90,7 +94,7 @@ Material:
     - _Mtl: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimbalGGi: 1.5
+    - _RimbalGGi: 0
     - _Rimpow: 1
     - _Smoothness: 0.33
     - _SmoothnessTextureChannel: 0
@@ -103,5 +107,8 @@ Material:
     - _AlphaColor: {r: 0.7490196, g: 0.27058825, b: 1, a: 1}
     - _Color: {r: 0.613893, g: 0.6717054, b: 0.713, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EyeCol: {r: 0, g: 0, b: 0, a: 1}
     - _Fakecolor: {r: 0.27058825, g: 0.27058825, b: 0.27058825, a: 1}
+    - _bloodEyeCol: {r: 0, g: 0, b: 0, a: 1}
     - _viwecol: {r: 1, g: 1, b: 1, a: 1}
+    - _whiteEyeCol: {r: 0, g: 0, b: 0, a: 1}
