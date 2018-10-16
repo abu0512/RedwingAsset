@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0ad82223f07520e46843f353fa86e673
-timeCreated: 1539526945
+timeCreated: 1539084689
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -11,7 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: JSY_grassvari_1
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
