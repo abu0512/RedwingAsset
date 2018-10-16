@@ -325,8 +325,6 @@ public class QueenMushroom : MonsterBase
         _stat.ChaseDistance = 20f;
         _stat.AttackDistance = 15f;
         _stat.MoveSpeed = 3.5f;
-        _stat.MaxHp = 600f;
-        _stat.Hp = _stat.MaxHp;
         _attackDamage = 10f;
         _attackDelay = 4f;
         _attackTimer = 0;

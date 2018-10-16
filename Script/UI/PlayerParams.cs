@@ -72,8 +72,7 @@ public class PlayerParams : CharacterUI
 
     void Awake()
     {
-        HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
-        InitParams();
+        HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();       
     }
 
     public void ImageSet()
@@ -342,12 +341,12 @@ public class PlayerParams : CharacterUI
 
     void Start()
     {
+        InitParams();
         Skill_Explanation.SetActive(false);
     }
 
     void Update()
     {
-        print(curSwap);
         // Player 캐릭터의 체력 값을 받아온다.
         HpSet();
 

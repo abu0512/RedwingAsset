@@ -218,8 +218,6 @@ public class ShildMushroom : MonsterBase
     protected override void Awake()
     {
         base.Awake();
-        Stat.MaxHp = 1050;
-        Stat.Hp = Stat.MaxHp;
         Stat.ChaseDistance = 20f;
         Stat.AttackDistance = 3f;
         Stat.MoveSpeed = 3f;
