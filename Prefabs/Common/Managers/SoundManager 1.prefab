@@ -108,4 +108,8 @@ MonoBehaviour:
     Path: event:/SFX/PC/Tanker/Rush/tanker_rush
   - Id: 32
     Path: event:/SFX/PC/Tanker/Defense/tanker_defense
+  - Id: 33
+    Path: event:/SFX/Vine/vine_sound
+  - Id: 34
+    Path: event:/SFX/Vine/vine_sound (fast)
   _Volume: 0

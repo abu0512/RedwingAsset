@@ -38,6 +38,8 @@ public enum PlaySoundId
     Dealer_Swap,
     Tanker_Rush,
     Tanker_Defense,
+    Vine,
+    Vine_Fast,
 }
 
 [Serializable]
