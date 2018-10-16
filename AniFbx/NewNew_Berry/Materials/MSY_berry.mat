@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: e0e2d8d72f8d27f4e9a715840fcaff56, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7545da9c174b10d43ab447d99ac308e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +39,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Eye:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c81a38b5456db044fa47659f7fcd82ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 857a3a6a0566c024bad6720b452fe602, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d4b87de8e6749f478b22ea18a31d00f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 136ff560eba898d4a85b37a68cfbb4f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -86,9 +86,9 @@ Material:
     - _Mtl: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimbalGGi: 0.44
-    - _Rimpow: 4.9
-    - _Smooth: 0.813
+    - _RimbalGGi: 0.1
+    - _Rimpow: 8.3
+    - _Smooth: 0.949
     - _SmoothnessTextureChannel: 0
     - _SpecPow: 83
     - _SpecularHighlights: 1
