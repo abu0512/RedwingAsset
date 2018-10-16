@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     protected float _speed;
+    public GameObject[] BulletEffects;
+    private Vector3 Bullet_Poket;
 
     private float DeleteTime;
 
@@ -23,7 +25,7 @@ public class Bullet : MonoBehaviour
         DeleteTime += Time.deltaTime;
         transform.Translate(_direction * _speed * Time.deltaTime);
 
-        if (DeleteTime >= 5f)
+        if (DeleteTime >= 7f)
         {
             gameObject.SetActive(false);
             DeleteTime = 0;
@@ -58,6 +60,7 @@ public class Bullet : MonoBehaviour
         target.y = from.y;
         transform.position = from;
         _direction = (target - from).normalized;
+        transform.Translate(_direction * _speed * Time.deltaTime * 10);
     }
 
     private void OnTriggerEnter(Collider other)

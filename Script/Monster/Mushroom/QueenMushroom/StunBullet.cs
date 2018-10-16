@@ -23,7 +23,7 @@ public class StunBullet : MonoBehaviour
         DeleteTime += Time.deltaTime;
         transform.Translate(_direction * _speed * Time.deltaTime);
 
-        if (DeleteTime >= 5f)
+        if (DeleteTime >= 7f)
         {
             gameObject.SetActive(false);
             DeleteTime = 0;
@@ -57,6 +57,7 @@ public class StunBullet : MonoBehaviour
         target.y = from.y;
         transform.position = from;
         _direction = (target - from).normalized;
+        transform.Translate(_direction * _speed * Time.deltaTime * 10);
     }
 
     private void OnTriggerEnter(Collider other)

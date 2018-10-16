@@ -26,7 +26,7 @@ public class SStunBullet : MonoBehaviour
 
         transform.Translate(_from.forward * _speed * Time.deltaTime);
 
-        if (DeleteTime >= 5f)
+        if (DeleteTime >= 7f)
         {
             gameObject.SetActive(false);
             DeleteTime = 0;
