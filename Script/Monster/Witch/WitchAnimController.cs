@@ -161,6 +161,13 @@ public class WitchAnimController : MonoBehaviour
         //    _witch.Attack2Anim = EffectManager.I.OnEffect(EffectType.Witch_Attack2, _witch.transform, 2.8f).GetComponent<Animator>();
     }
 
+    private void OnAttack3Effect()
+    {
+        Vector3 pos = _witch.transform.position;
+        pos.y -= 1.0f;
+        EffectManager.I.OnEffect(EffectType.Witch_Attack3, pos, _witch.transform.rotation, 3.0f, 0);
+    }
+
     private void SpeedSet()
     {
         _witch.Anim.speed = 0.0f;

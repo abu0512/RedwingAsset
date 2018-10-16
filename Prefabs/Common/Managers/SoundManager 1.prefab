@@ -100,4 +100,12 @@ MonoBehaviour:
     Path: "event:/SFX/Monster/Boss - witch/\uADFC\uC811\uACF5\uACA9/\uADFC\uC811\uACF5\uACA903/Boss_WitchMeele03"
   - Id: 28
     Path: "event:/SFX/Monster/\uBAAC\uC2A4\uD130 \uC18C\uD658\uB420 \uB54C/Monster_Spawn"
+  - Id: 29
+    Path: event:/SFX/PC/Tanker/Swap/tanker_swap
+  - Id: 30
+    Path: event:/SFX/PC/Dealer/Swap/dealer_swap-5
+  - Id: 31
+    Path: event:/SFX/PC/Tanker/Rush/tanker_rush
+  - Id: 32
+    Path: event:/SFX/PC/Tanker/Defense/tanker_defense
   _Volume: 0
