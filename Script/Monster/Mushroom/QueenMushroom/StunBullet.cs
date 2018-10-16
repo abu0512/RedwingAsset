@@ -76,7 +76,7 @@ public class StunBullet : MonoBehaviour
                 HitEffect(transform.position);
                 CPlayerManager._instance.PlayerHp(0.2f, 2, _queenMushroom.AttackDamage);
             }
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);//레도잉 파이팅
         }
     }
 }

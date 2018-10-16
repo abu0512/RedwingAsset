@@ -15,7 +15,6 @@ public class CPlayerSwordCollder : MonoBehaviour
             if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
             {
                 CPlayerManager._instance.ScytheGauge = Mathf.Clamp(CPlayerManager._instance.ScytheGauge+5, 0, InspectorManager._InspectorManager.SwapMaxGauge);
-                print(CPlayerManager._instance.ScytheGauge);
                 if (other.tag == "Guard")
                 {
                     if (other.GetComponent<GuardMushroom>().Stat.Hp > 0)
