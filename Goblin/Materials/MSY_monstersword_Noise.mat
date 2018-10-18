@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MSY_monstersword_Noise
-  m_Shader: {fileID: 4800000, guid: 887e7ed9003e4694bbe403673ea6d1c7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 202076b2b23f9b74bb99b40610c5973c, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _METALLIC_ON _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

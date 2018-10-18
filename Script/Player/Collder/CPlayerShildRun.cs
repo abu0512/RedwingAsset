@@ -21,7 +21,7 @@ public class CPlayerShildRun : MonoBehaviour
             }
             else if (other.tag == "ShildMushroom")
             {
-                if (other.GetComponent<ShildMushroom>().PlayerisFront == false)
+                //if (other.GetComponent<ShildMushroom>().PlayerisFront == false)
                     other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.fShildRunDamge);
             }
             else
