@@ -14,10 +14,6 @@
 	   [HDR]_AlphaColor("알파 경계선 칼라_AlphaColor" , color) = (1,1,1,1)
 	   _Rimpow("림 두께", Range(1,30)) = 1
 	   _RimbalGGi("림세기", float) = 0
-	   _Eye("EyemaskMap", 2D) = "white" {}
-	   [HDR] _EyeCol("Eye색" , color) = (1,1,1,1)
-	   [HDR] _whiteEyeCol("흰자색" , color) = (1,1,1,1)
-	   [HDR] _bloodEyeCol("핏줄색" , color) = (0,0,0,1)
 	}
 		SubShader{
 		   Tags {"Queue" = "AlphaTest" "IgnoreProjector" = "True" "RenderType" = "TransparentCutout"}
@@ -36,16 +32,12 @@
 		   sampler2D _BumpTex;
 		   sampler2D _MetalTex;
 		   sampler2D _OC;
-		   sampler2D _Eye;
 		   float _Metallic;
 		   float _Hide;
 		   float _Smoothness;
 		   float4 _AlphaColor;
 		   float _Rimpow;
 		   float _RimbalGGi;
-		   float4 _EyeCol;
-		   float4 _whiteEyeCol;
-		   float4 _bloodEyeCol;
 
 
 		   struct Input {
@@ -64,7 +56,6 @@
 			  half4 d = tex2D(_NoiseTex, IN.uv_NoiseTex);
 			  half4 emittex = tex2D(_EmitTex, IN.uv_EmitTex);
 			  float alphalevel = d.r + _Hide;
-			  float4 eyem = tex2D(_Eye,IN.uv_Eye);
 			  o.Albedo = c.rgb * _Color.rgb * IN.color.rgb;
 			  float4 met = tex2D(_MetalTex,IN.uv_MetalTex);
 			  o.Metallic = met.r * _Metallic;
@@ -72,7 +63,7 @@
 			  o.Occlusion = tex2D(_OC,IN.uv_MainTex);
 			  o.Normal = UnpackNormal(tex2D(_BumpTex, IN.uv_BumpTex));
 			  float rim = pow(1 - saturate(dot(IN.viewDir,o.Normal)), _Rimpow);
-			  o.Emission = (rim * _RimbalGGi * c.rgb * (1 - eyem.b) + (eyem.b * c.rgb * _bloodEyeCol)) + emittex.rgb + (step(0.48, 1 - alphalevel) * _AlphaColor.rgb * 3);
+			  o.Emission = rim * _RimbalGGi * c.rgb + emittex.rgb + (step(0.48, 1 - alphalevel) * _AlphaColor.rgb * 3);
 			  o.Alpha = c.a * alphalevel * IN.color.a;
 		   }
 		   ENDCG

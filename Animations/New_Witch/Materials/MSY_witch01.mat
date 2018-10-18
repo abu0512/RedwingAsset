@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MSY_witch01
-  m_Shader: {fileID: 4800000, guid: 0d6d06ac9971a2144aa99ab677808328, type: 3}
+  m_Shader: {fileID: 4800000, guid: faf8a3c162938394fbedf64f5e57da06, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _MTL_ON _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 08e312c432117dc429a7ebaf82ac8f72, type: 3}
+        m_Texture: {fileID: 2800000, guid: 124fb47fc09c7974693b69f27f3bb63d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -38,12 +38,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Eye:
+        m_Texture: {fileID: 2800000, guid: d80031bbf8d4a5246b972ae66050b696, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 58d9740123b53774dafe7f8c5c6dbe69, type: 3}
+        m_Texture: {fileID: 2800000, guid: 79ed2510675a002499be0ffb0c093cb2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: 372d4f187b2ef0c40b1df52a6edc062b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: 47394156f718e6e489993c7f1147532b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlu:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -69,7 +81,9 @@ Material:
     - _Mtl: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Rimpow: 8.6
+    - _RimbalGGi: 5
+    - _Rimpow: 2
+    - _Smooth: 0.8
     - _SmoothnessTextureChannel: 0
     - _SpecPow: 45
     - _SpecularHighlights: 1
@@ -79,4 +93,8 @@ Material:
     m_Colors:
     - _Color: {r: 0.52205884, g: 0.52205884, b: 0.52205884, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EyeCol: {r: 1, g: 1, b: 1, a: 1}
     - _Fakecolor: {r: 0.16810335, g: 0.18035065, b: 0.625, a: 1}
+    - _bloodEyeCol: {r: 0, g: 0, b: 0, a: 1}
+    - _viwecol: {r: 1, g: 1, b: 1, a: 1}
+    - _whiteEyeCol: {r: 1, g: 1, b: 1, a: 1}

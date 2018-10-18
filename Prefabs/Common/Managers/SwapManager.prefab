@@ -54,7 +54,7 @@ MonoBehaviour:
   BlinkIn: {fileID: 0}
   BlinkOut: {fileID: 0}
   _ShildAvatar: {fileID: 9000000, guid: e4aff47b2ac75de469cfbe521ce53b8f, type: 3}
-  _ScytheAvatar: {fileID: 9000000, guid: 0793c8ff30dd8974eb8c94a7bb17d782, type: 3}
+  _ScytheAvatar: {fileID: 9000000, guid: 29df9dd58d7b3ed429f912858467d256, type: 3}
   _ShildContorller: {fileID: 9100000, guid: 151d4ac4c82cc1a4cb8e5af1da8e6672, type: 2}
   _ScytheContorller: {fileID: 9100000, guid: 1b46017f850cd3049bbed33d3c654383, type: 2}
   _ShildObj: {fileID: 0}

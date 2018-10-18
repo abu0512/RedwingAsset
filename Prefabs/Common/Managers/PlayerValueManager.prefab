@@ -51,35 +51,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398da7c06cc158943bd9769c9ada362a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fStmAuto: 11
+  fStmAuto: 1
   fStmAutoTime: 0.1
   fStmDash: 35
   fRotation: 800
   fMoveSpeed: 6
   fMoveAngle: 1
-  nDamgeShild: 3c00000046000000500000003c0000005a000000
-  nDamgeScythe: 460000005000000028000000
+  nDamgeShild: 4600000046000000460000004600000046000000
+  nDamgeScythe: 960000009600000096000000
   nGroggyShild:
-  - 3
   - 5
   - 7
-  - 3
-  - 3
+  - 9
+  - 5
+  - 5
   nGroggyScythe:
   - 5
   - 7
   - 10
-  fShildDamge: 3
+  fShildDamge: 1
   fSwapCoolTime: 1
-  fCountGroggy: 1000
-  fCountAttackDamge: 100
+  fCountGroggy: 100
+  fCountAttackDamge: 101
   fCountAttackReturnTime: 100
-  fScytheTime: 2
-  fScytheTimeHpDown: 3
-  fScytheTimeHpExponential: 3
-  fScytheAttackHpAdd: 3
-  fScytheStartSkillDamge: 200
-  fScytheSkill2Damge: 300
+  fScytheTime: 0
+  fScytheTimeHpDown: 0
+  fScytheTimeHpExponential: 0
+  fScytheAttackHpAdd: 2
+  fScytheStartSkillDamge: 111111110
+  fScytheSkill2Damge: 100000
   fSturnTime: 2
   fPlayerAttackStiff: 0.1
   fSweatStm: 0
@@ -92,9 +92,17 @@ MonoBehaviour:
   TankerAttackZoom:
   - 0
   - 0
-  - 0.4
-  - 0.4
+  - 0
+  - 0
   DealerAttackZoom:
   - 0
-  - 0.4
-  - 0.4
+  - 0
+  - 0
+  AfterImageDeadTime: 0
+  ScytheSwapSkillDis: 6
+  ScytheSwapSkillDamage: 200
+  ScytheChopSkillDis: 4
+  ScytheChopSkillDamage: 100
+  SwapMaxGauge: 100
+  ScytheSkillCoolTime: 6
+  ShieldSkillCoolTime: 6
