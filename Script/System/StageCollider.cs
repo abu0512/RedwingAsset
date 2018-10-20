@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageCollider : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class StageCollider : MonoBehaviour
             _handler.SetGateState(true);
             MonsterWaveManager.I.AddStage();
             MonsterWaveManager.I.StartWave();
+
             SetClear();
         }
     }

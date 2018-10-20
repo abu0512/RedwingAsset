@@ -27,7 +27,6 @@ public class MonsterManager : MonoBehaviour
     public void FindAllMonsters()
     {
         _monsters.Clear();
-
         foreach (MonsterBase mon in FindObjectsOfType<MonsterBase>())
         {
             if (mon.gameObject.activeInHierarchy)
