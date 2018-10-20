@@ -7,6 +7,7 @@
 	   _Metallic("Metallic" ,float) = 0
 	   _Smoothness("Smoothness", Range(0,1)) = 0
 	   _EmitTex("셀프 일루미네이션 텍스쳐" , 2D) = "black" {}
+	   [HDR]_Emicol("셀프 일루미네이션 컬러", color) = (1,1,1,1)
 	   _BumpTex("범프맵" , 2D) = "Bump" {}
 	   _NoiseTex("알파 텍스쳐 (R)", 2D) = "white"{}
 	   _OC("오클루젼 맵",2D) = "white"{}
@@ -38,6 +39,7 @@
 		   float _Smoothness;
 		   float4 _AlphaColor;
 		   float _Rimpow;
+		   float4 _Emicol;
 		   float _RimbalGGi;
 
 
@@ -63,7 +65,7 @@
 			  o.Occlusion = tex2D(_OC,IN.uv_MainTex);
 			  o.Normal = UnpackNormal(tex2D(_BumpTex, IN.uv_BumpTex));
 			  float rim = pow(1 - saturate(dot(IN.viewDir,o.Normal)), _Rimpow);
-			  o.Emission = rim * _RimbalGGi * c.rgb + emittex.rgb + (step(0.48, 1 - alphalevel) * _AlphaColor.rgb * 3);
+			  o.Emission = rim * _RimbalGGi * c.rgb + (emittex.rgb * _Emicol) + (step(0.48, 1 - alphalevel) * _AlphaColor.rgb * 3);
 			  o.Alpha = c.a * alphalevel * IN.color.a;
 		   }
 		   ENDCG

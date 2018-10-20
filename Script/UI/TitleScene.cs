@@ -13,6 +13,8 @@ public class TitleScene : MonoBehaviour {
     bool isinputanykey = false;
     bool fadeinfinish = false;
 
+    AudioSource TitleAudio;
+
     private void TitleStartFadein()
     {
         if (!fadeinfinish)
@@ -54,6 +56,8 @@ public class TitleScene : MonoBehaviour {
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        TitleAudio = GetComponent<AudioSource>();
+        TitleAudio.Play();
     }
 
     void Update ()
