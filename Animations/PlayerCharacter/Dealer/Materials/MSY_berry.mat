@@ -81,8 +81,8 @@ Material:
     - _Mtl: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimbalGGi: 0
-    - _Rimpow: 2
+    - _RimbalGGi: 0.5
+    - _Rimpow: 6
     - _Smooth: 0.758
     - _SmoothnessTextureChannel: 0
     - _SpecPow: 83

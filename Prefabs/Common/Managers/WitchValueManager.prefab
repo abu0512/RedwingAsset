@@ -69,7 +69,23 @@ MonoBehaviour:
   TeleportDamage: 40
   GroggyDuration: 5
   GroggyDeleteTime: 10
-  GroggyMaxValue: 20
+  GroggyMaxValue: 90
   HitAnimStopDuration: 0.1
   MonsterSpawnTime: 30
   ReleaseDamage: 30
+  AttackDamge:
+  - 20
+  - 20
+  - 20
+  AttackMinAngle:
+  - 0.7
+  - 0
+  - 0.7
+  AttackMaxAngle:
+  - 1
+  - 1
+  - 1
+  AttackDistance:
+  - 5
+  - 5
+  - 5

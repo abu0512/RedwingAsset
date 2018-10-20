@@ -735,7 +735,7 @@ ModelImporter:
       - path: Scythe
         weight: 1
       maskType: 1
-      maskSource: {fileID: 31900000, guid: 2185846cdca9f7940baa25cac592aca7, type: 2}
+      maskSource: {fileID: 31900000, guid: 8a971e2aa8436ea44a7c8d9db63f4522, type: 2}
       additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
@@ -1185,13 +1185,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: JYJ_Dealer_Berry_Rigging(181004)(Clone)
+    - name: JYJ_Dealer_Berry_Rigging(181018)(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0.0000004373411, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001
-      parentName: JYJ_Dealer_Berry_Rigging(181004)(Clone)
+      parentName: JYJ_Dealer_Berry_Rigging(181018)(Clone)
       position: {x: -0, y: 0.916, z: -8.8902685e-10}
       rotation: {x: -0.50000036, y: 0.49999964, z: 0.49999964, w: 0.50000036}
       scale: {x: 0.01, y: 0.01, z: 0.01}
@@ -1272,14 +1272,14 @@ ModelImporter:
       scale: {x: 1.0000004, y: 1.0000002, z: 1.0000005}
     - name: Bip001 Skirt_R_Back03
       parentName: Bip001 Skirt_R_Back02
-      position: {x: -6.1730766, y: -0.004917145, z: 0}
+      position: {x: -6.1730766, y: -0.004917145, z: -0.00000023841858}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 0.9999997, y: 0.99999994, z: 1.0000001}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1.0000006}
     - name: Bip001 Skirt_R_BackNub
       parentName: Bip001 Skirt_R_Back03
-      position: {x: -6.1730766, y: 0, z: -0.00000047683716}
+      position: {x: -6.173069, y: 0.0000038146973, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
     - name: Bip001 Skirt_L_Back
       parentName: Bip001 Spine
       position: {x: 2.2414017, y: -8.126783, z: 4.5343337}
@@ -1292,14 +1292,14 @@ ModelImporter:
       scale: {x: 1.0000005, y: 1.0000001, z: 1.0000002}
     - name: Bip001 Skirt_L_Back03
       parentName: Bip001 Skirt_L_Back02
-      position: {x: -6.1730766, y: -0.004917145, z: 0}
+      position: {x: -6.1730766, y: -0.004917145, z: -0.00000071525574}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 0.9999997, y: 0.9999999, z: 0.99999994}
+      scale: {x: 0.99999976, y: 0.9999999, z: 1.0000002}
     - name: Bip001 Skirt_L_BackNub
       parentName: Bip001 Skirt_L_Back03
-      position: {x: -6.1730766, y: 0, z: 0}
+      position: {x: -6.173069, y: 0, z: 0.00000047683716}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
     - name: Bip001 Spine1
       parentName: Bip001 Spine
       position: {x: -6.7638474, y: -0.0053596497, z: -0.000000014872057}
@@ -1347,34 +1347,34 @@ ModelImporter:
       scale: {x: 0.9999999, y: 0.99999917, z: 0.9999996}
     - name: Bip001 Ponytail21
       parentName: Bip001 Ponytail2
-      position: {x: -12.806488, y: -0.010185242, z: 0}
+      position: {x: -12.806488, y: -0.010181427, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000001, y: 1.0000006, z: 1.0000004}
     - name: Bip001 Ponytail22
       parentName: Bip001 Ponytail21
       position: {x: -12.806969, y: -0.010196686, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: Bip001 Ponytail23
       parentName: Bip001 Ponytail22
-      position: {x: -12.8069, y: -0.0102005005, z: 0.00002861023}
+      position: {x: -12.806908, y: -0.0102005005, z: 0.000022888184}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
     - name: Bip001 Ponytail24
       parentName: Bip001 Ponytail23
-      position: {x: -12.806541, y: -0.010189056, z: 0.0000038146973}
+      position: {x: -12.806541, y: -0.010189056, z: 0.000005722046}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000002, y: 1.0000005, z: 0.99999994}
+      scale: {x: 1.0000005, y: 1.0000002, z: 0.9999999}
     - name: Bip001 Ponytail25
       parentName: Bip001 Ponytail24
       position: {x: -12.804672, y: -0.009918213, z: 0.0004005432}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1.0000001}
+      scale: {x: 0.99999994, y: 1, z: 1}
     - name: Bip001 Ponytail2Nub
       parentName: Bip001 Ponytail25
-      position: {x: -12.807022, y: -0.0000019073486, z: -0.0000019073486}
+      position: {x: -12.807014, y: -0.0000019073486, z: -0.0000019073486}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+      scale: {x: 1, y: 0.99999994, z: 1}
     - name: Bip001 Ponytail1
       parentName: Bip001 Head
       position: {x: -25.663177, y: -10.237254, z: -14.78504}
@@ -1384,32 +1384,32 @@ ModelImporter:
       parentName: Bip001 Ponytail1
       position: {x: -12.806488, y: -0.010185242, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 0.9999998, y: 0.9999999, z: 1.0000001}
+      scale: {x: 0.9999997, y: 0.99999964, z: 0.99999976}
     - name: Bip001 Ponytail12
       parentName: Bip001 Ponytail11
       position: {x: -12.806992, y: -0.010196686, z: 0.0000038146973}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000002}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000004}
     - name: Bip001 Ponytail13
       parentName: Bip001 Ponytail12
-      position: {x: -12.8069, y: -0.010196686, z: -0.00002670288}
+      position: {x: -12.806908, y: -0.0102005005, z: -0.00002670288}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000004, y: 0.9999998, z: 1.0000005}
+      scale: {x: 0.9999997, y: 0.99999964, z: 1.0000001}
     - name: Bip001 Ponytail14
       parentName: Bip001 Ponytail13
-      position: {x: -12.806549, y: -0.010185242, z: -0.0000019073486}
+      position: {x: -12.806549, y: -0.010189056, z: -0.0000038146973}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000005, y: 1.0000006, z: 1.0000002}
+      scale: {x: 1.000001, y: 1.0000008, z: 1.0000004}
     - name: Bip001 Ponytail15
       parentName: Bip001 Ponytail14
-      position: {x: -12.804672, y: -0.009918213, z: -0.00039672852}
+      position: {x: -12.804672, y: -0.009914398, z: -0.00039863586}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 0.99999994, z: 1}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
     - name: Bip001 Ponytail1Nub
       parentName: Bip001 Ponytail15
-      position: {x: -12.807014, y: 0, z: 0.0000009536743}
+      position: {x: -12.807014, y: 0.0000038146973, z: 0.0000009536743}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
     - name: Eye_L_bone
       parentName: Bip001 Head
       position: {x: -8.771118, y: 5.190671, z: 4.836031}
@@ -1796,12 +1796,12 @@ ModelImporter:
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1.0000001}
     - name: Dealer_Berry
-      parentName: JYJ_Dealer_Berry_Rigging(181004)(Clone)
+      parentName: JYJ_Dealer_Berry_Rigging(181018)(Clone)
       position: {x: -0, y: 0, z: -0.0000000023841857}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 0.01, y: 0.01, z: 0.01}
     - name: Scythe
-      parentName: JYJ_Dealer_Berry_Rigging(181004)(Clone)
+      parentName: JYJ_Dealer_Berry_Rigging(181018)(Clone)
       position: {x: 2.972979, y: 0.9779072, z: -0.2385418}
       rotation: {x: -0.015618089, y: 0.7287264, z: -0.3537293, w: 0.5861652}
       scale: {x: 0.01, y: 0.009999998, z: 0.010000002}
@@ -1817,7 +1817,7 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 29df9dd58d7b3ed429f912858467d256,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0f046c0c8503eba48908740009fe915d,
     type: 3}
   animationType: 3
   humanoidOversampling: 1
