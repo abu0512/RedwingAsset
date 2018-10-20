@@ -24,7 +24,7 @@ public class BossParams : CharacterUI
 
     private void Awake()
     {
-        _Boss = FindObjectOfType<WitchBoss>().GetComponent<MonsterStat>();
+        _Boss = BossMonster.GetComponent<MonsterStat>();
         WaitSec = 0;
     }
 
