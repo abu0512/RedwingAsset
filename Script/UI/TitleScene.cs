@@ -20,7 +20,7 @@ public class TitleScene : MonoBehaviour {
             time += Time.deltaTime;
             if (fades > 0f && time >= 0.1f)
             {
-                fades -= 0.15f;
+                fades -= 0.25f;
                 fade.color = new Color(0, 0, 0, fades);
                 time = 0;
             }
@@ -39,7 +39,7 @@ public class TitleScene : MonoBehaviour {
             time += Time.deltaTime;
             if (fades < 1f && time >= 0.1f)
             {
-                fades += 0.15f;
+                fades += 0.25f;
                 fade.color = new Color(0, 0, 0, fades);
                 time = 0;
             }
