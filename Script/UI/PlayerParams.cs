@@ -75,11 +75,6 @@ public class PlayerParams : CharacterUI
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();       
     }
 
-    public void ImageSet()
-    {
-        HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();
-    }
-
     public void HpSet()
     {
         curHP = Mathf.Clamp(CPlayerManager._instance.m_PlayerHp, 0, maxHP);

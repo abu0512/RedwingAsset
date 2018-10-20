@@ -7,6 +7,7 @@ public class BossParams : CharacterUI
 {
     public string names { get; set; }
 
+    public GameObject BossMonster;
     public Image BMHPBar;
     public Image BMSHPBar;
 
@@ -23,8 +24,8 @@ public class BossParams : CharacterUI
 
     private void Awake()
     {
+        _Boss = BossMonster.GetComponent<MonsterStat>();
         WaitSec = 0;
-        _Boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<MonsterStat>();
     }
 
     public void SetHp()
