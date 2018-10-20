@@ -9,15 +9,15 @@ public class StageGateHandler : MonoBehaviour
     private void Awake()
     {
         _gates = FindObjectsOfType<StageGate>();
-        SetGateState(false);
     }
 
     void Start ()
     {
-		
-	}
-	
-	void Update ()
+        SetGateState(false);
+
+    }
+
+    void Update ()
     {
 
     }
