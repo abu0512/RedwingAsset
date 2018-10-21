@@ -7,7 +7,6 @@ public class BossParams : CharacterUI
 {
     public string names { get; set; }
 
-    public GameObject BossMonster;
     public Image BMHPBar;
     public Image BMSHPBar;
     MonsterStat _Boss;
