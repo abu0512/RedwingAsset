@@ -53,13 +53,17 @@ public class PlayerParams : CharacterUI
     [System.NonSerialized]
     public bool Explanation_On = false;
 
-    [Header("Tab")]
+    [Header("Tip")]
     public Image Tanker_Icon;
     public Image Dealer_Icon;
     public Image[] Tanker_Tip;
     public Image[] Dealer_Tip;
+    public GameObject Destination;
     private int RandomValue = 0;
     private float TipTime = 5f;
+    private Vector3 FirPo;
+    private Vector3 SecPo;
+    private float TipSpeed;
 
     public override void InitParams()
     {
