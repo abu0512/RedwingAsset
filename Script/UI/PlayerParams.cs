@@ -53,7 +53,6 @@ public class PlayerParams : CharacterUI
     [System.NonSerialized]
     public bool Explanation_On = false;
 
-    [Header("Tib")]
     [Header("Tip")]
     public Image Tanker_Icon;
     public Image Dealer_Icon;
