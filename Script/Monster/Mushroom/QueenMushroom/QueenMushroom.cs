@@ -316,6 +316,7 @@ public class QueenMushroom : MonsterBase
     {
         Stat.Hp += Heal;
         Stat.Hp = Mathf.Clamp(Stat.Hp, 0, Stat.MaxHp);
+        SoundManager.I.PlaySound(transform.position, PlaySoundId.Goblin_Heal);
     }
 
     protected override void Awake()

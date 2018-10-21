@@ -324,6 +324,7 @@ public class GuardMushroom : MonsterBase
         Stat.Hp += Heal;
         Stat.Hp = Mathf.Clamp(Stat.Hp, 0, Stat.MaxHp);
         HealingEffect();
+        SoundManager.I.PlaySound(transform.position, PlaySoundId.Goblin_Heal);
     }
 
     public void HealingEffect()

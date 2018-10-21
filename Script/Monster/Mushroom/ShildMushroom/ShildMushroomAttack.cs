@@ -23,13 +23,20 @@ public class ShildMushroomAttack : ShildMushroomStateBase
             if (CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
             {
                 CPlayerManager._instance.PlayerHp(0.2f, 2, ShildMushroom.AttackDamage);
+                SoundManager.I.PlaySound(transform, PlaySoundId.ShildGoblin_AttackHit);
             }
 
             else
             {
                 CPlayerManager._instance.PlayerHp(0.2f, 1, ShildMushroom.AttackDamage);
+                SoundManager.I.PlaySound(transform, PlaySoundId.ShildGoblin_AttackHit);
             }
         }
+    }
+
+    public void ShildSwordSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.ShildGoblin_Sword);
     }
 
     void Update()

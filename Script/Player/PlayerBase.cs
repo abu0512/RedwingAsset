@@ -205,11 +205,11 @@ public class PlayerBase : MonoBehaviour
 
     private void Update_Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            //_isDash = true;
-            SetAnimation(CharacterAnimState.Dash);
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //{
+        //    //_isDash = true;
+        //    SetAnimation(CharacterAnimState.Dash);
+        //}
     }
 
     private void Update_Swap()

@@ -10,9 +10,9 @@ public class BossParams : CharacterUI
     public GameObject BossMonster;
     public Image BMHPBar;
     public Image BMSHPBar;
+    MonsterStat _Boss;
 
     private float WaitSec;
-    MonsterStat _Boss;
 
     public override void InitParams()
     {
@@ -24,7 +24,7 @@ public class BossParams : CharacterUI
 
     private void Awake()
     {
-        _Boss = BossMonster.GetComponent<MonsterStat>();
+        _Boss = FindObjectOfType<WitchBoss>().GetComponent<MonsterStat>();
         WaitSec = 0;
     }
 

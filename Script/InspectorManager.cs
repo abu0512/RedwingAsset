@@ -63,6 +63,11 @@ public class InspectorManager : MonoBehaviour
     public float ScytheSkillCoolTime = 6.0f;
     public float ShieldSkillCoolTime = 6.0f;
 
+    public float ScytheShiftCoolTime = 4.0f;
+    public float ShieldShiftCoolTime = 3.0f;
+
+    public float VineSpeed = 1.7f;
+
     void Awake()
     {
         _InspectorManager = this;

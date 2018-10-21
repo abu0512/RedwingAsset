@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QueenMushroomHealing : QueenMushroomStateBase
 {
-
     public override void BeginState()
     {
         Dltime = 0;

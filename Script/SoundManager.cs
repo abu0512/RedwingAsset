@@ -40,7 +40,14 @@ public enum PlaySoundId
     Tanker_Defense,
     Vine,
     Vine_Fast,
-    Monster_Death
+    Monster_Death,
+    Goblin_Missile,
+    Goblin_Heal,
+    ShildGoblin_Hit,
+    GuardGoblin_AttackHit,
+    ShildGoblin_AttackHit,
+    GuardGoblin_Sword,
+    ShildGoblin_Sword
 }
 
 [Serializable]

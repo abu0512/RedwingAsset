@@ -79,28 +79,6 @@ public class Stage1 : MonoBehaviour
 
     }
 
-    /*void GuardMushroomisAllDead()
-    {
-        if (GuardCount > 0)
-            return;
-
-        foreach (QueenMushroom queen in _queens)
-        {
-            queen.HealTime = false;
-            queen.HealStart = false;
-        }
-    }*/
-
-    //void BulletPoolSet()
-    //{
-    //    if(QueenCount <= 0)
-    //        BulletPool.SetActive(false);
-    //    else
-    //    {
-    //        BulletPool.SetActive(true);
-    //    }
-    //}
-
     void HealTimeCheck()
     {
         if (GuardCount == 0 && QueenCount == 0)
@@ -153,44 +131,6 @@ public class Stage1 : MonoBehaviour
             queen.HealTime = false;
         }
     }
-
-    /* void GuardModeChange()
-     {
-         if (QueenCount > 0)
-             return;
-
-         if (_changeMode)
-             return;
-
-         int cnt = 0;
-
-         foreach (GuardMushroom guard in _guards)
-         {
-             guard.SBombing = true;
-             cnt++;
-
-             if (cnt >= GuardCount / 2)
-                 break;
-         }
-
-         foreach (GuardMushroom guard in _guards)
-         {
-             if (guard.SBombing)
-                 continue;
-
-             guard.QueenisAllDead = true;
-         }
-
-         _changeMode = true;
-     }*/
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-
-    //    }
-    //}
 
     void Update()
     {
