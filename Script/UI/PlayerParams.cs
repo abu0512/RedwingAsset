@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -51,8 +50,16 @@ public class PlayerParams : CharacterUI
     public Image Return_Explanation;
     public Image TankerControl;
     public Image DealerControl;
-    [NonSerialized]
+    [System.NonSerialized]
     public bool Explanation_On = false;
+
+    [Header("Tab")]
+    public Image Tanker_Icon;
+    public Image Dealer_Icon;
+    public Image[] Tanker_Tip;
+    public Image[] Dealer_Tip;
+    private int RandomValue = 0;
+    private float TipTime = 0;
 
     public override void InitParams()
     {
@@ -69,7 +76,7 @@ public class PlayerParams : CharacterUI
         curSwap = CPlayerManager._instance.ScytheGauge;
 
     }
-
+   
     void Awake()
     {
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();       
@@ -334,6 +341,72 @@ public class PlayerParams : CharacterUI
         }
     }
 
+    public void Tip_Set()
+    {
+        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+        {
+            Tanker_Icon.enabled = true;
+            Dealer_Icon.enabled = false;
+
+            for (int i = 0; i < Dealer_Tip.Length; i++)
+            {
+                Dealer_Tip[i].enabled = false;
+            }
+        }
+
+        else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        {
+            Tanker_Icon.enabled = false;
+            Dealer_Icon.enabled = true;
+
+            for (int i = 0; i < Tanker_Tip.Length; i++)
+            {
+                Tanker_Tip[i].enabled = false;
+            }
+        }
+    }
+
+    public void Tip_CorSet()
+    {
+        TipTime += Time.deltaTime;
+        if (TipTime >= 5f)
+        {
+            if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+            {
+                StartCoroutine(TankerSet());
+            }
+
+            else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+            {
+                StartCoroutine(DealerSet());
+            }
+
+            TipTime = 0;
+        }
+    }
+
+    private IEnumerator TankerSet()
+    {             
+        StopCoroutine(DealerSet());
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < Tanker_Tip.Length; i++)
+            Tanker_Tip[i].enabled = false;
+
+        RandomValue = Random.Range(0, 9);
+        Tanker_Tip[RandomValue].enabled = true;
+    }
+
+    private IEnumerator DealerSet()
+    {
+        StopCoroutine(TankerSet());
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < Dealer_Tip.Length; i++)
+            Dealer_Tip[i].enabled = false;
+
+        RandomValue = Random.Range(0, 8);
+        Dealer_Tip[RandomValue].enabled = true;
+    }
+
     void Start()
     {
         InitParams();
@@ -356,5 +429,9 @@ public class PlayerParams : CharacterUI
         // Skill_Swap
         Skill_SwapSet();
         Skill_SwapImageSet();
+
+        // Tip
+        Tip_CorSet();
+        Tip_Set();
     }
 }
