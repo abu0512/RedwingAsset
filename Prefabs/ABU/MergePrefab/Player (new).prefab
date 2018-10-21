@@ -5292,7 +5292,7 @@ GameObject:
   - component: {fileID: 65932233377919890}
   m_Layer: 0
   m_Name: Shield_Mesh
-  m_TagString: Untagged
+  m_TagString: Shild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

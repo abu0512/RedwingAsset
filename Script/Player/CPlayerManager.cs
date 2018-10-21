@@ -255,6 +255,7 @@ public class CPlayerManager : MonoBehaviour
         // type = 1  플레이어 / type = 2 방패
         if (type == 1)
         {
+            StartCoroutine(Co_Damage());
             SoundManager.I.PlaySound(transform, PlaySoundId.Hit_Pc);
             //if (!isPlayerHorn) // 플레이어가 무적상태가 아닐때
             //{
@@ -534,5 +535,29 @@ public class CPlayerManager : MonoBehaviour
             other.GetComponent<WitchBossEffect>().OnScytheEffect(Random.Range(0, 3));
             CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
         }
+    }
+
+    IEnumerator Co_Damage()
+    {
+        if (_CPlayerSwap._PlayerMode == PlayerMode.Shield)
+        {
+            if (_PlayerAni_Contorl._PlayerAni_State_Shild != PlayerAni_State_Shild.ShildRun &&
+                _PlayerAni_Contorl._PlayerAni_State_Shild != PlayerAni_State_Shild.CountAttack &&
+                _PlayerAni_Contorl._PlayerAni_State_Shild != PlayerAni_State_Shild.Stun)
+                _PlayerAni_Contorl._PlayerAni_State_Shild = PlayerAni_State_Shild.Damage;
+        }
+        else
+        {
+            if (_PlayerAni_Contorl._PlayerAni_State_Scythe != PlayerAni_State_Scythe.Skill1 &&
+                _PlayerAni_Contorl._PlayerAni_State_Scythe != PlayerAni_State_Scythe.Skill2)
+                _PlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.Damage;
+        }
+        m_bMove = false;
+        yield return new WaitForSeconds(0.01f);
+    }
+
+    private void DamageMoveTrue()
+    {
+        m_bMove = true;
     }
 }

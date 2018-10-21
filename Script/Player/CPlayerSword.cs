@@ -98,4 +98,10 @@ public class CPlayerSword : CPlayerBase
         _shieldCollider.enabled = false;
         _CounteCollder.enabled = false;
     }
+
+    private void DamageAllEnd()
+    {
+        AttackEnd();
+        ShildRun(2);
+    }
 }

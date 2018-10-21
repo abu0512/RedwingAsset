@@ -64,6 +64,7 @@ public class WitchSkillTeleportObject : MonoBehaviour
 
         _witch.WitchModel.material.SetFloat("_Hide", Mathf.Clamp(_hide, -1.0f, 1.0f));
         _witch.WeaponModel.material.SetFloat("_Hide", Mathf.Clamp(_hide, -1.0f, 1.0f));
+        _witch.RingModel.material.SetFloat("_Hide", Mathf.Clamp(_hide, -1.0f, 1.0f));
 
         //_hideTime = 0.0f;
     }
@@ -75,8 +76,10 @@ public class WitchSkillTeleportObject : MonoBehaviour
 
         _witch.WitchModel.material = _witch.NoiseWitch;
         _witch.WeaponModel.material = _witch.NoiseWeapon;
+        _witch.RingModel.material = _witch.NoiseRing;
         _witch.WitchModel.material.SetFloat("_Hide", 1.0f);
         _witch.WeaponModel.material.SetFloat("_Hide", 1.0f);
+        _witch.RingModel.material.SetFloat("_Hide", 1.0f);
 
         _hide = 1.0f;
         _witch.IsTel = true;
@@ -177,6 +180,7 @@ public class WitchSkillTeleportObject : MonoBehaviour
         _state = 2;
         _witch.WitchModel.material = _witch.NormalWitch;
         _witch.WeaponModel.material = _witch.NormalWeapon;
+        _witch.RingModel.material = _witch.NormalRing;
     }
 
     private Vector3 GetRandomDirection()

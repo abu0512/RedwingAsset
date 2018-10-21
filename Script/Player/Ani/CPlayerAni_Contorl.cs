@@ -20,6 +20,8 @@ public enum PlayerAni_State_Shild
     Interaction,
     Attack4,
     None,
+    Stun,
+    Damage,
 }
 public enum PlayerAni_State_Scythe
 {
@@ -90,7 +92,7 @@ public class CPlayerAni_Contorl : CPlayerBase
     public float RushSkillcool { get { return _rushskillcool; } set { value = _rushskillcool; } }
 
     private float _shieldSkillCool;
-    private float SheildSkillCool { get { return _shieldSkillCool; } set { _shieldSkillCool = value; } }
+    public float SheildSkillCool { get { return _shieldSkillCool; } set { _shieldSkillCool = value; } }
     public bool ShieldSkillOn
     {
         get
@@ -100,7 +102,7 @@ public class CPlayerAni_Contorl : CPlayerBase
     }
 
     private float _shieldShiftCool;
-    private float SheildShiftCool { get { return _shieldShiftCool; } set { _shieldShiftCool = value; } }
+    public float SheildShiftCool { get { return _shieldShiftCool; } set { _shieldShiftCool = value; } }
     public bool ShieldShiftOn
     {
         get
@@ -228,7 +230,6 @@ public class CPlayerAni_Contorl : CPlayerBase
                 return;
 
             _PlayerAni_State_Shild = PlayerAni_State_Shild.Dash;
-            _shieldShiftCool = InspectorManager._InspectorManager.ShieldShiftCoolTime;
         }
         else
         {
@@ -253,7 +254,6 @@ public class CPlayerAni_Contorl : CPlayerBase
                 return;
 
             _PlayerAni_State_Shild = PlayerAni_State_Shild.ShildRun;
-            _shieldSkillCool = InspectorManager._InspectorManager.ShieldSkillCoolTime;
         }
     }
     void ShieldAni()
@@ -343,6 +343,16 @@ public class CPlayerAni_Contorl : CPlayerBase
                     Animation_Change(14);
                 }
                 break;
+            case PlayerAni_State_Shild.Stun:
+                {
+                    Animation_Change(16);
+                }
+                break;
+            case PlayerAni_State_Shild.Damage:
+                {
+                    Animation_Change(17);
+                }
+                break;
         }
     }
     void ScytheAniGetKey()
@@ -357,7 +367,7 @@ public class CPlayerAni_Contorl : CPlayerBase
 
             fScytheCameraTime = 0;
             _PlayerAni_State_Scythe = PlayerAni_State_Scythe.Skill2;
-            _scytheSkillCool = InspectorManager._InspectorManager.ScytheSkillCoolTime;
+            
         }
         else
         {
@@ -430,6 +440,11 @@ public class CPlayerAni_Contorl : CPlayerBase
             case PlayerAni_State_Scythe.Skill1:
                 {
                     Animation_Change(5);
+                }
+                break;
+            case PlayerAni_State_Scythe.Damage:
+                {
+                    Animation_Change(6);
                 }
                 break;
         }
@@ -567,5 +582,46 @@ public class CPlayerAni_Contorl : CPlayerBase
     private void PlayDefenseSound()
     {
         SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Defense);
+    }
+
+    private void OnAttackEffect(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                EffectManager.I.OnEffect(EffectType.Hero_Scythe_Attack1, transform, 5.0f);
+                break;
+            case 1:
+                EffectManager.I.OnEffect(EffectType.Hero_Scythe_Attack2, transform, 5.0f);
+                break;
+            case 2:
+                EffectManager.I.OnEffect(EffectType.Hero_Scythe_Attack3, transform, 5.0f);
+                break;
+        }
+    }
+
+    private void OnChopEffect()
+    {
+        EffectManager.I.OnEffect(EffectType.Hero_Scythe_JunBang, transform, 5.0f);
+    }
+
+    private void OnSwapCutEffect()
+    {
+        EffectManager.I.OnEffect(EffectType.Hero_SwapAttack_Scythe, transform, 5.0f);
+    }
+
+    private void ScytheSkillCoolTimeEvent()
+    {
+        _scytheSkillCool = InspectorManager._InspectorManager.ScytheSkillCoolTime;
+    }
+
+    private void ShieldSkillCoolTimeEvent()
+    {
+        _shieldSkillCool = InspectorManager._InspectorManager.ShieldSkillCoolTime;
+    }
+
+    private void ShieldShiftCoolTimeEvent()
+    {
+        _shieldShiftCool = InspectorManager._InspectorManager.ShieldShiftCoolTime;
     }
 }

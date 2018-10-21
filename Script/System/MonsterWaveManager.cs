@@ -15,9 +15,13 @@ public class MonsterWaveManager : Singleton<MonsterWaveManager>
     public bool IsRun { get { return _isRun; } }
     public int CurrentStage { get { return _curStage; } }
 
+    private bool _allClear;
+    public bool AllClear { get { return _allClear; } }
+
     private void Awake()
     {
         //_instance = this;
+        _allClear = false;
     }
 
     private void Start()
@@ -44,6 +48,9 @@ public class MonsterWaveManager : Singleton<MonsterWaveManager>
         {
             _isRun = false;
             FindObjectOfType<StageGateHandler>().SetGateState(false);
+
+            if (_curStage == _stages.Count - 1)
+                _allClear = true;
         }
         else
             _isRun = true;

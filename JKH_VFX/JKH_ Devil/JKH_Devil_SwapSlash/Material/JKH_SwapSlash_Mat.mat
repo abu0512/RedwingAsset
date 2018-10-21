@@ -119,7 +119,7 @@ Material:
     - _tex3V: 0
     - _tex3pow: 0
     m_Colors:
-    - _Base_Color: {r: 2.515, g: 0.46231604, b: 0.75959986, a: 1}
+    - _Base_Color: {r: 1.4875001, g: 0.68793106, b: 0.32812497, a: 1}
     - _Color: {r: 2, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 2.7720423, g: 2.7720423, b: 2.7720423, a: 1}

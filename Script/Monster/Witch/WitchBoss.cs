@@ -27,6 +27,10 @@ public class WitchBoss : MonsterBase
     public Material NormalWeapon;
     public Material NoiseWeapon;
 
+    public Renderer RingModel;
+    public Material NormalRing;
+    public Material NoiseRing;
+
     private WitchStateSystem _stateSystem;
     private WitchSkillSystem _skillSystem;
     private WitchState _curState;
