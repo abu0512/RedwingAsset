@@ -90,7 +90,7 @@ public class CPlayerAni_Contorl : CPlayerBase
     public float RushSkillcool { get { return _rushskillcool; } set { value = _rushskillcool; } }
 
     private float _shieldSkillCool;
-    private float SheildSkillCool { get { return _shieldSkillCool; } set { _shieldSkillCool = value; } }
+    public float SheildSkillCool { get { return _shieldSkillCool; } set { _shieldSkillCool = value; } }
     public bool ShieldSkillOn
     {
         get
@@ -100,7 +100,7 @@ public class CPlayerAni_Contorl : CPlayerBase
     }
 
     private float _shieldShiftCool;
-    private float SheildShiftCool { get { return _shieldShiftCool; } set { _shieldShiftCool = value; } }
+    public float SheildShiftCool { get { return _shieldShiftCool; } set { _shieldShiftCool = value; } }
     public bool ShieldShiftOn
     {
         get

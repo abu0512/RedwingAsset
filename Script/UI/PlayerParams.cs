@@ -59,7 +59,7 @@ public class PlayerParams : CharacterUI
     public Image[] Tanker_Tip;
     public Image[] Dealer_Tip;
     private int RandomValue = 0;
-    private float TipTime = 0;
+    private float TipTime = 5f;
 
     public override void InitParams()
     {
@@ -74,6 +74,11 @@ public class PlayerParams : CharacterUI
         curDownward = maxDownward;
         maxSwap = InspectorManager._InspectorManager.SwapMaxGauge;
         curSwap = CPlayerManager._instance.ScytheGauge;
+        maxRoll = InspectorManager._InspectorManager.ShieldShiftCoolTime;
+        curRoll = maxRoll;
+        maxBlink = InspectorManager._InspectorManager.ScytheShiftCoolTime;
+        curBlink = maxBlink;
+           
 
     }
    
@@ -198,7 +203,8 @@ public class PlayerParams : CharacterUI
     {
         // Tanker
         Defense.fillAmount = 1 / 1;
-        Roll.fillAmount = 1 / 1;
+        curRoll = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.SheildShiftCool, 0, maxRoll);
+        Roll.fillAmount = 1 - (curRoll / maxRoll);
         curRush = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.RushSkillcool, 0, maxRush);
         Rush.fillAmount = 1 - (curRush / maxRush);
 
@@ -270,7 +276,8 @@ public class PlayerParams : CharacterUI
 
         // Dealer
         Heal.fillAmount = 1 / 1;
-        Blink.fillAmount = 1 / 1;
+        curBlink = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.ScytheShiftCool, 0, maxBlink);
+        Blink.fillAmount = 1 - (curBlink / maxBlink);
         curDownward = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.DownWardSkillCool, 0, maxDownward);
         Downward.fillAmount = 1 - (curDownward / maxDownward);
 
@@ -369,41 +376,35 @@ public class PlayerParams : CharacterUI
     public void Tip_CorSet()
     {
         TipTime += Time.deltaTime;
-        if (TipTime >= 5f)
+        if (TipTime >= 10f)
         {
             if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
             {
-                StartCoroutine(TankerSet());
+                TankerSet();
             }
 
             else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
             {
-                StartCoroutine(DealerSet());
+                DealerSet();
             }
 
             TipTime = 0;
         }
     }
 
-    private IEnumerator TankerSet()
+    private void TankerSet()
     {             
-        StopCoroutine(DealerSet());
-        yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < Tanker_Tip.Length; i++)
             Tanker_Tip[i].enabled = false;
-
-        RandomValue = Random.Range(0, 9);
+        RandomValue = Random.Range(0, 8);
         Tanker_Tip[RandomValue].enabled = true;
     }
 
-    private IEnumerator DealerSet()
+    private void DealerSet()
     {
-        StopCoroutine(TankerSet());
-        yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < Dealer_Tip.Length; i++)
             Dealer_Tip[i].enabled = false;
-
-        RandomValue = Random.Range(0, 8);
+        RandomValue = Random.Range(0, 6);
         Dealer_Tip[RandomValue].enabled = true;
     }
 
