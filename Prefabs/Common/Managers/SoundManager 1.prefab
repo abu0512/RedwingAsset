@@ -112,4 +112,20 @@ MonoBehaviour:
     Path: event:/SFX/Vine/vine_sound
   - Id: 34
     Path: event:/SFX/Vine/vine_sound (fast)
+  - Id: 35
+    Path: "event:/SFX/Monster/\uACE0\uBE14\uB9B0\uC0AC\uB9DD\uC2DC/goblin_death"
+  - Id: 36
+    Path: event:/SFX/Monster/Monster_Goblin02/missile/goblin_missile
+  - Id: 37
+    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+  - Id: 38
+    Path: event:/SFX/Monster/Monster_Goblin03/goblin3_guard_hit
+  - Id: 39
+    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+  - Id: 40
+    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+  - Id: 41
+    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+  - Id: 42
+    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
   _Volume: 0

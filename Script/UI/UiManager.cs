@@ -43,7 +43,7 @@ public class UiManager : MonoBehaviour
         time += Time.deltaTime;
         if (fades < 0.91f && time >= 0.1f)
         {
-            fades += 0.07f;
+            fades += 0.15f;
             fade.color = new Color(0, 0, 0, fades);
             time = 0;
         }
@@ -179,11 +179,15 @@ public class UiManager : MonoBehaviour
         GamePasueUI.SetActive(false);
     }
 
+    private void FixedUpdate()
+    {
+        GameOverSet();
+    }
+
     void Update()
     {  
         GamePauseSet();
         GamePause();
-        GameOverSet();
         if (isGameOver)
         {
             if (DieState >= 0)

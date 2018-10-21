@@ -110,6 +110,7 @@ public class QueenMushroomAttack : QueenMushroomStateBase
         QueenMushroom.GoToPullPush();
         QueenMushroom.PlayerisDead();
         QueenMushroom.TurnToDestination();
+        SoundManager.I.PlaySound(transform.position, PlaySoundId.Goblin_Missile);
 
         Dltime += Time.deltaTime;
 

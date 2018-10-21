@@ -24,7 +24,7 @@ public class ShildMushroomDead : ShildMushroomStateBase
     {
         if (ShildMushroom.isDead)
         {
-            //SoundManager.I.PlaySound(transform.position, PlaySoundId.Monster_Death);
+            SoundManager.I.PlaySound(transform.position, PlaySoundId.Monster_Death);
             ShildMushroom.rotAnglePerSecond = 0;
             ShildMushroom.AttackRotAngle = 0;
             ShildMushroom.Stat.MoveSpeed = 0;

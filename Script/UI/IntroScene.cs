@@ -99,6 +99,12 @@ public class IntroScene : MonoBehaviour {
         SceneManager.LoadSceneAsync("ABU_3");
     }
 
+    private void FixedUpdate()
+    {
+        //Skip할 경우 세팅
+        FadeSet();
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
@@ -106,8 +112,6 @@ public class IntroScene : MonoBehaviour {
             IntroMovie.Pause();
             Skip = true;
         }
-
-        FadeSet();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

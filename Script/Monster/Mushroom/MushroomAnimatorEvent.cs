@@ -23,6 +23,15 @@ public class MushroomAnimatorEvent : MonoBehaviour
         }
     }
 
+    void GuardMSwordSound()
+    {
+        GuardMushroomAttack _GuardMSword = _GuardMushroom.GetCurrentState() as GuardMushroomAttack;
+        if (_GuardMSword != null)
+        {
+            _GuardMSword.GuardSwordSound();
+        }
+    }
+
     void GuardBMHitCheck()
     {
         GuardMushroomBAttack _GuardBMAttaked = _GuardMushroom.GetCurrentState() as GuardMushroomBAttack;

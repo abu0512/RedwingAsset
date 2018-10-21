@@ -21,19 +21,26 @@ public class GuardMushroomAttack : GuardMushroomStateBase
 
     public void AttackCheck()
     {
-        if (GuardMushroom.GetDistanceFromPlayer() < GuardMushroom.MStat.AttackDistance + 2f 
+        if (GuardMushroom.GetDistanceFromPlayer() < GuardMushroom.MStat.AttackDistance + 2f
             && GuardMushroom.PlayerisFront)
         {
             if (CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
             {
-                    CPlayerManager._instance.PlayerHp(0.2f, 2, GuardMushroom.AttackDamage);
+                CPlayerManager._instance.PlayerHp(0.2f, 2, GuardMushroom.AttackDamage);
+                SoundManager.I.PlaySound(transform, PlaySoundId.GuardGoblin_AttackHit);
             }
 
             else
             {
-                    CPlayerManager._instance.PlayerHp(0.2f, 1, GuardMushroom.AttackDamage);
+                CPlayerManager._instance.PlayerHp(0.2f, 1, GuardMushroom.AttackDamage);
+                SoundManager.I.PlaySound(transform, PlaySoundId.GuardGoblin_AttackHit);
             }
         }
+    }
+
+    public void GuardSwordSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.GuardGoblin_Sword);
     }
 
     void Update()
