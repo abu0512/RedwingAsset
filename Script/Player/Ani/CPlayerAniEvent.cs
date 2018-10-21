@@ -88,29 +88,29 @@ public class CPlayerAniEvent : CPlayerBase
 
     private void Update()
     {
-        if(m_bMoveAttack)
-        {
-            _PlayerManager._PlayerMove.fVertical = 0.0f;
-            _PlayerManager._PlayerMove.fHorizontal = 0.0f;
-            m_fStartTime += Time.deltaTime;
-            _PlayerManager._PlayerController.Move(transform.forward * Time.deltaTime * m_fforwordSpeed);
-            if (m_fStartTime >= m_fEndTime)
-            {
-                m_fStartTime = 0;
-                m_bMoveAttack = false;
-            }
-        }
+        //if(m_bMoveAttack)
+        //{
+        //    _PlayerManager._PlayerMove.fVertical = 0.0f;
+        //    _PlayerManager._PlayerMove.fHorizontal = 0.0f;
+        //    m_fStartTime += Time.deltaTime;
+        //    _PlayerManager._PlayerController.Move(transform.forward * Time.deltaTime * m_fforwordSpeed);
+        //    if (m_fStartTime >= m_fEndTime)
+        //    {
+        //        m_fStartTime = 0;
+        //        m_bMoveAttack = false;
+        //    }
+        //}
 
-        if(m_bMove2Attack)
-        {
-            m_fStartTime += Time.deltaTime;
-            _PlayerManager._PlayerController.Move(transform.forward * Time.deltaTime * m_fforword2Speed);
-            if (m_fStartTime >= m_fEnd2Time)
-            {
-                m_fStartTime = 0;
-                m_bMove2Attack = false;
-            }
-        }
+        //if(m_bMove2Attack)
+        //{
+        //    m_fStartTime += Time.deltaTime;
+        //    _PlayerManager._PlayerController.Move(transform.forward * Time.deltaTime * m_fforword2Speed);
+        //    if (m_fStartTime >= m_fEnd2Time)
+        //    {
+        //        m_fStartTime = 0;
+        //        m_bMove2Attack = false;
+        //    }
+        //}
     }
 }
 
