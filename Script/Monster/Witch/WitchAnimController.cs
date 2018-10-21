@@ -40,7 +40,10 @@ public class WitchAnimController : MonoBehaviour
             if (DotValue > 1.0f || DotValue <= 0.0f)
                 return;
 
-            _witch.Target.PlayerHp(0.2f, 2, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+            if (_witch.Target._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
+                _witch.Target.PlayerHp(0.2f, 2, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+            else
+                _witch.Target.PlayerHp(0.2f, 1, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
             if (_witch.Target._PlayerShild._isShildCounter)
             {
                 _witch.SetState(WitchState.GuardAttack);
@@ -56,7 +59,11 @@ public class WitchAnimController : MonoBehaviour
                 DotValue < WitchValueManager.I.AttackMinAngle[_witch.AttackIdx])
                 return;
 
-            _witch.Target.PlayerHp(0.2f, 2, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+            if (_witch.Target._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
+                _witch.Target.PlayerHp(0.2f, 2, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+            else
+                _witch.Target.PlayerHp(0.2f, 1, WitchValueManager.I.AttackDamge[_witch.AttackIdx]);
+
             if (_witch.Target._PlayerShild._isShildCounter)
             {
                 _witch.SetState(WitchState.GuardAttack);

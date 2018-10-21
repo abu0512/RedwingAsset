@@ -74,7 +74,7 @@ public class WitchSkillArrowSubArrow : MonoBehaviour
             }
             if (other.tag == "Shild")
             {
-                CPlayerManager._instance.PlayerHp(0.2f, 2, WitchValueManager.I.ArrowDamage / 3);
+                CPlayerManager._instance.PlayerHp(0.2f, 2, WitchValueManager.I.ArrowDamage);
             }
             gameObject.SetActive(false);
         }
