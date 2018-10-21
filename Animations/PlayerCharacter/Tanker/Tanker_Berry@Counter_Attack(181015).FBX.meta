@@ -253,7 +253,8 @@ ModelImporter:
       - time: 0.14540815
         functionName: CounterTrue
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -274,7 +275,8 @@ ModelImporter:
       - time: 0.3864796
         functionName: AttackEnd
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 5
         messageOptions: 0

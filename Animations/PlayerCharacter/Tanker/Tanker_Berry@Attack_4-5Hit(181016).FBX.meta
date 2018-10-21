@@ -294,7 +294,8 @@ ModelImporter:
       - time: 0.26793557
         functionName: SowrdTrue
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -308,7 +309,8 @@ ModelImporter:
       - time: 0.35586733
         functionName: AttackEnd
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -329,7 +331,8 @@ ModelImporter:
       - time: 0.52350193
         functionName: SowrdTrue
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 4
         messageOptions: 0
@@ -350,7 +353,8 @@ ModelImporter:
       - time: 0.61734694
         functionName: AttackEnd
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 4
         messageOptions: 0

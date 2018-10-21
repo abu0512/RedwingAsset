@@ -10019,7 +10019,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1516223444896008}
-  m_LocalRotation: {x: 0.6964988, y: 0.000276319, z: 0.71755785, w: -0.00028666382}
+  m_LocalRotation: {x: 0.6964989, y: 0.00027631904, z: 0.7175579, w: -0.00028666385}
   m_LocalPosition: {x: -13.152252, y: -2.2084684, z: -1.2786841}
   m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
   m_Children:
@@ -10033,7 +10033,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986312669793692}
-  m_LocalRotation: {x: -0.6964988, y: -0.00027831053, z: 0.71755785, w: -0.00028473337}
+  m_LocalRotation: {x: -0.6964989, y: -0.00027831056, z: 0.7175579, w: -0.0002847334}
   m_LocalPosition: {x: -13.152252, y: -2.208476, z: 1.278672}
   m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
   m_Children:
@@ -12530,7 +12530,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958119554045344}
-  m_LocalRotation: {x: -0.6964988, y: -0.00027831327, z: 0.71755785, w: -0.00028473616}
+  m_LocalRotation: {x: -0.6964989, y: -0.0002783133, z: 0.7175579, w: -0.0002847362}
   m_LocalPosition: {x: -13.152252, y: -2.208475, z: 1.2786719}
   m_LocalScale: {x: 1, y: 0.9999999, z: 0.99999994}
   m_Children:
@@ -13330,7 +13330,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245505941998864}
-  m_LocalRotation: {x: 0.6964988, y: 0.00027631904, z: 0.71755785, w: -0.00028666385}
+  m_LocalRotation: {x: 0.6964989, y: 0.00027631907, z: 0.7175579, w: -0.00028666388}
   m_LocalPosition: {x: -13.152252, y: -2.2084675, z: -1.2786843}
   m_LocalScale: {x: 1, y: 0.9999999, z: 0.99999994}
   m_Children:
@@ -15079,8 +15079,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 85.6, y: 74.23, z: 269.8}
-  m_Center: {x: 18, y: 0, z: 50.8}
+  m_Size: {x: 85.6, y: 88.57, z: 269.8}
+  m_Center: {x: 0.7, y: 0, z: 50.8}
 --- !u!65 &65637339080753634
 BoxCollider:
   m_ObjectHideFlags: 1

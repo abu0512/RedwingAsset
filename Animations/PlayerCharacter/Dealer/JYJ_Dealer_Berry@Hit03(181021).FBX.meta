@@ -360,7 +360,8 @@ ModelImporter:
       - time: 0.3545966
         functionName: ScytheTrue
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -374,7 +375,8 @@ ModelImporter:
       - time: 0.5555556
         functionName: AttackEnd
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
