@@ -74,6 +74,7 @@ public class MonsterWave : MonoBehaviour
             m.OnSpawn();
             EffectManager.I.OnEffect(EffectType.Witch_Spawn, m.transform, m.transform.rotation, 1.5f);
         }
+            SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
         //foreach (Transform trf in _objects)
         //{
         //    QueenMushroom queen = trf.GetComponent<QueenMushroom>();

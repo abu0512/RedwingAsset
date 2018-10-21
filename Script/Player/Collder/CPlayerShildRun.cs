@@ -8,6 +8,7 @@ public class CPlayerShildRun : MonoBehaviour
     {
         if (other.tag == "Boss" || other.tag == "Guard" || other.tag == "Queen" || other.tag == "ShildMushroom")
         {
+            SoundManager.I.PlaySound(transform, PlaySoundId.Tanker_Rush_Hit);
             CPlayerManager._instance.PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             if (other.tag == "Guard")
             {

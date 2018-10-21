@@ -426,6 +426,11 @@ public class CPlayerManager : MonoBehaviour
         SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_QuickCut);
     }
 
+    private void PlayChopSound()
+    {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_QuickCut);
+    }
+
     private void DashStm()
     {
         m_PlayerStm -= InspectorManager._InspectorManager.fStmDash;

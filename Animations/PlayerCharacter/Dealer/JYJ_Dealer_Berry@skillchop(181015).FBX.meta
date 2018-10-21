@@ -325,14 +325,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: ScytheSkillCoolTimeEvent
+        functionName: OnChopEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: OnChopEffect
+      - time: 0.00455927
+        functionName: ScytheSkillCoolTimeEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -340,6 +340,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.519337
         functionName: OnChopSkillDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.0057971017
+        functionName: PlayChopSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
