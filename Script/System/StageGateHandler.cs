@@ -24,6 +24,7 @@ public class StageGateHandler : MonoBehaviour
 
     public void SetGateState(bool flag)
     {
+        SoundManager.I.PlaySound(CPlayerManager._instance.transform, PlaySoundId.Vine_Fast);
         foreach (StageGate g in _gates)
         {
             g.SetGateState(flag);

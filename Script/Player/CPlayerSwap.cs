@@ -72,13 +72,18 @@ public class CPlayerSwap : CPlayerBase
         TelPoEffect();
         BlinkPlayer();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _PlayerMode == PlayerMode.Scythe && _PlayerManager.m_PlayerStm > 30f)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            if (_PlayerMode != PlayerMode.Scythe)
+                return;
+
+            if (!_PlayerManager._PlayerAni_Contorl.ScytheShiftOn)
+                return;
+
             CSwapSystem._instance.ObjSwap(false, false);
             CCameraFind._instance.BlinkCameraOn();
             RayCastChack();
             BlinkStart();
-            _PlayerManager.m_PlayerStm -= 30f;
             SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_Blink);
         }
     }
