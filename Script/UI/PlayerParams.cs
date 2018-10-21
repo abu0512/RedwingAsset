@@ -58,12 +58,10 @@ public class PlayerParams : CharacterUI
     public Image Dealer_Icon;
     public Image[] Tanker_Tip;
     public Image[] Dealer_Tip;
-    public GameObject Destination;
     private int RandomValue = 0;
     private float TipTime = 5f;
-    private Vector3 FirPo;
-    private Vector3 SecPo;
-    private float TipSpeed;
+    private RectTransform SecPo;
+    private float TipSpeed = 5f;
 
     public override void InitParams()
     {
@@ -395,11 +393,22 @@ public class PlayerParams : CharacterUI
     }
 
     private void TankerSet()
-    {             
+    {
         for (int i = 0; i < Tanker_Tip.Length; i++)
+        {
             Tanker_Tip[i].enabled = false;
+        }
         RandomValue = Random.Range(0, 8);
         Tanker_Tip[RandomValue].enabled = true;
+
+        //print(FirPo.rect.x);
+        //if (FirPo.rect.x > SecPo.rect.x)
+        //{
+        //    Vector2.MoveTowards(ResetPo, Destination, TipSpeed * Time.deltaTime);
+        //    Tanker_Tip[RandomValue].rectTransform.position
+        //    FirPo.rect.x -= Time.deltaTime;
+        //    Tanker_Tip[RandomValue].rectTransform.position = FirPo.position;
+        //}
     }
 
     private void DealerSet()
@@ -414,6 +423,8 @@ public class PlayerParams : CharacterUI
     {
         InitParams();
         Skill_Explanation.SetActive(false);
+
+        //SecPo = Destination.rectTransform.position;
     }
 
     void Update()

@@ -47,7 +47,8 @@ public enum PlaySoundId
     GuardGoblin_AttackHit,
     ShildGoblin_AttackHit,
     GuardGoblin_Sword,
-    ShildGoblin_Sword
+    ShildGoblin_Sword,
+    Bgm2
 }
 
 [Serializable]
@@ -60,11 +61,13 @@ public struct PlaySoundType
 
 public class SoundManager : MonoBehaviour
 {
+    public GameObject isBossZone;
     private static SoundManager _instance;
     public static SoundManager I { get { return _instance; } }
 
     public PlaySoundType[] Sounds;
     FMOD.Studio.EventInstance bgmSound;
+    FMOD.Studio.EventInstance BossbgmSound;
     FMOD.Studio.ParameterInstance bgmVolume;
 
     public float _Volume;
@@ -73,21 +76,39 @@ public class SoundManager : MonoBehaviour
     {
         _instance = this;
         _Volume = 0;
+        SoundPlay(CPlayerManager._instance.transform);
     }
 
     public void Update()
     {
         bgmVolume.setValue(_Volume);
+
+        if (isBossZone.activeInHierarchy)
+            SoundPlay(CPlayerManager._instance.transform);
     }
 
 
     public void SoundPlay(Transform Target)
     {
-        bgmSound = FMODUnity.RuntimeManager.CreateInstance(GetSound(PlaySoundId.Bgm1));
-        bgmSound.getParameter("Parameter 1", out bgmVolume);
-        //FMODUnity.RuntimeManager.PlayOneShot(MyEvent1[SoundType], Target.position);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(bgmSound, Target, GetComponent<Rigidbody>());
-        bgmSound.start();
+        if (isBossZone.activeInHierarchy)
+            bgmSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        else
+        {
+            bgmSound = FMODUnity.RuntimeManager.CreateInstance(GetSound(PlaySoundId.Bgm1));
+            bgmSound.getParameter("Parameter 1", out bgmVolume);
+            //FMODUnity.RuntimeManager.PlayOneShot(MyEvent1[SoundType], Target.position);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(bgmSound, Target, GetComponent<Rigidbody>());
+            bgmSound.start();
+        }
+    }
+
+    public void BossSoundPlay(Transform Target)
+    {
+        BossbgmSound = FMODUnity.RuntimeManager.CreateInstance(GetSound(PlaySoundId.Bgm2));
+        BossbgmSound.getParameter("Parameter 1", out bgmVolume);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(BossbgmSound, Target, GetComponent<Rigidbody>());
+        BossbgmSound.start();
     }
 
     public void PlaySound(Transform target, PlaySoundId id)
