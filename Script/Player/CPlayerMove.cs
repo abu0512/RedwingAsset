@@ -23,8 +23,6 @@ public class CPlayerMove : CPlayerBase
 
     private void Movement()
     {
-        //if (_PlayerManager._PlayerAni_Contorl._isSweat)
-        //    return;
 
         fHorizontal = Input.GetAxisRaw("Horizontal");
         fVertical = Input.GetAxisRaw("Vertical");
@@ -50,7 +48,6 @@ public class CPlayerMove : CPlayerBase
             fHorizontal = 0;
         }
 
-
         if (Mathf.Abs(fHorizontal) > 0 || Mathf.Abs(fVertical) > 0)
         {
             if (_PlayerManager.m_bMove)
@@ -59,6 +56,9 @@ public class CPlayerMove : CPlayerBase
                     _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild = PlayerAni_State_Shild.IdleRun;
                 else if (!CPlayerManager._instance._PlayerSwap.m_bSwapAttack)
                     _PlayerManager._PlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.IdleRun;
+
+                //if (_PlayerManager._PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Dash)
+                //    return;
 
                 _PlayerManager._PlayerController.Move((m_destination - transform.position).normalized * Time.deltaTime * _PlayerManager.EDITOR_MOVESPEED);
             }

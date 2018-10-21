@@ -9,21 +9,22 @@ public class StageGateHandler : MonoBehaviour
     private void Awake()
     {
         _gates = FindObjectsOfType<StageGate>();
-        SetGateState(false);
     }
 
     void Start ()
     {
-		
-	}
-	
-	void Update ()
+        SetGateState(false);
+
+    }
+
+    void Update ()
     {
 
     }
 
     public void SetGateState(bool flag)
     {
+        SoundManager.I.PlaySound(CPlayerManager._instance.transform, PlaySoundId.Vine_Fast);
         foreach (StageGate g in _gates)
         {
             g.SetGateState(flag);

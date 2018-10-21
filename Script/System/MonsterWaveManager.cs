@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterWaveManager : MonoBehaviour
+public class MonsterWaveManager : Singleton<MonsterWaveManager>
 {
-    private static MonsterWaveManager _instance;
-    public static MonsterWaveManager I { get { return _instance; } }
+    //private static MonsterWaveManager _instance;
+    //public static MonsterWaveManager I { get { return _instance; } }
 
     private List<StageArea> _stages = new List<StageArea>();
     private int _curStage;
@@ -17,7 +17,7 @@ public class MonsterWaveManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        //_instance = this;
     }
 
     private void Start()

@@ -65,7 +65,9 @@ public class CPlayerAni_Contorl : CPlayerBase
 
     private float _downwardskillcool;
     public float DownWardSkillCool { get { return _downwardskillcool; } set { value = _downwardskillcool; } }
+
     private float _scytheSkillCool;
+    public float ScytheSkillCool { get { return _scytheSkillCool; } set { _scytheSkillCool = value; } }
     public bool ScytheSkillOn
     {
         get
@@ -74,14 +76,36 @@ public class CPlayerAni_Contorl : CPlayerBase
         }
     }
 
+    private float _scytheShiftCool;
+    public float ScytheStheShiftCool { get { return _scytheSkillCool; }  set { _scytheShiftCool = value; } }
+    public bool ScytheShiftOn
+    {
+        get
+        {
+            return _scytheShiftCool <= 0.0f;
+        }
+    }
+
     private float _rushskillcool;
     public float RushSkillcool { get { return _rushskillcool; } set { value = _rushskillcool; } }
+
     private float _shieldSkillCool;
+    private float SheildSkillCool { get { return _shieldSkillCool; } set { _shieldSkillCool = value; } }
     public bool ShieldSkillOn
     {
         get
         {
             return _shieldSkillCool <= 0.0f;
+        }
+    }
+
+    private float _shieldShiftCool;
+    private float SheildShiftCool { get { return _shieldShiftCool; } set { _shieldShiftCool = value; } }
+    public bool ShieldShiftOn
+    {
+        get
+        {
+            return _shieldShiftCool <= 0.0f;
         }
     }
 
@@ -120,6 +144,8 @@ public class CPlayerAni_Contorl : CPlayerBase
 
         ScytheSkillCoolTime();
         ShieldSkillCoolTime();
+        ScytheShiftCoolTime();
+        ShieldShiftCoolTime();
         SkillcoolChange();
     }
     void ShieldAniGetKey()
@@ -175,23 +201,20 @@ public class CPlayerAni_Contorl : CPlayerBase
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            if (_PlayerManager.m_PlayerStm > 0)
+            _PlayerManager._PlayerMove.SpeedReset();
+            if (_PlayerManager.m_nAttackCombo != 0 && _PlayerManager.m_bAttack)
             {
-                _PlayerManager._PlayerMove.SpeedReset();
-                if (_PlayerManager.m_nAttackCombo != 0 && _PlayerManager.m_bAttack)
+                _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_Mode;
+            }
+            else
+            {
+                if (m_bDefenseIdle)
                 {
-                    _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_Mode;
+                    _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_ModeIdle;
                 }
                 else
                 {
-                    if (m_bDefenseIdle)
-                    {
-                        _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_ModeIdle;
-                    }
-                    else
-                    {
-                        _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_Mode;
-                    }
+                    _PlayerAni_State_Shild = PlayerAni_State_Shild.Defense_Mode;
                 }
             }
         }
@@ -199,9 +222,13 @@ public class CPlayerAni_Contorl : CPlayerBase
         {
             _CPlayerAniEvent.MoveTypes(2);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && _PlayerManager.m_PlayerStm >= InspectorManager._InspectorManager.fStmDash)
+        else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            if (!ShieldShiftOn)
+                return;
+
             _PlayerAni_State_Shild = PlayerAni_State_Shild.Dash;
+            _shieldShiftCool = InspectorManager._InspectorManager.ShieldShiftCoolTime;
         }
         else
         {
@@ -220,13 +247,12 @@ public class CPlayerAni_Contorl : CPlayerBase
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && _PlayerManager.m_PlayerStm > InspectorManager._InspectorManager.fShildRunStm)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (!ShieldSkillOn)
                 return;
 
             _PlayerAni_State_Shild = PlayerAni_State_Shild.ShildRun;
-            _PlayerManager.m_PlayerStm -= InspectorManager._InspectorManager.fShildRunStm;
             _shieldSkillCool = InspectorManager._InspectorManager.ShieldSkillCoolTime;
         }
     }
@@ -503,12 +529,28 @@ public class CPlayerAni_Contorl : CPlayerBase
         _scytheSkillCool -= Time.deltaTime;
     }
 
+    private void ScytheShiftCoolTime()
+    {
+        if (ScytheShiftOn)
+            return;
+
+        _scytheShiftCool -= Time.deltaTime;
+    }
+
     private void ShieldSkillCoolTime()
     {
         if (ShieldSkillOn)
             return;
 
         _shieldSkillCool -= Time.deltaTime;
+    }
+
+    private void ShieldShiftCoolTime()
+    {
+        if (ShieldShiftOn)
+            return;
+
+        _shieldShiftCool -= Time.deltaTime;
     }
 
     private void SkillcoolChange()

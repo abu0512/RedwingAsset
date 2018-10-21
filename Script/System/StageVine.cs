@@ -41,7 +41,7 @@ public class StageVine : MonoBehaviour
         if (_isOn)
             return;
 
-        _growth -= _downSpeed * Time.deltaTime;
+        _growth -= InspectorManager._InspectorManager.VineSpeed * Time.deltaTime;
 
         if (_growth <= MinGrowth)
             _growth = MinGrowth;
@@ -54,7 +54,7 @@ public class StageVine : MonoBehaviour
         if (!_isOn)
             return;
 
-        _growth += _upSpeed * Time.deltaTime;
+        _growth += InspectorManager._InspectorManager.VineSpeed * Time.deltaTime;
 
         if (_growth >= MaxGrowth)
             _growth = MaxGrowth;
