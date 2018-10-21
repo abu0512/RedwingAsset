@@ -256,8 +256,8 @@ public class CPlayerManager : MonoBehaviour
         if (type == 1)
         {
             SoundManager.I.PlaySound(transform, PlaySoundId.Hit_Pc);
-            if (!isPlayerHorn) // 플레이어가 무적상태가 아닐때
-            {
+            //if (!isPlayerHorn) // 플레이어가 무적상태가 아닐때
+            //{
                 // 플레이어가 검방패 모드일때
                 //if (_PlayerSwap._PlayerMode == PlayerMode.Shield)
                 //{
@@ -269,28 +269,29 @@ public class CPlayerManager : MonoBehaviour
                 //    // hp 내림
                 //    m_fscyPlayerHp -= sizeHp;
                 //}
-            }
+            //}
 
             // 플레이어가 흘리기 중일경우
-            if (_CPlayerAni_Contorl._isSweat)
-            {
-                // 플레이어가 흘리기도중 반격을 할수있음
-                _CPlayerAni_Contorl.isSweatCount = true;
-                // 플레이어 무적 시작
-                PlayerHornOn();
-                // 이펙트 호출
-                // CPlayerAttackEffect._instance.Effect9(); 이펙트
-            }
+            //if (_CPlayerAni_Contorl._isSweat)
+            //{
+            //    // 플레이어가 흘리기도중 반격을 할수있음
+            //    //_CPlayerAni_Contorl.isSweatCount = true;
+            //    // 플레이어 무적 시작
+            //    PlayerHornOn();
+            //    // 이펙트 호출
+            //    // CPlayerAttackEffect._instance.Effect9(); 이펙트
+            //}
         }
 
-        // 방패일때 데미지안들어가~
+        // 방패일때 데미지안들어가~ 사실 반 깍임
         else if (type == 2)
         {
             SoundManager.I.PlaySound(transform, PlaySoundId.Defense_Shield);
             // 방패모드 맞았을때 hit 출력
             _CPlayerShild.m_bShildCollider = true;
-            // 체력대신 스테미너 깎음
-            m_fPlayerStm -= sizeHp * InspectorManager._InspectorManager.fShildDamge;
+            // 체력대신 스테미너 깎음 스태미너 없어 선우야
+            //m_fPlayerStm -= sizeHp * InspectorManager._InspectorManager.fShildDamge;
+            m_fPlayerHp -= sizeHp / 2;
         }
 
         //else
@@ -438,6 +439,8 @@ public class CPlayerManager : MonoBehaviour
 
     private void OnSkillCollider()
     {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Attack_Scythe);
+        SoundManager.I.PlaySound(transform, PlaySoundId.Skill_ScytheWideCut);
         //SkillSphereCollider.enabled = true;
         foreach (MonsterBase mon in
                 MonsterManager.I.FindNearMonster(
@@ -446,11 +449,13 @@ public class CPlayerManager : MonoBehaviour
         {
             PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             mon.OnDamage(InspectorManager._InspectorManager.ScytheSwapSkillDamage);
+            OnHitEffect(mon);
         }
     }
 
     private void OnChopSkillDamage()
     {
+        SoundManager.I.PlaySound(transform, PlaySoundId.Attack_Scythe);
         foreach (MonsterBase mon in
                 MonsterManager.I.FindNearMonster(
                     transform.position,
@@ -458,6 +463,7 @@ public class CPlayerManager : MonoBehaviour
         {
             PlayerHitCamera(CCameraRayObj._instance.MaxDistanceValue, 0.2f);
             mon.OnDamage(InspectorManager._InspectorManager.ScytheChopSkillDamage);
+            OnHitEffect(mon);
         }
     }
 
@@ -470,5 +476,63 @@ public class CPlayerManager : MonoBehaviour
     private void OnIdleRun()
     {
         _CPlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.IdleRun;
+    }
+
+    private void OnHitEffect(MonsterBase other)
+    {
+        SoundManager.I.PlaySound(other.transform, PlaySoundId.Hit_StandardMonster);
+
+        if (other.tag == "Guard")
+        {
+            if (other.GetComponent<GuardMushroom>().Stat.Hp > 0)
+            {
+                other.GetComponent<MonsterBase>().isHit = true;
+                other.GetComponent<GuardMushroomEffect>().GuardMHitEffect();
+                CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+            }
+        }
+
+        else if (other.tag == "Queen")
+        {
+            if (other.GetComponent<QueenMushroom>().Stat.Hp > 0)
+            {
+                other.GetComponent<MonsterBase>().isHit = true;
+                other.GetComponent<QueenMushroomEffect>().QueenMHitEffect();
+                CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+            }
+        }
+
+        else if (other.tag == "ShildMushroom")
+        {
+            if (other.GetComponent<ShildMushroom>().GroggyEnd == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+            {
+                other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
+                CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+            }
+
+            else if (other.GetComponent<ShildMushroom>().GroggyEnd == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+            {
+                other.GetComponent<ShildMushroomEffect>().DefenEffect();
+                CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+            }
+
+            // 2학기 방패엘리트 몬스터 변경사항 : 전방에서도 데미지가 들어가야 함. (임시 수정 1차)
+            //if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+            //{
+            //    other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
+            //    CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+            //    other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
+            //}
+
+            //else if (other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
+            //{
+            //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
+            //}
+        }
+        else
+        {
+            other.GetComponent<WitchBossEffect>().OnScytheEffect(Random.Range(0, 3));
+            CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
+        }
     }
 }

@@ -77,7 +77,7 @@ public class CPlayerAni_Contorl : CPlayerBase
     }
 
     private float _scytheShiftCool;
-    public float ScytheStheShiftCool { get { return _scytheSkillCool; }  set { _scytheShiftCool = value; } }
+    public float ScytheShiftCool { get { return _scytheShiftCool; }  set { _scytheShiftCool = value; } }
     public bool ScytheShiftOn
     {
         get
