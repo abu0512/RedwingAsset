@@ -53,7 +53,7 @@ public class PlayerParams : CharacterUI
     [System.NonSerialized]
     public bool Explanation_On = false;
 
-    [Header("Tab")]
+    [Header("Tib")]
     public Image Tanker_Icon;
     public Image Dealer_Icon;
     public Image[] Tanker_Tip;
@@ -78,8 +78,6 @@ public class PlayerParams : CharacterUI
         curRoll = maxRoll;
         maxBlink = InspectorManager._InspectorManager.ScytheShiftCoolTime;
         curBlink = maxBlink;
-           
-
     }
    
     void Awake()
