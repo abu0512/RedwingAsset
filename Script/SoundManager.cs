@@ -97,7 +97,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(Vector3 target, PlaySoundId id)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(GetSound(id), target);
+        FMODUnity.RuntimeManager.PlayOneShot(GetSound(id), CPlayerManager._instance.transform.position);
     }
 
     private string GetSound(PlaySoundId id)

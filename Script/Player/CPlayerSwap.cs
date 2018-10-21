@@ -85,6 +85,7 @@ public class CPlayerSwap : CPlayerBase
             RayCastChack();
             BlinkStart();
             SoundManager.I.PlaySound(transform, PlaySoundId.Dealer_Blink);
+            _PlayerManager._PlayerAni_Contorl.ScytheShiftCool = InspectorManager._InspectorManager.ScytheShiftCoolTime;
         }
     }
 
