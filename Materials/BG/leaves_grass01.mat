@@ -75,16 +75,16 @@ Material:
     - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Radial: 1.2
+    - _Radial: 1.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _Wavesacle: 8
+    - _Wavesacle: 12
     - _ZWrite: 1
     - _cutout: 0.5
     m_Colors:
     - _Color: {r: 0.5588235, g: 0.5588235, b: 0.5588235, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Wavedistance: {r: 0.05, g: 0.08, b: 0.05, a: 0}
+    - _Wavedistance: {r: 0.03, g: 0.05, b: 0.03, a: 0}
     - _Wavespeed: {r: 2, g: 3, b: 2, a: 0}
