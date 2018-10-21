@@ -7,31 +7,27 @@ public class BossParams : CharacterUI
 {
     public string names { get; set; }
 
-    public GameObject BossMonster;
     public Image BMHPBar;
     public Image BMSHPBar;
     MonsterStat _Boss;
 
     private float WaitSec;
 
-    public override void InitParams()
+    private void Start()
     {
+        _Boss = FindObjectOfType<WitchBoss>().GetComponent<MonsterStat>();
+        WaitSec = 0;
+
         names = "BossMonster";
         maxHP = _Boss.MaxHp;
         curHP = _Boss.MaxHp;
         saveHP = _Boss.MaxHp; ;
     }
 
-    private void Awake()
-    {
-        _Boss = FindObjectOfType<WitchBoss>().GetComponent<MonsterStat>();
-        WaitSec = 0;
-    }
-
     public void SetHp()
     {
         curHP = _Boss.Hp;
-        curHP = Mathf.Clamp(curHP, 0, maxHP);
+        curHP = Mathf.Clamp(curHP, 0, _Boss.MaxHp);
 
     }
 
@@ -82,10 +78,5 @@ public class BossParams : CharacterUI
         // Boss 캐릭터 HP bar 실시간 UI 상태 변화
         HPlocalScale();
         SHPlocalScale();
-
-        if (curHP <= 0)
-        {
-            _Boss.gameObject.SetActive(false);
-        }
     }
 }

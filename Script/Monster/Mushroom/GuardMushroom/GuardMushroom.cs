@@ -189,7 +189,6 @@ public class GuardMushroom : MonsterBase
 
             else if (Vector3.Distance(transform.position, Target.position) < maxDistance)
             {
-                //transform.position += transform.forward * fSpeed * Time.deltaTime;
                 _controller.Move(transform.forward * fSpeed * Time.deltaTime);
 
                 if (Vector3.Distance(transform.position, Target.position) <= minDistance)
@@ -207,7 +206,6 @@ public class GuardMushroom : MonsterBase
         {
             if (Vector3.Distance(transform.position, Target.position) < backDistance)
             {
-                //transform.position -= transform.forward * fBackSpeed * Time.deltaTime;
                 _controller.Move(transform.forward * -fBackSpeed * Time.deltaTime);
 
                 if (Vector3.Distance(transform.position, Target.position) > backDistance)

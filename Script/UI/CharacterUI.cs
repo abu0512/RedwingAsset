@@ -21,7 +21,10 @@ public class CharacterUI : MonoBehaviour
     public float curSwap { get; set; }
     public float maxScytheTime { get; set; }
     public float curScytheTime { get; set; }
-
+    public float maxRoll { get; set; }
+    public float curRoll { get; set; }
+    public float maxBlink { get; set; }
+    public float curBlink { get; set; }
 
     void Start()
     {

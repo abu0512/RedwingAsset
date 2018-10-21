@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -51,8 +50,18 @@ public class PlayerParams : CharacterUI
     public Image Return_Explanation;
     public Image TankerControl;
     public Image DealerControl;
-    [NonSerialized]
+    [System.NonSerialized]
     public bool Explanation_On = false;
+
+    [Header("Tip")]
+    public Image Tanker_Icon;
+    public Image Dealer_Icon;
+    public Image[] Tanker_Tip;
+    public Image[] Dealer_Tip;
+    private int RandomValue = 0;
+    private float TipTime = 5f;
+    private RectTransform SecPo;
+    private float TipSpeed = 5f;
 
     public override void InitParams()
     {
@@ -67,9 +76,12 @@ public class PlayerParams : CharacterUI
         curDownward = maxDownward;
         maxSwap = InspectorManager._InspectorManager.SwapMaxGauge;
         curSwap = CPlayerManager._instance.ScytheGauge;
-
+        maxRoll = InspectorManager._InspectorManager.ShieldShiftCoolTime;
+        curRoll = maxRoll;
+        maxBlink = InspectorManager._InspectorManager.ScytheShiftCoolTime;
+        curBlink = maxBlink;
     }
-
+   
     void Awake()
     {
         HPBar = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Image>();       
@@ -191,7 +203,8 @@ public class PlayerParams : CharacterUI
     {
         // Tanker
         Defense.fillAmount = 1 / 1;
-        Roll.fillAmount = 1 / 1;
+        curRoll = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.SheildShiftCool, 0, maxRoll);
+        Roll.fillAmount = 1 - (curRoll / maxRoll);
         curRush = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.RushSkillcool, 0, maxRush);
         Rush.fillAmount = 1 - (curRush / maxRush);
 
@@ -263,7 +276,8 @@ public class PlayerParams : CharacterUI
 
         // Dealer
         Heal.fillAmount = 1 / 1;
-        Blink.fillAmount = 1 / 1;
+        curBlink = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.ScytheShiftCool, 0, maxBlink);
+        Blink.fillAmount = 1 - (curBlink / maxBlink);
         curDownward = Mathf.Clamp(CPlayerManager._instance._PlayerAni_Contorl.DownWardSkillCool, 0, maxDownward);
         Downward.fillAmount = 1 - (curDownward / maxDownward);
 
@@ -334,10 +348,83 @@ public class PlayerParams : CharacterUI
         }
     }
 
+    public void Tip_Set()
+    {
+        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+        {
+            Tanker_Icon.enabled = true;
+            Dealer_Icon.enabled = false;
+
+            for (int i = 0; i < Dealer_Tip.Length; i++)
+            {
+                Dealer_Tip[i].enabled = false;
+            }
+        }
+
+        else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        {
+            Tanker_Icon.enabled = false;
+            Dealer_Icon.enabled = true;
+
+            for (int i = 0; i < Tanker_Tip.Length; i++)
+            {
+                Tanker_Tip[i].enabled = false;
+            }
+        }
+    }
+
+    public void Tip_CorSet()
+    {
+        TipTime += Time.deltaTime;
+        if (TipTime >= 10f)
+        {
+            if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
+            {
+                TankerSet();
+            }
+
+            else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+            {
+                DealerSet();
+            }
+
+            TipTime = 0;
+        }
+    }
+
+    private void TankerSet()
+    {
+        for (int i = 0; i < Tanker_Tip.Length; i++)
+        {
+            Tanker_Tip[i].enabled = false;
+        }
+        RandomValue = Random.Range(0, 8);
+        Tanker_Tip[RandomValue].enabled = true;
+
+        //print(FirPo.rect.x);
+        //if (FirPo.rect.x > SecPo.rect.x)
+        //{
+        //    Vector2.MoveTowards(ResetPo, Destination, TipSpeed * Time.deltaTime);
+        //    Tanker_Tip[RandomValue].rectTransform.position
+        //    FirPo.rect.x -= Time.deltaTime;
+        //    Tanker_Tip[RandomValue].rectTransform.position = FirPo.position;
+        //}
+    }
+
+    private void DealerSet()
+    {
+        for (int i = 0; i < Dealer_Tip.Length; i++)
+            Dealer_Tip[i].enabled = false;
+        RandomValue = Random.Range(0, 6);
+        Dealer_Tip[RandomValue].enabled = true;
+    }
+
     void Start()
     {
         InitParams();
         Skill_Explanation.SetActive(false);
+
+        //SecPo = Destination.rectTransform.position;
     }
 
     void Update()
@@ -356,5 +443,9 @@ public class PlayerParams : CharacterUI
         // Skill_Swap
         Skill_SwapSet();
         Skill_SwapImageSet();
+
+        // Tip
+        Tip_CorSet();
+        Tip_Set();
     }
 }
