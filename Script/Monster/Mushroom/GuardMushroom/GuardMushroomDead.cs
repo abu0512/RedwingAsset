@@ -5,12 +5,12 @@ using UnityEngine;
 public class GuardMushroomDead : GuardMushroomStateBase
 {
     private float DeadTime;
-    //private Vector3 _myposition;
+    private int Soundcount = 0;
 
     public override void BeginState()
     {
         DeadTime = 0;
-        GuardMushroom.ExitGravity = true;
+        GuardMushroom.ExitGravity = true;  
     }
 
     public override void EndState()
@@ -18,24 +18,26 @@ public class GuardMushroomDead : GuardMushroomStateBase
         base.EndState();
     }
 
-    //public void Mypo()
-    //{
-    //    _myposition = transform.position;
-    //    _myposition.y += 0.5f;
-    //    transform.position = _myposition;
-    //}
+    public void DeadSound()
+    {
+        if (Soundcount <= 0)
+        {
+            SoundManager.I.PlaySound(transform, PlaySoundId.Monster_Death);
+            Soundcount++;
+        }
+    }
 
     void Update()
     {
         if (GuardMushroom.isDead)
         {
-            SoundManager.I.PlaySound(transform.position, PlaySoundId.Monster_Death);
+            DeadSound();
             GuardMushroom.rotAnglePerSecond = 0;
             GuardMushroom.AttackRotAngle = 0;
             GuardMushroom.Stat.MoveSpeed = 0;
             DeadTime += Time.deltaTime;
             GuardMushroom.CharacterisDead = true;
-            //Mypo();
+
             if (DeadTime >= 1.2f)
             {
                 GuardMushroom.OnDead();

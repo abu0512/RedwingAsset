@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QueenMushroomHealing : QueenMushroomStateBase
 {
-
     public override void BeginState()
     {
         Dltime = 0;
@@ -28,7 +27,6 @@ public class QueenMushroomHealing : QueenMushroomStateBase
     {
         QueenMushroom.EffectofHeal(transform.position);
         QueenMushroom.GoToPullPush();
-        SoundManager.I.PlaySound(transform.position, PlaySoundId.Goblin_Heal);
         Dltime += Time.deltaTime;
 
         if (Dltime > 2f)

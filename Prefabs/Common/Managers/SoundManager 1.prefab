@@ -121,11 +121,11 @@ MonoBehaviour:
   - Id: 38
     Path: event:/SFX/Monster/Monster_Goblin03/goblin3_guard_hit
   - Id: 39
-    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+    Path: event:/SFX/Monster/Monster_Goblin01/goblin1_hit
   - Id: 40
-    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+    Path: event:/SFX/Monster/Monster_Goblin03/goblin3_hit
   - Id: 41
-    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+    Path: event:/SFX/Monster/Monster_Goblin01/goblin_sword_whoosh
   - Id: 42
-    Path: event:/SFX/Monster/Monster_Goblin02/heal/goblin_heal
+    Path: event:/SFX/Monster/Monster_Goblin03/goblin_sword_whoosh
   _Volume: 0

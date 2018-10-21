@@ -70,6 +70,7 @@ public class QueenMushroomAttack : QueenMushroomStateBase
             if (_imsitime > 0.2f)
             {
                 Stage1.I.BulletPool.SetStunBullet(_QueenMushroom, transform.position, QueenMushroom.Player.position);
+                SoundManager.I.PlaySound(transform, PlaySoundId.Goblin_Missile);
                 _bulletcount++;
                 _imsitime = 0;
             }
@@ -81,6 +82,7 @@ public class QueenMushroomAttack : QueenMushroomStateBase
             if (_imsitime > 0.2f)
             {
                 Stage1.I.BulletPool.SetBullet(_QueenMushroom, transform.position, QueenMushroom.Player.position);
+                SoundManager.I.PlaySound(transform, PlaySoundId.Goblin_Missile);
                 _bulletcount++;
                 _imsitime = 0;
             }
@@ -110,7 +112,6 @@ public class QueenMushroomAttack : QueenMushroomStateBase
         QueenMushroom.GoToPullPush();
         QueenMushroom.PlayerisDead();
         QueenMushroom.TurnToDestination();
-        SoundManager.I.PlaySound(transform.position, PlaySoundId.Goblin_Missile);
 
         Dltime += Time.deltaTime;
 
