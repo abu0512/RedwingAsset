@@ -19,4 +19,13 @@ public class ShildMushroomAnimatorEvent : MonoBehaviour {
             _ShildMAttaked.ShildAttackCheck();
         }
     }
+
+    void ShildMSwordSound()
+    {
+        ShildMushroomAttack _ShildMSword = _ShildMushroom.GetCurrentState() as ShildMushroomAttack;
+        if (_ShildMSword != null)
+        {
+            _ShildMSword.ShildSwordSound();
+        }
+    }
 }

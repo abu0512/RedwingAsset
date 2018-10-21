@@ -10,8 +10,11 @@ public class TitleScene : MonoBehaviour {
     public Image fade;
     float fades = 1.0f;
     float time = 0;
+    float SoundVolume = 0;
     bool isinputanykey = false;
     bool fadeinfinish = false;
+
+    AudioSource TitleAudio;
 
     private void TitleStartFadein()
     {
@@ -20,13 +23,15 @@ public class TitleScene : MonoBehaviour {
             time += Time.deltaTime;
             if (fades > 0f && time >= 0.1f)
             {
-                fades -= 0.25f;
+                SoundVolume += 0.005f;
+                fades -= 0.1f;
                 fade.color = new Color(0, 0, 0, fades);
                 time = 0;
             }
 
             if (fades <= 0f)
             {
+                SoundVolume = 0;
                 fadeinfinish = true;
             }
         }
@@ -39,7 +44,8 @@ public class TitleScene : MonoBehaviour {
             time += Time.deltaTime;
             if (fades < 1f && time >= 0.1f)
             {
-                fades += 0.25f;
+                SoundVolume += 0.005f;
+                fades += 0.1f;
                 fade.color = new Color(0, 0, 0, fades);
                 time = 0;
             }
@@ -54,14 +60,28 @@ public class TitleScene : MonoBehaviour {
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        TitleAudio = GetComponent<AudioSource>();
+        TitleAudio.Play();
+        TitleAudio.volume = 0;
     }
 
-    void Update ()
+    void FixedUpdate()
     {
         // Fade in / Out Set
         TitleStartFadein();
         TitleExitFadeOut();
 
+        // SoundVolume
+        if (!isinputanykey)
+            TitleAudio.volume += SoundVolume;
+
+        else if (isinputanykey)
+            TitleAudio.volume -= SoundVolume;
+        print(TitleAudio.volume);
+    }
+
+    void Update ()
+    {    
         if (Input.anyKey)
         {
             isinputanykey = true;

@@ -43,12 +43,14 @@ public class CPlayerSwordCollder : MonoBehaviour
                     {
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
+                        SoundManager.I.PlaySound(other.transform, PlaySoundId.ShildGoblin_Hit);
                     }
 
                     else if (other.GetComponent<ShildMushroom>().GroggyEnd == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
                     {
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeShild[nCombo], InspectorManager._InspectorManager.nGroggyShild[nCombo]);
                         other.GetComponent<ShildMushroomEffect>().DefenEffect();
+                        SoundManager.I.PlaySound(other.transform, PlaySoundId.ShildGoblin_Hit);
                     }
 
                     // 2학기 방패엘리트 몬스터 변경사항 : 전방에서도 데미지가 들어가야 함. (임시 수정 1차)
@@ -103,6 +105,7 @@ public class CPlayerSwordCollder : MonoBehaviour
                         other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
                         CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
+                        SoundManager.I.PlaySound(other.transform, PlaySoundId.ShildGoblin_Hit);
                     }
 
                     else if (other.GetComponent<ShildMushroom>().GroggyEnd == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
@@ -110,20 +113,8 @@ public class CPlayerSwordCollder : MonoBehaviour
                         other.GetComponent<ShildMushroomEffect>().DefenEffect();
                         CPlayerManager._instance.m_PlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
                         other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
+                        SoundManager.I.PlaySound(other.transform, PlaySoundId.ShildGoblin_Hit);
                     }
-
-                    // 2학기 방패엘리트 몬스터 변경사항 : 전방에서도 데미지가 들어가야 함. (임시 수정 1차)
-                    //if (other.GetComponent<ShildMushroom>().PlayerisFront == false && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
-                    //{
-                    //    other.GetComponent<ShildMushroomEffect>().ShildMHitEffect();
-                    //    CPlayerManager._instance.m_ScyPlayerHp += InspectorManager._InspectorManager.fScytheAttackHpAdd;
-                    //    other.GetComponent<ShildMushroom>().OnDamage(InspectorManager._InspectorManager.nDamgeScythe[nCombo], InspectorManager._InspectorManager.nGroggyScythe[nCombo]);
-                    //}
-
-                    //else if (other.GetComponent<ShildMushroom>().PlayerisFront == true && other.GetComponent<ShildMushroom>().Stat.Hp > 0)
-                    //{
-                    //    other.GetComponent<ShildMushroomEffect>().DefenEffect();
-                    //}
                 }
                 else
                 {
