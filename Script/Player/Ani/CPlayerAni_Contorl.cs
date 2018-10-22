@@ -22,6 +22,7 @@ public enum PlayerAni_State_Shild
     None,
     Stun,
     Damage,
+    Die,
 }
 public enum PlayerAni_State_Scythe
 {
@@ -32,6 +33,7 @@ public enum PlayerAni_State_Scythe
     Skill2,
     Skill1,
     Damage,
+    Die,
 }
 
 
@@ -353,6 +355,11 @@ public class CPlayerAni_Contorl : CPlayerBase
                     Animation_Change(17);
                 }
                 break;
+            case PlayerAni_State_Shild.Die:
+                {
+                    Animation_Change(18);
+                }
+                break;
         }
     }
     void ScytheAniGetKey()
@@ -445,6 +452,11 @@ public class CPlayerAni_Contorl : CPlayerBase
             case PlayerAni_State_Scythe.Damage:
                 {
                     Animation_Change(6);
+                }
+                break;
+            case PlayerAni_State_Scythe.Die:
+                {
+                    Animation_Change(7);
                 }
                 break;
         }

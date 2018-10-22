@@ -299,7 +299,11 @@ public class CPlayerManager : MonoBehaviour
         //    m_fscyPlayerHp -= sizeHp;
 
         if (m_fPlayerHp <= 0)
+        {
+            m_fPlayerHp = 0.0f;
+            
             isDead = true;
+        }
 
         return m_fPlayerHp;
     }
