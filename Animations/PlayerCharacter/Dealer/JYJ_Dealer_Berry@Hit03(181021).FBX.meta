@@ -264,7 +264,7 @@ ModelImporter:
     13700004: Eye_R
     13700006: Scythe
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
