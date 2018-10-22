@@ -7,9 +7,8 @@
 		_Smooth("smoothness", Range(0,1)) = 0
 		_BumpMap("노말맵", 2D) = "Bump" {}
 		_Occlu("AO맵", 2D) = "white" {}
-		_Rimpow ("림 두께", Range(1,30)) = 1
+		_Rimpow("림 두께", Range(1,30)) = 1
 		_RimbalGGi("림세기", float) = 0
-
 
 	}
 	SubShader {
@@ -46,7 +45,7 @@
 			o.Normal = UnpackNormal(tex2D(_BumpMap,IN.uv_BumpMap));
 			o.Occlusion = tex2D(_Occlu,IN.uv_MainTex);
 			o.Albedo = c.rgb;
-			float rim =  pow(1 - saturate(dot(IN.viewDir,o.Normal)), _Rimpow);
+			float rim = pow(1 - saturate(dot(IN.viewDir, o.Normal)), _Rimpow);
 			o.Emission = rim * _RimbalGGi * c.rgb;
 			o.Metallic = met.r * _Mtl;
 			o.Smoothness = met.a * _Smooth;
