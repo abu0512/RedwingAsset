@@ -181,10 +181,10 @@ public class CPlayerManager : MonoBehaviour
 
         m_fPlayerStm = Mathf.Clamp(m_fPlayerStm, 0, 100.0f);
 
-        if (m_fPlayerHp <= 0)
-        {
-            gameObject.SetActive(false);
-        }
+        //if (m_fPlayerHp <= 0)
+        //{
+        //    gameObject.SetActive(false);
+        //}
 
         if (m_bAttack)
         {
@@ -207,18 +207,23 @@ public class CPlayerManager : MonoBehaviour
     // 플레이어 사망시
     public void PlayerDead()
     {
-        if (isDead == true)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
+        //if (isDead == true)
+        //{
+        //    gameObject.SetActive(false);
+        //    return;
+        //}
     }
     // 플레이어 로테이션을 부드럽게 이동
     public void PlayerRotation()
     {
+        if (isDead)
+            return;
+
         if (_PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_Mode ||
             _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeBack ||
-            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle)
+            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Defense_ModeIdle ||
+            _PlayerAni_Contorl._PlayerAni_State_Shild == PlayerAni_State_Shild.Die ||
+            _PlayerAni_Contorl._PlayerAni_State_Scythe == PlayerAni_State_Scythe.Die)
             return;
 
         if (!m_isRotationAttack)
@@ -250,12 +255,15 @@ public class CPlayerManager : MonoBehaviour
     // 플레이어 데미지 처리 
     public float PlayerHp(float shake = 0.0f, int type = 1, float sizeHp = 0)
     {
+        if (isDead)
+            return m_fPlayerHp;
+
         CCameraShake._instance.shake = shake;
 
         // type = 1  플레이어 / type = 2 방패
         if (type == 1)
         {
-            StartCoroutine(Co_Damage());
+            //StartCoroutine(Co_Damage());
             SoundManager.I.PlaySound(transform, PlaySoundId.Hit_Pc);
             //if (!isPlayerHorn) // 플레이어가 무적상태가 아닐때
             //{
@@ -301,7 +309,12 @@ public class CPlayerManager : MonoBehaviour
         if (m_fPlayerHp <= 0)
         {
             m_fPlayerHp = 0.0f;
-            
+
+            if (_PlayerSwap._PlayerMode == PlayerMode.Shield)
+                _PlayerAni_Contorl._PlayerAni_State_Shild = PlayerAni_State_Shild.Die;
+            else
+                _PlayerAni_Contorl._PlayerAni_State_Scythe = PlayerAni_State_Scythe.Die;
+
             isDead = true;
         }
 

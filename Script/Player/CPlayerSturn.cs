@@ -19,13 +19,21 @@ public class CPlayerSturn : MonoBehaviour
 	void Update ()
     {
         Sturn();
-
-        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
-            isSturn = false;
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            isSturn = true;
+        }
     }
 
     void Sturn()
     {
+        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+        {
+            _SturnEffect.SetActive(false); // 스턴이펙트 해제
+            isSturn = false;
+            return;
+        }
+
         if (!isSturn)
         {
             StopCoroutine("SturnCoolTime");
