@@ -264,7 +264,7 @@ ModelImporter:
     13700004: Eye_R
     13700006: Scythe
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -338,6 +338,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.38950276
         functionName: OnSkillCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: OnSwapCutEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

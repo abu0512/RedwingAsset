@@ -271,7 +271,7 @@ ModelImporter:
     13700006: Sword_Mesh
     13700008: Tanker_Berry
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

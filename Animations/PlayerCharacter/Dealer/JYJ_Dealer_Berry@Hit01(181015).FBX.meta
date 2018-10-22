@@ -264,7 +264,7 @@ ModelImporter:
     13700004: Eye_R
     13700006: Scythe
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -316,6 +316,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: OnAttackEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.19365609
         functionName: PlayStandardAttackSound
         data: 
@@ -326,7 +333,8 @@ ModelImporter:
       - time: 0.20868114
         functionName: ScytheTrue
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -347,7 +355,8 @@ ModelImporter:
       - time: 0.29716194
         functionName: AttackEnd
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: bf83baca5ecd4eb40b2bd5e134a452d5,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

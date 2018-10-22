@@ -19,6 +19,9 @@ public class CPlayerSturn : MonoBehaviour
 	void Update ()
     {
         Sturn();
+
+        if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
+            isSturn = false;
     }
 
     void Sturn()
@@ -46,6 +49,7 @@ public class CPlayerSturn : MonoBehaviour
         // 플레이어 움직임막아줌
         CPlayerManager._instance._CPlayerAniEvent.MoveTypes(1); 
         CPlayerManager._instance.m_isRotationAttack = false;
+        CPlayerManager._instance._PlayerAni_Contorl._PlayerAni_State_Shild = PlayerAni_State_Shild.Stun;
     }
     void SturnOff()
     {

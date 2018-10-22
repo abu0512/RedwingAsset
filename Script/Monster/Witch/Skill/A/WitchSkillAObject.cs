@@ -87,7 +87,7 @@ public class WitchSkillAObject : MonoBehaviour
         _fires[_fireIdx].gameObject.SetActive(true);
         _fires[_fireIdx].Ready(transform.position,
                                _witch.Target.transform);
-        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Orb);
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Orb_Spawn);
         _fireIdx++;
         _readyTime = 0.0f;
     }

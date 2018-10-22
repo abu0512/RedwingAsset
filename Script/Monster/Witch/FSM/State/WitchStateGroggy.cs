@@ -15,6 +15,7 @@ public class WitchStateGroggy : WitchFSMStateBase
         _delayTime = 0.0f;
         Witch.Anim.speed = 1.0f;
         Witch.CloseTelCheck = false;
+        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_Groggy);
     }
 
     void Update()

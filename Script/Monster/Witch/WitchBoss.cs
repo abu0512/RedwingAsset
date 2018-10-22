@@ -27,6 +27,10 @@ public class WitchBoss : MonsterBase
     public Material NormalWeapon;
     public Material NoiseWeapon;
 
+    public Renderer RingModel;
+    public Material NormalRing;
+    public Material NoiseRing;
+
     private WitchStateSystem _stateSystem;
     private WitchSkillSystem _skillSystem;
     private WitchState _curState;
@@ -321,25 +325,25 @@ public class WitchBoss : MonsterBase
 
     private void MonsterSpawnUpdate()
     {
-        if (_receiveDamage2 / _stat.MaxHp >= 0.2f)
-        {
-            if (!_on1)
-            {
-                ABUGameManager.I.MonsterPhase.OnNextSpawn();
-                SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
-                _on1 = true;
-            }
+        //if (_receiveDamage2 / _stat.MaxHp >= 0.2f)
+        //{
+        //    if (!_on1)
+        //    {
+        //        ABUGameManager.I.MonsterPhase.OnNextSpawn();
+        //        SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
+        //        _on1 = true;
+        //    }
 
-            if (_receiveDamage2 / _stat.MaxHp >= 0.6f)
-            {
-                if (!_on2)
-                {
-                    ABUGameManager.I.MonsterPhase.OnNextSpawn();
-                    SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
-                    _on2 = true;
-                }
-            }
-        }
+        //    if (_receiveDamage2 / _stat.MaxHp >= 0.6f)
+        //    {
+        //        if (!_on2)
+        //        {
+        //            ABUGameManager.I.MonsterPhase.OnNextSpawn();
+        //            SoundManager.I.PlaySound(transform, PlaySoundId.Boss_MonSpawn);
+        //            _on2 = true;
+        //        }
+        //    }
+        //}
     }
 
     private void PlayWalkSound()

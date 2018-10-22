@@ -23,7 +23,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6c802a5764b073e409440b7303ab746f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 66762e75a03cc2545a80000e99ec29c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4983c0ae4c48b8c44aa6dfc9de6dddbb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex2:
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8cb01ffdd4cd9c54ca7b9d4b0fd1e6c4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -97,7 +97,7 @@ Material:
     - _GlossyReflections: 1
     - _Hide: 1
     - _Lower: 0
-    - _Metallic: 0
+    - _Metallic: 0.963
     - _Mode: 0
     - _Mtl: 0
     - _OcclusionStrength: 1
@@ -105,7 +105,7 @@ Material:
     - _RimbalGGi: 0
     - _Rimpow: 1
     - _Smooth: 0.19
-    - _Smoothness: 0.052
+    - _Smoothness: 0.225
     - _SmoothnessTextureChannel: 0
     - _SpecPow: 27
     - _SpecularHighlights: 1
@@ -115,6 +115,7 @@ Material:
     m_Colors:
     - _AlphaColor: {r: 0.74898577, g: 0.27205884, b: 1, a: 1}
     - _Color: {r: 0.57721597, g: 0.5985416, b: 0.622, a: 1}
+    - _EmiCol: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EyeCol: {r: 0, g: 0, b: 0, a: 1}
     - _Fakecolor: {r: 0.2720588, g: 0.2720588, b: 0.2720588, a: 1}

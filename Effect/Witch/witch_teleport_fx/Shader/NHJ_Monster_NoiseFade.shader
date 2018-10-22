@@ -3,7 +3,7 @@
 	Properties{
 	   [HDR]_Color("기본색" , color) = (1,1,1,1)
 	   _MainTex("기본 텍스쳐(RGB)", 2D) = "white" {}
-	   _MetalTex("메탈",2D) = "black" {}
+	   _MetalTex("메탈",2D) = "white" {}
 	   _Metallic("Metallic" ,Range(0,1)) = 0
 	   _Smoothness("Smoothness", Range(0,1)) = 0
 	   _EmitTex("셀프 일루미네이션 텍스쳐" , 2D) = "black" {}

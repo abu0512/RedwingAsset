@@ -96,7 +96,7 @@ Material:
     - _Parallax: 0.02
     - _RimbalGGi: 0
     - _Rimpow: 1
-    - _Smoothness: 0.62
+    - _Smoothness: 0.301
     - _SmoothnessTextureChannel: 0
     - _SpecPow: 100
     - _SpecularHighlights: 1
@@ -106,6 +106,7 @@ Material:
     m_Colors:
     - _AlphaColor: {r: 0.7490196, g: 0.27058825, b: 1, a: 1}
     - _Color: {r: 0.771168, g: 0.7996594, b: 0.831, a: 1}
+    - _EmiCol: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EyeCol: {r: 0, g: 0, b: 0, a: 1}
     - _Fakecolor: {r: 0.27058825, g: 0.27058825, b: 0.27058825, a: 1}

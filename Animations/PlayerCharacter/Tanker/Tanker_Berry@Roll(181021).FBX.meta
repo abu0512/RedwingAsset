@@ -272,7 +272,7 @@ ModelImporter:
     13700006: Sword_Mesh
     13700008: Tanker_Berry
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -357,7 +357,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ShieldShiftCoolTimeEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.011844331
+        functionName: PlayDashSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 1
       maskSource: {fileID: 31900000, guid: b60dd7e990d39884bbbdd61ae76b6f98, type: 2}
