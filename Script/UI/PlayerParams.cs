@@ -59,9 +59,7 @@ public class PlayerParams : CharacterUI
     public Image[] Tanker_Tip;
     public Image[] Dealer_Tip;
     private int RandomValue = 0;
-    private float TipTime = 5f;
-    private RectTransform SecPo;
-    private float TipSpeed = 5f;
+    private float TipTime = 10f;
 
     public override void InitParams()
     {
@@ -380,42 +378,33 @@ public class PlayerParams : CharacterUI
         {
             if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Shield)
             {
-                TankerSet();
+                Tip_TankerSet();
             }
 
             else if (CPlayerManager._instance._PlayerSwap._PlayerMode == PlayerMode.Scythe)
             {
-                DealerSet();
+                Tip_DealerSet();
             }
 
             TipTime = 0;
         }
     }
 
-    private void TankerSet()
+    public void Tip_TankerSet()
     {
         for (int i = 0; i < Tanker_Tip.Length; i++)
         {
             Tanker_Tip[i].enabled = false;
         }
-        RandomValue = Random.Range(0, 8);
+        RandomValue = Random.Range(0, Tanker_Tip.Length);
         Tanker_Tip[RandomValue].enabled = true;
-
-        //print(FirPo.rect.x);
-        //if (FirPo.rect.x > SecPo.rect.x)
-        //{
-        //    Vector2.MoveTowards(ResetPo, Destination, TipSpeed * Time.deltaTime);
-        //    Tanker_Tip[RandomValue].rectTransform.position
-        //    FirPo.rect.x -= Time.deltaTime;
-        //    Tanker_Tip[RandomValue].rectTransform.position = FirPo.position;
-        //}
     }
 
-    private void DealerSet()
+    public void Tip_DealerSet()
     {
         for (int i = 0; i < Dealer_Tip.Length; i++)
             Dealer_Tip[i].enabled = false;
-        RandomValue = Random.Range(0, 6);
+        RandomValue = Random.Range(0, Dealer_Tip.Length);
         Dealer_Tip[RandomValue].enabled = true;
     }
 
@@ -423,8 +412,6 @@ public class PlayerParams : CharacterUI
     {
         InitParams();
         Skill_Explanation.SetActive(false);
-
-        //SecPo = Destination.rectTransform.position;
     }
 
     void Update()
