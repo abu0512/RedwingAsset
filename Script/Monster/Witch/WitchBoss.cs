@@ -14,6 +14,7 @@ public enum WitchState
     GroggyRelease,
     AttackRelease,
     MonsterSpawn,
+    Die,
 }
 
 [RequireComponent(typeof(WitchStateSystem))]
@@ -118,6 +119,12 @@ public class WitchBoss : MonsterBase
 	
 	protected override void Update ()
     {
+        if (_stat.Hp <= 0)
+        {
+            SetState(WitchState.Die);
+            _anim.speed = 1.0f;
+            return;
+        }
         base.Update();
         //RotateToTarget(_player.transform.position);
         //if (Input.GetMouseButtonDown(0)) _isGravity = true;

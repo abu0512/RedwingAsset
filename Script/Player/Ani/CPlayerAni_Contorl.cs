@@ -350,11 +350,11 @@ public class CPlayerAni_Contorl : CPlayerBase
                     Animation_Change(16);
                 }
                 break;
-            case PlayerAni_State_Shild.Damage:
-                {
-                    Animation_Change(17);
-                }
-                break;
+            //case PlayerAni_State_Shild.Damage:
+            //    {
+            //        Animation_Change(17);
+            //    }
+                //break;
             case PlayerAni_State_Shild.Die:
                 {
                     Animation_Change(18);
@@ -449,11 +449,11 @@ public class CPlayerAni_Contorl : CPlayerBase
                     Animation_Change(5);
                 }
                 break;
-            case PlayerAni_State_Scythe.Damage:
-                {
-                    Animation_Change(6);
-                }
-                break;
+            //case PlayerAni_State_Scythe.Damage:
+            //    {
+            //        Animation_Change(6);
+            //    }
+            //    break;
             case PlayerAni_State_Scythe.Die:
                 {
                     Animation_Change(7);

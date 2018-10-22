@@ -91,6 +91,9 @@ public class CPlayerSwap : CPlayerBase
 
     void SwapKey()
     {
+        if (_PlayerManager.isDead)
+            return;
+
         // Q버튼을 누르면 직업이 바뀜
         if (_PlayerMode == PlayerMode.Shield)
         {
